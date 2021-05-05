@@ -1,7 +1,7 @@
 // Exporting an object containing all of our models
 
 module.exports = {
-  Client: require("./Client"),
-  Contractor: require("./Contractor"),
-  Job: require("./Job")
+  Client: require("./Clients"),
+  Contractor: require("./Contractors"),
+  Job: require("./Jobs")
 };

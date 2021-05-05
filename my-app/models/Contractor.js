@@ -36,11 +36,17 @@ const ContractorSchema = new Schema({
     unique: false,
   },
   location: {
-    type: "Point",
-    coordinates: [],
-  },  
-});
+    type: {
+      type: String, 
+      enum: ['Point'], 
+      required: true
+    },
+    coordinates: {
+      type: [Number],
+      required: true
+    }
+  }});
 
-const Contractor = mongoose.model("Contractor", ContracotrSchema);
+const Contractor = mongoose.model("Contractor", ContractorSchema);
 
 module.exports = Contractor;

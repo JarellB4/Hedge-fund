@@ -1,6 +1,5 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
-const bcrypt = require("bcryptjs");
 
 const ClientSchema = new Schema({
   email: {
@@ -40,8 +39,15 @@ const ClientSchema = new Schema({
     unique: false,
   },
   location: {
-    type: "Point",
-    coordinates: [],
+    type: {
+      type: String, 
+      enum: ['Point'],
+      required: true
+    },
+    coordinates: {
+      type: [Number],
+      required: true
+    }
   },  
   job: [
     {

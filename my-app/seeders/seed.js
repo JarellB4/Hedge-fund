@@ -84,33 +84,33 @@ let contractorSeed = [
 function jobSeed(clients, contractors) {
   let dataSeed = [
     {
-      client: mongoose.Types.ObjectId(clients[0]._id),
+      client: mongoose.Types.ObjectId(clients[0]),
       category: "Landscaping",
       title: "lawn Mowing",
       description: "I have a 1/3 acre lot that needs mowing for the season",
       image: "https://via.placeholder.com/300",
       quote: [
         {
-          contractor: mongoose.Types.ObjectId(contractors[0]._id),
+          contractor: mongoose.Types.ObjectId(contractors[0]),
           price: 25,
           description: "We would love to service your lawn for $25 a cut",
         },
         {
-          contractor: mongoose.Types.ObjectId(contractors[1]._id),
+          contractor: mongoose.Types.ObjectId(contractors[1]),
           price: 23,
           description: "We beat any price!",
         },
       ],
     },
     {
-      client: mongoose.Types.ObjectId(clients[2]._id),
+      client: mongoose.Types.ObjectId(clients[2]),
       category: "Remodel",
       title: "Bathroom remodel",
       description: "I have a small 3 piece bathroom that needs remodeling ",
       image: "https://via.placeholder.com/300",
       quote: [
         {
-          contractor: mongoose.Types.ObjectId(contractors[2]._id),
+          contractor: mongoose.Types.ObjectId(contractors[2]),
           price: 7000,
           description:
             "We typically remodel small 3 piece bathrooms for around $7,000. ",
@@ -121,26 +121,24 @@ function jobSeed(clients, contractors) {
 
   return dataSeed;
 }
-const clients = [];
-const contractors = [];
+let clientIds = [];
+let contractorIds = [];
 
 db.Client.deleteMany({})
   .then(() => db.Client.collection.insertMany(clientSeed))
-  .then((data) => {
-    console.log(data.result.n + " records inserted!");
-    clients = data;
-
+  .then((clientData) => {
+    console.log(clientData.result.n + " records inserted!");
+    console.log(clientData);
+    clientIds = clientData.insertedIds;
     db.Contractor.deleteMany({})
       .then(() => db.Contractor.collection.insertMany(contractorSeed))
-      .then((data) => {
-        console.log(data.result.n + " records inserted!");
-        contractors = data;
-
+      .then((contractorData) => {
+        console.log(contractorData.result.n + " records inserted!");
+        contractorIds = contractorData.insertedIds;
         db.Job.deleteMany({})
-          .then(() => db.Job.collection.insertMany(jobSeed))
+          .then(() => db.Job.collection.insertMany(jobSeed(clientIds, contractorIds)))
           .then((data) => {
             console.log(data.result.n + " records inserted!");
-            contractors = data;
             process.exit(0);
           })
           .catch((err) => {
@@ -152,8 +150,6 @@ db.Client.deleteMany({})
         console.error(err);
         process.exit(1);
       });
-
-    process.exit(0);
   })
   .catch((err) => {
     console.error(err);

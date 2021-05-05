@@ -7,7 +7,7 @@ const JobSchema = new Schema({
     ref: 'client'
   },
   date: {
-    type: new Date,
+    type: Date,
     default: Date.now()
   },
   category: {
@@ -33,7 +33,7 @@ const JobSchema = new Schema({
         ref: "Contractor"
       },
       date: {
-        type: new Date,
+        type: Date,
         default: Date.now()
       },
       price: {

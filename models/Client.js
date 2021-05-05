@@ -49,7 +49,7 @@ const ClientSchema = new Schema({
       required: true
     }
   },  
-  job: [
+  jobs: [
     {
       type: Schema.Types.ObjectId,
       ref: "Job"

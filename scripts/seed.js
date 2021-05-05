@@ -18,6 +18,7 @@ let clientSeed = [
     state: "MI",
     zip: "48178",
     location: [42.478327, -83.6552936],
+    jobs: []
   },
   {
     email: "email2@email.com",
@@ -30,6 +31,7 @@ let clientSeed = [
     state: "MI",
     zip: "48178",
     location: [42.472219, -83.6276528],
+    jobs: []
   },
   {
     email: "email3@email.com",
@@ -42,6 +44,7 @@ let clientSeed = [
     state: "MI",
     zip: "48165",
     location: [42.4938968, -83.636473],
+    jobs: []
   },
 ];
 

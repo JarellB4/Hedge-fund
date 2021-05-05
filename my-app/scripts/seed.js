@@ -50,6 +50,7 @@ let contractorSeed = [
     email: "lawn1@email.com",
     password: "$2a$10$rrCvSWi9EjdzJBGrG28RgeNIne3kMNCwoLEbcE5zbRcGyW7AFfiEy", //blah
     companyName: "South Lyon Lawn Care",
+    phone: "248-323-2054",
     streetAddress1: "12737 12 Mile Rd",
     StreetAddress2: "",
     city: "South Lyon",
@@ -61,6 +62,7 @@ let contractorSeed = [
     email: "lawn2@email.com",
     password: "$2a$10$rrCvSWi9EjdzJBGrG28RgeNIne3kMNCwoLEbcE5zbRcGyW7AFfiEy", //blah
     companyName: "Mow Daddy",
+    phone: "248-323-2054",
     streetAddress1: "9200 River Valley Rd",
     StreetAddress2: "",
     city: "Brighton",
@@ -72,6 +74,7 @@ let contractorSeed = [
     email: "bath1@email.com",
     password: "$2a$10$rrCvSWi9EjdzJBGrG28RgeNIne3kMNCwoLEbcE5zbRcGyW7AFfiEy", //blah
     companyName: "KSI Kitchen & Bath",
+    phone: "248-323-2054",
     streetAddress1: "9325 Maltby Rd",
     StreetAddress2: "",
     city: "Brighton",

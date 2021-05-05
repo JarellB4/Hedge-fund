@@ -15,6 +15,10 @@ const ContractorSchema = new Schema({
     type: String,
     unique: false
   },
+  phone: {
+    type: String,
+    unique: false
+  },
   streetAddress1: {
     type: String,
     unique: false

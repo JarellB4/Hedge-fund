@@ -2,8 +2,7 @@ const mongoose = require("mongoose");
 
 const Schema = mongoose.Schema;
 
-const ContracotrSchema = new Schema({
-  _id: Schema.Types.ObjectId,
+const ContractorSchema = new Schema({
   email: {
     type: String,
     unique: true

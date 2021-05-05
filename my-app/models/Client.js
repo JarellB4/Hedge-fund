@@ -3,7 +3,6 @@ const Schema = mongoose.Schema;
 const bcrypt = require("bcryptjs");
 
 const ClientSchema = new Schema({
-  _id: Schema.Types.ObjectId,
   email: {
     type: String,
     unique: true
@@ -37,7 +36,7 @@ const ClientSchema = new Schema({
     unique: false
   },
   zip: {
-    type: Number,
+    type: String,
     unique: false,
   },
   location: {

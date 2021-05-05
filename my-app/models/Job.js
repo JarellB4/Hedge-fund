@@ -2,9 +2,13 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const JobSchema = new Schema({
+  client: {
+    type: Schema.Types.ObjectId,
+    ref: 'client'
+  },
   date: {
-    type: new Date().setDate(new Date().getDate()),
-    unique: false
+    type: new Date,
+    default: Date.now()
   },
   category: {
     type: String,
@@ -24,13 +28,13 @@ const JobSchema = new Schema({
   },
   quote: [
     {
-      contractorId: {
+      contractor: {
         type: Schema.Types.ObjectId,
         ref: "Contractor"
       },
       date: {
-        type: new Date().setDate(new Date().getDate()),
-        unique: false
+        type: new Date,
+        default: Date.now()
       },
       price: {
         type: Number,

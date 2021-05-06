@@ -45,10 +45,6 @@ const ContractorSchema = new Schema({
       enum: ['Point'], 
       required: true
     },
-    coordinates: {
-      type: [Number],
-      required: true
-    }
   }});
 
 const Contractor = mongoose.model("Contractor", ContractorSchema);

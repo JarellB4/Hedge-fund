@@ -38,17 +38,32 @@ const ClientSchema = new Schema({
     type: String,
     unique: false,
   },
-  location: {
+  // location: {
+  //   type: {
+  //     type: String, 
+  //     enum: ['Point'],
+  //     required: false
+  //   },
+  // },  
+  location:{
+    // GeoJSON Point
     type: {
-      type: String, 
-      enum: ['Point'],
-      required: true
+        type: String,
+        enum: ['Point'],
+        required: false
     },
-  },  
+    coordinates: {
+        type: [Number],
+        required: false,
+        index: '2dsphere',
+        sparse: true,
+    },
+  },
   jobs: [
     {
       type: Schema.Types.ObjectId,
-      ref: "Job"
+      ref: "Job",
+      required: false
     }
   ]
 });

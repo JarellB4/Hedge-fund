@@ -17,7 +17,10 @@ let clientSeed = [
     city: "South Lyon",
     state: "MI",
     zip: "48178",
-    location: [42.478327, -83.6552936],
+    location: {
+      type: "Point",
+      coordinates: [42.478327, -83.6552936]
+    },
     jobs: []
   },
   {
@@ -30,7 +33,10 @@ let clientSeed = [
     city: "South Lyon",
     state: "MI",
     zip: "48178",
-    location: [42.472219, -83.6276528],
+    location: {
+      type: "Point",
+      coordinates: [42.472219, -83.6276528]
+    },
     jobs: []
   },
   {
@@ -43,7 +49,10 @@ let clientSeed = [
     city: "New Hudson",
     state: "MI",
     zip: "48165",
-    location: [42.4938968, -83.636473],
+    location: {
+      type: "Point",
+      coordinates: [42.4938968, -83.636473]
+    },
     jobs: []
   },
 ];
@@ -59,7 +68,10 @@ let contractorSeed = [
     city: "South Lyon",
     state: "MI",
     zip: "48178",
-    location: [42.4817418, -83.6958326],
+    location: {
+      type: "Point",
+      coordinates: [42.4817418, -83.7813526]
+    }
   },
   {
     email: "lawn2@email.com",
@@ -71,7 +83,10 @@ let contractorSeed = [
     city: "Brighton",
     state: "MI",
     zip: "48116",
-    location: [42.4817441, -83.7813526],
+    location: {
+      type: "Point",
+      coordinates: [42.4817441, -83.7813526]
+    }
   },
   {
     email: "bath1@email.com",
@@ -83,7 +98,10 @@ let contractorSeed = [
     city: "Brighton",
     state: "MI",
     zip: "48116",
-    location: [42.4969824, -83.7569244],
+    location: {
+      type: "Point",
+      coordinates: [42.4969824, -83.7569244]
+    }
   },
 ];
 
@@ -125,64 +143,8 @@ function jobSeed(clients, contractors) {
     },
   ];
 
-  // let clientJobSeed = [
-  //   {
-  //     email: "email1@email.com",
-  //     password: "$2a$10$rrCvSWi9EjdzJBGrG28RgeNIne3kMNCwoLEbcE5zbRcGyW7AFfiEy", //blah
-  //     firstName: "Paul",
-  //     lastName: "McCartney",
-  //     streetAddress1: "25760 Pontiac Trail",
-  //     StreetAddress2: "",
-  //     city: "South Lyon",
-  //     state: "MI",
-  //     zip: "48178",
-  //     location: [42.478327, -83.6552936],
-  //     jobs: []
-  //   }
-  // ]
-
   return dataSeed;
 }
-
-// function findData(clientIds) {
-
-//     db.Client.find({}).then(result =>  {
-//       console.log("Found Clients: ", result);
-//     });
-
-//     db.Contractor.find({}).then(result =>  {
-//       console.log("Found Contractors: ", result);
-//     });
-
-//     db.Job.find({}).then(result =>  {
-//       console.log("Found Jobs: ", result);
-//     });
-
-//     db.Client.findOne({_id: clientIds[2]}, function(err, result) {
-//       console.log("Found Client By Id: ", result);
-//     });
-
-//     db.Client.findById(clientIds[2], function(err, result) {
-//       console.log("Found Client By Id: ", result);
-//     });
-
-//     db.Client
-//     .findById(clientIds[2])
-//     .then(dbModel => {
-//       console.log(dbModel + " client found!");
-//     })
-//     .catch(err => 
-//       console.log(err)
-//     );
-
-//     db.Client.findOneAndUpdate({_id: clientIds[2]}, { $push: { jobs: { job: mongoose.Types.ObjectId(jobIds[1]) } } }, { new: true })
-//     .then (updated => {
-//       console.log(updated + " client job id updated");
-//     })
-//     .catch(err => {
-//       console.log(err);
-//     });
-// }
 
 let clientIds = [];
 let contractorIds = [];

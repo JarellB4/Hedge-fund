@@ -19,7 +19,7 @@ let clientSeed = [
     zip: "48178",
     location: {
       type: "Point",
-      coordinates: [42.478327, -83.6552936]
+      coordinates: [-83.6552936, 42.478327]
     },
     jobs: []
   },
@@ -35,7 +35,7 @@ let clientSeed = [
     zip: "48178",
     location: {
       type: "Point",
-      coordinates: [42.472219, -83.6276528]
+      coordinates: [-83.6276528, 42.472219]
     },
     jobs: []
   },
@@ -51,7 +51,7 @@ let clientSeed = [
     zip: "48165",
     location: {
       type: "Point",
-      coordinates: [42.4938968, -83.636473]
+      coordinates: [-83.636473, 42.4938968]
     },
     jobs: []
   },
@@ -70,7 +70,7 @@ let contractorSeed = [
     zip: "48178",
     location: {
       type: "Point",
-      coordinates: [42.4817418, -83.7813526]
+      coordinates: [-83.7813526, 42.4817418]
     }
   },
   {
@@ -85,7 +85,7 @@ let contractorSeed = [
     zip: "48116",
     location: {
       type: "Point",
-      coordinates: [42.4817441, -83.7813526]
+      coordinates: [-83.7813526, 42.4817441]
     }
   },
   {
@@ -100,7 +100,7 @@ let contractorSeed = [
     zip: "48116",
     location: {
       type: "Point",
-      coordinates: [42.4969824, -83.7569244]
+      coordinates: [-83.7569244, 42.4969824]
     }
   },
 ];
@@ -182,8 +182,6 @@ db.Client.deleteMany({})
             .catch(err => {
               console.log(err);
             });
-
-        
           })
           .catch((err) => {
             console.error(err);

@@ -1,26 +1,6 @@
 const db = require("../models");
 
 module.exports = {
-  // findAll: function(req, res) {
-  //   db.Client
-  //     .find({})
-  //     .populate('jobs').exec((err, jobs) => {
-  //       console.log(jobs);
-  //     })
-      
-  //     // ({ 
-  //     //   path: "jobs",
-  //     //   // populate: {path: "quotes.contractor"}
-  //     // })
-  //     .sort({ date: -1 })
-  //     .then(jobs => {
-  //       console.log(jobs)  
-  //       res.json(jobs);
-  //     })      
-  //     .catch(err => res.status(422).json(err));
-  // },
-
-
   findAll: function(req, res) {
     db.Client
       .find({})

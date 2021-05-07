@@ -34,7 +34,7 @@ module.exports = {
     const client = req.body;
     client.delete(client.jobs);
     db.Client
-      .findOneAndUpdate({ _id: req.params.id }, client)
+      .findOneAndUpdate({ _id: req.params.id }, client, {new: true})
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },

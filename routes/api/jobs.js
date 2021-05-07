@@ -10,15 +10,21 @@ const jobsController = require("../../controllers/jobController");
 router.route("/client/:id")
   .get(jobsController.clientFindAllJobs)
   .put(jobsController.clientUpdateJob)
-  .delete(jobsController.clientDeleteJob)
   .post(jobsController.clientCreateJob);
+
+  router.route("/client/:id/:jobId")
+  .delete(jobsController.clientDeleteJob)
 
 // Matches with "/api/jobs/contractor/:id"
 //pass in contractor id
 router.route("/contractor/:id")
-  .get(jobsController.contractorFindAllJobs)  //return all jobs with quotes that belong to the contractor
+  .get(jobsController.contractorFindAllJobs);  //return all jobs with quotes that belong to the contractor
+  
+router.route("/contractor/:id/:jobId")
   .put(jobsController.contractorUpdateJobQuote)  //update a quote
-  .delete(jobsController.contractorDeleteJobQuote)  //delete a quote on a job
   .post(jobsController.contractorCreateJobQuote); //create a quote for a job
 
-module.exports = router;
+router.route("/contractor/:id/:QuoteId")
+  .delete(jobsController.contractorDeleteJobQuote)  //delete a quote on a job
+
+  module.exports = router;

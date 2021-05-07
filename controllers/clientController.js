@@ -31,8 +31,10 @@ module.exports = {
       .catch(err => res.status(422).json(err));
   },
   update: function(req, res) {
+    const client = req.body;
+    client.delete(client.jobs);
     db.Client
-      .findOneAndUpdate({ _id: req.params.id }, req.body)
+      .findOneAndUpdate({ _id: req.params.id }, client)
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },

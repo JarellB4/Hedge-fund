@@ -6,7 +6,11 @@ const JobSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: 'client'
   },
-  date: {
+  dateCreated: {
+    type: Date,
+    default: Date.now()
+  },
+  dateUpdated: {
     type: Date,
     default: Date.now()
   },
@@ -33,6 +37,10 @@ const JobSchema = new Schema({
         ref: "Contractor"
       },
       date: {
+        type: Date,
+        default: Date.now()
+      },
+      dateUpdated: {
         type: Date,
         default: Date.now()
       },

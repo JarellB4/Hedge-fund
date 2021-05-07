@@ -3,8 +3,7 @@ const db = require("../models");
 module.exports = {
   contractorFindAllJobs: function(req, res) {
     db.Job
-      .find({})
-      .sort({ date: -1 })
+      .find({ quotes: req.params.id })
       .then(dbModel => {
         console.log(dbModel)  
         res.json(dbModel);

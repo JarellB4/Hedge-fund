@@ -38,13 +38,6 @@ const ClientSchema = new Schema({
     type: String,
     unique: false,
   },
-  // location: {
-  //   type: {
-  //     type: String, 
-  //     enum: ['Point'],
-  //     required: false
-  //   },
-  // },  
   location:{
     // GeoJSON Point
     type: {

@@ -4,9 +4,6 @@ module.exports = {
   findAll: function(req, res) {
     db.Contractor
       .find({})
-      .populate({ 
-        path: "jobs",
-      })
       .sort({ date: -1 })
       .then(dbModel => {
         console.log(dbModel)  
@@ -14,13 +11,9 @@ module.exports = {
       })      
       .catch(err => res.status(422).json(err));
   },
-
   findById: function(req, res) {
     db.Contractor
       .findById(req.params.id)
-      .populate({ 
-        path: "jobs",
-      })
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },

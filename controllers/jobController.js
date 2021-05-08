@@ -22,9 +22,10 @@ module.exports = {
   },
   contractorDeleteJobQuote: function(req, res) {
     db.Job
-      // .findOneAndUpdate({_id: req.params.jobId, "quotes.contractor": req.params.id }, { $set: { "quotes.$": [] }} , {new: true})
-      .findById({ _id: req.params.jobId, "quotes.contractor": req.params.id })
-      .then(dbModel => dbModel.update({ $pull: { "quotes.$[].contractor": req.params.id }}))
+      .findOneAndUpdate({_id: req.params.jobId, "quotes.contractor": req.params.id }, { $set: { "quotes.$": [] }} , {new: true})
+      .findOneAndUpdate({ _id: req.params.jobId }, { $pull: { "quotes.$": [] }})
+      // .findById({ _id: req.params.jobId, "quotes.contractor": req.params.id })
+      // .then(dbModel => dbModel.update({ $pull: { "quotes.$[].contractor": req.params.id }}))
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },

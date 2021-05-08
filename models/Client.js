@@ -1,6 +1,8 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
+import getUserLocation from "../my-app/src/utils/openCageAPI";
+
 const ClientSchema = new Schema({
   email: {
     type: String,

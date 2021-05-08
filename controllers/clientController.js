@@ -1,7 +1,17 @@
 const db = require("../models");
+const passport = require("../config/passport");
+
 
 // Defining methods for the booksController
 module.exports = {
+
+    // when user logs on we send you back the client name
+  clientName: function () {
+    db.Client.post("/api/login", passport.authenticate("local"), (req, res) => {
+    res.json({ clientName: req.user.firstName });
+    })
+  },
+    
   findAll: function(req, res) {
     db.Client
       .find({})

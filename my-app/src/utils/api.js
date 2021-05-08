@@ -35,7 +35,7 @@ export default {
     },
 
     getContractor: function(id) {
-        return axios.get("api/contractor/" +id);
+        return axios.get("api/contractor/" + id);
     },
 
     saveContractor: function(contractorData) {

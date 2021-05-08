@@ -1,5 +1,7 @@
 const mongoose = require("mongoose");
 
+import getUserLocation from "../my-app/src/utils/openCageAPI"
+
 const Schema = mongoose.Schema;
 
 const ContractorSchema = new Schema({

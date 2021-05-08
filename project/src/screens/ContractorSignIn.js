@@ -60,11 +60,11 @@ export default function SignUp() {
           <LockOutlinedIcon />
         </Avatar>
         <Typography component="h1" variant="h5">
-          Sign up
+          Login
         </Typography>
         <form className={classes.form} noValidate>
           <Grid container spacing={2}>
-            <Grid item xs={12} sm={6}>
+            {/* <Grid item xs={12} sm={6}>
               <TextField
                 autoComplete="fname"
                 name="firstName"
@@ -86,7 +86,7 @@ export default function SignUp() {
                 name="lastName"
                 autoComplete="lname"
               />
-            </Grid>
+            </Grid> */}
             <Grid item xs={12}>
               <TextField
                 variant="outlined"
@@ -109,8 +109,20 @@ export default function SignUp() {
                 id="password"
                 autoComplete="current-password"
               />
-            </Grid>
+            </Grid> 
             <Grid item xs={12}>
+              <TextField
+                variant="outlined"
+                required
+                fullWidth
+                name="company name"
+                label="Company Name"
+                type="company name"
+                id="company name"
+                autoComplete="company name"
+              />
+            </Grid> 
+            {/* <Grid item xs={12}>
               <TextField
                 variant="outlined"
                 required
@@ -166,21 +178,21 @@ export default function SignUp() {
                 autoComplete="Zip"
                />
             </Grid>
-            
+             */}
       
           </Grid>
           <Button
-           onClick={() => {history.push('./Dashboard')}}
+           onClick={() => {history.push('./ContractorDashboard')}}
             type="submit"
             fullWidth
             variant="contained"
             color="primary"
             className={classes.submit}
           > 
-            Customer Sign Up    
+            Login    
            
           </Button> 
-          <Button
+          {/* <Button
            onClick={() => {history.push('./ContractorSignup')}}
             type="submit"
             fullWidth
@@ -193,15 +205,15 @@ export default function SignUp() {
           </Button>
           <Grid container justify="flex-end">
             <Grid item>
-              <Link href="./Signin" variant="body2">
-               Customer Login
+              <Link href="." variant="body2">
+               Customer Sign in
                 </Link>
               <br />  
-                <Link href="./ContractorSignIn" variant="body2">
-                Contractor Login
+                <Link href="./ContractorDashboard" variant="body2">
+                Contractor Sign in
                 </Link>
             </Grid>
-          </Grid>
+          </Grid> */}
         </form>
       </div>
       <Box mt={5}>

@@ -10,17 +10,13 @@ function preventDefault(event) {
 export default function Deposits() {
   return (
     <React.Fragment>
-      <Title>Recent Bids </Title>
-      <Typography component="p" variant="h4">
-        $200.00
-        Wellington place
-      </Typography>
-      <Typography color="text.secondary" sx={{ flex: 1 }}>
-        on 15 March, 2019
-      </Typography>
-      <div>
+      <Title>Job Images </Title>
+      <br>
+      
+      </br>
+       <div>
         <Link color="primary" href="#" onClick={preventDefault}>
-          View balance
+          Upload Images Here
         </Link>
       </div>
     </React.Fragment>

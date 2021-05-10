@@ -41,17 +41,21 @@ const ContractorSchema = new Schema({
     type: Number,
     unique: false,
   },
-  location: {
+  location:{
+    // GeoJSON Point
     type: {
-      type: String, 
-      enum: ['Point'], 
-      required: true
+        type: String,
+        enum: ['Point'],
+        required: false
     },
     coordinates: {
-      type: [Number],
-      required: true
-    }
-  }});
+        type: [Number],
+        required: false,
+        index: '2dsphere',
+        sparse: true,
+    },
+  },
+});
 
 const Contractor = mongoose.model("Contractor", ContractorSchema);
 

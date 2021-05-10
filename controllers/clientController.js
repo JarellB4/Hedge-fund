@@ -2,7 +2,6 @@ const db = require("../models");
 const passport = require("../config/passport");
 
 
-// Defining methods for the booksController
 module.exports = {
 
     // when user logs on we send you back the client name
@@ -17,7 +16,6 @@ module.exports = {
       .find({})
       .populate({ 
         path: "jobs",
-        populate: {path: "quote.contractor"}
       })
       .sort({ date: -1 })
       .then(dbModel => {
@@ -26,9 +24,13 @@ module.exports = {
       })      
       .catch(err => res.status(422).json(err));
   },
+
   findById: function(req, res) {
     db.Client
       .findById(req.params.id)
+      .populate({ 
+        path: "jobs",
+      })
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
@@ -39,8 +41,10 @@ module.exports = {
       .catch(err => res.status(422).json(err));
   },
   update: function(req, res) {
+    const client = req.body;
+    client.delete(client.jobs);
     db.Client
-      .findOneAndUpdate({ _id: req.params.id }, req.body)
+      .findOneAndUpdate({ _id: req.params.id }, client, {new: true})
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },

@@ -17,7 +17,10 @@ let clientSeed = [
     city: "South Lyon",
     state: "MI",
     zip: "48178",
-    location: [42.478327, -83.6552936],
+    location: {
+      type: "Point",
+      coordinates: [-83.6552936, 42.478327]
+    },
     jobs: []
   },
   {
@@ -30,7 +33,10 @@ let clientSeed = [
     city: "South Lyon",
     state: "MI",
     zip: "48178",
-    location: [42.472219, -83.6276528],
+    location: {
+      type: "Point",
+      coordinates: [-83.6276528, 42.472219]
+    },
     jobs: []
   },
   {
@@ -43,7 +49,10 @@ let clientSeed = [
     city: "New Hudson",
     state: "MI",
     zip: "48165",
-    location: [42.4938968, -83.636473],
+    location: {
+      type: "Point",
+      coordinates: [-83.636473, 42.4938968]
+    },
     jobs: []
   },
 ];
@@ -59,7 +68,10 @@ let contractorSeed = [
     city: "South Lyon",
     state: "MI",
     zip: "48178",
-    location: [42.4817418, -83.6958326],
+    location: {
+      type: "Point",
+      coordinates: [-83.7813526, 42.4817418]
+    }
   },
   {
     email: "lawn2@email.com",
@@ -71,7 +83,10 @@ let contractorSeed = [
     city: "Brighton",
     state: "MI",
     zip: "48116",
-    location: [42.4817441, -83.7813526],
+    location: {
+      type: "Point",
+      coordinates: [-83.7813526, 42.4817441]
+    }
   },
   {
     email: "bath1@email.com",
@@ -83,7 +98,10 @@ let contractorSeed = [
     city: "Brighton",
     state: "MI",
     zip: "48116",
-    location: [42.4969824, -83.7569244],
+    location: {
+      type: "Point",
+      coordinates: [-83.7569244, 42.4969824]
+    }
   },
 ];
 
@@ -127,30 +145,49 @@ function jobSeed(clients, contractors) {
 
   return dataSeed;
 }
+
 let clientIds = [];
 let contractorIds = [];
+let jobIds = [];
 
 db.Client.deleteMany({})
   .then(() => db.Client.collection.insertMany(clientSeed))
   .then((clientData) => {
-    console.log(clientData.result.n + " records inserted!");
-    console.log(clientData);
+    console.log(clientData.result.n + " client records inserted!");
     clientIds = clientData.insertedIds;
     db.Contractor.deleteMany({})
       .then(() => db.Contractor.collection.insertMany(contractorSeed))
       .then((contractorData) => {
-        console.log(contractorData.result.n + " records inserted!");
+        console.log(contractorData.result.n + " contractor records inserted!");
         contractorIds = contractorData.insertedIds;
         db.Job.deleteMany({})
           .then(() => db.Job.collection.insertMany(jobSeed(clientIds, contractorIds)))
           .then((data) => {
-            console.log(data.result.n + " records inserted!");
-            process.exit(0);
+            jobIds = data.insertedIds;
+            console.log(data.result.n + " job records inserted!", jobIds);
+
+            db.Client.findOneAndUpdate({_id: clientIds[0]}, { $push: { jobs: { _id: mongoose.Types.ObjectId(jobIds[0]) } } }, { new: true })
+            .then (updated => {
+              console.log(updated + " client job id updated");
+            })
+            .catch(err => {
+              console.log(err);
+            });
+
+            db.Client.findOneAndUpdate({_id: clientIds[2]}, { $push: { jobs: { _id: mongoose.Types.ObjectId(jobIds[1]) } } }, { new: true })
+            .then (updated => {
+              console.log(updated + " client job id updated");
+              process.exit(0);
+            })
+            .catch(err => {
+              console.log(err);
+            });
           })
           .catch((err) => {
             console.error(err);
             process.exit(1);
           });
+            
       })
       .catch((err) => {
         console.error(err);

@@ -1,6 +1,22 @@
 const db = require("../models");
 
 module.exports = {
+  findWithinRadius: function(req,res){
+    let radius = parseInt(req.params.radius);
+    let lon = parseFloat(req.params.lon);
+    let lat = parseFloat(req.params.lat);
+
+    db.Client
+      .find({location: { $geoWithin: { $centerSphere: [[lon, lat], radius/3963.2] }}})
+      .populate({ 
+        path: "jobs",
+      })
+      .then(dbModel => {
+        console.log(dbModel)  
+        res.json(dbModel);
+      })      
+      .catch(err => res.status(422).json(err));
+  },
   findAll: function(req, res) {
     db.Client
       .find({})

@@ -19,7 +19,7 @@ let clientSeed = [
     zip: "48178",
     location: {
       type: "Point",
-      coordinates: [-83.6552936, 42.478327]
+      coordinates: [-83.650697, 42.450381]
     },
     jobs: []
   },
@@ -35,7 +35,7 @@ let clientSeed = [
     zip: "48178",
     location: {
       type: "Point",
-      coordinates: [-83.6276528, 42.472219]
+      coordinates: [-83.613227, 42.462026]
     },
     jobs: []
   },
@@ -51,7 +51,103 @@ let clientSeed = [
     zip: "48165",
     location: {
       type: "Point",
-      coordinates: [-83.636473, 42.4938968]
+      coordinates: [-83.613044, 42.511118]
+    },
+    jobs: []
+  },
+  {
+    email: "email4@email.com",
+    password: "$2a$10$rrCvSWi9EjdzJBGrG28RgeNIne3kMNCwoLEbcE5zbRcGyW7AFfiEy", //blah
+    firstName: "James",
+    lastName: "Hetfield",
+    streetAddress1: "47115 Gratiot Ave",
+    StreetAddress2: "",
+    city: "Chesterfield",
+    state: "MI",
+    zip: "48051",
+    location: {
+      type: "Point",
+      coordinates: [-82.8529659, 42.6456253]
+    },
+    jobs: []
+  },
+  {
+    email: "email5@email.com",
+    password: "$2a$10$rrCvSWi9EjdzJBGrG28RgeNIne3kMNCwoLEbcE5zbRcGyW7AFfiEy", //blah
+    firstName: "Rob",
+    lastName: "Halford",
+    streetAddress1: "48700 Gratiot Ave",
+    StreetAddress2: "",
+    city: "Chesterfield",
+    state: "MI",
+    zip: "48051",
+    location: {
+      type: "Point",
+      coordinates: [-83.846496, 42.657755]
+    },
+    jobs: []
+  },
+  {
+    email: "email6@email.com",
+    password: "$2a$10$rrCvSWi9EjdzJBGrG28RgeNIne3kMNCwoLEbcE5zbRcGyW7AFfiEy", //blah
+    firstName: "Eddie",
+    lastName: "Van Halen",
+    streetAddress1: "30130 23 Mile Rd",
+    StreetAddress2: "",
+    city: "Chesterfield Township",
+    state: "MI",
+    zip: "48047",
+    location: {
+      type: "Point",
+      coordinates: [-82.8056831, 42.6744786]
+    },
+    jobs: []
+  },
+  {
+    email: "email7@email.com",
+    password: "$2a$10$rrCvSWi9EjdzJBGrG28RgeNIne3kMNCwoLEbcE5zbRcGyW7AFfiEy", //blah
+    firstName: "Kid",
+    lastName: "Rock",
+    streetAddress1: "2145 W Stadium Blvd",
+    StreetAddress2: "",
+    city: "Ann Arbor",
+    state: "MI",
+    zip: "48103",
+    location: {
+      type: "Point",
+      coordinates: [-83.7764595, 42.2724444]
+    },
+    jobs: []
+  },
+  {
+    email: "email8@email.com",
+    password: "$2a$10$rrCvSWi9EjdzJBGrG28RgeNIne3kMNCwoLEbcE5zbRcGyW7AFfiEy", //blah
+    firstName: "Mick",
+    lastName: "Jagger",
+    streetAddress1: " 1508 N Maple Rd",
+    StreetAddress2: "",
+    city: "Ann Arbor",
+    state: "MI",
+    zip: "48103",
+    location: {
+      type: "Point",
+      coordinates: [-83.780746, 42.2949816]
+    },
+    jobs: []
+  },
+  {
+    email: "email9@email.com",
+    password: "$2a$10$rrCvSWi9EjdzJBGrG28RgeNIne3kMNCwoLEbcE5zbRcGyW7AFfiEy", //blah
+    firstName: "Angus",
+    lastName: "Young",
+    streetAddress1: " 2259 W Liberty Rd",
+    StreetAddress2: "",
+    city: "Ann Arbor",
+    state: "MI",
+    zip: "48103",
+    location: {
+      type: "Point",
+      coordinates: [-83.7957572, 42.2738701]
     },
     jobs: []
   },
@@ -70,7 +166,7 @@ let contractorSeed = [
     zip: "48178",
     location: {
       type: "Point",
-      coordinates: [-83.7813526, 42.4817418]
+      coordinates: [-83.694217, 42.48108]
     }
   },
   {
@@ -85,7 +181,22 @@ let contractorSeed = [
     zip: "48116",
     location: {
       type: "Point",
-      coordinates: [-83.7813526, 42.4817441]
+      coordinates: [-83.796729, 42.46859]
+    }
+  },
+  {
+    email: "roof1@email.com",
+    password: "$2a$10$rrCvSWi9EjdzJBGrG28RgeNIne3kMNCwoLEbcE5zbRcGyW7AFfiEy", //blah
+    companyName: "Schena Roofing & Sheet Metal",
+    phone: "586-949-4777",
+    streetAddress1: "28299 Kehrig St,",
+    StreetAddress2: "",
+    city: "Chesterfield",
+    state: "MI",
+    zip: "48047",
+    location: {
+      type: "Point",
+      coordinates: [-82.827898, 42.632254]
     }
   },
   {
@@ -93,7 +204,7 @@ let contractorSeed = [
     password: "$2a$10$rrCvSWi9EjdzJBGrG28RgeNIne3kMNCwoLEbcE5zbRcGyW7AFfiEy", //blah
     companyName: "KSI Kitchen & Bath",
     phone: "248-323-2054",
-    streetAddress1: "9325 Maltby Rd",
+    streetAddress1: "6680 Whitmore Lake Rd,",
     StreetAddress2: "",
     city: "Brighton",
     state: "MI",
@@ -101,6 +212,21 @@ let contractorSeed = [
     location: {
       type: "Point",
       coordinates: [-83.7569244, 42.4969824]
+    }
+  },
+  {
+    email: "roof21@email.com",
+    password: "$2a$10$rrCvSWi9EjdzJBGrG28RgeNIne3kMNCwoLEbcE5zbRcGyW7AFfiEy", //blah
+    companyName: "Rapid Roofing",
+    phone: "724-292-8896",
+    streetAddress1: "41 Enterprise Dr,",
+    StreetAddress2: "Unit A",
+    city: "Ann Arbor",
+    state: "MI",
+    zip: "48103",
+    location: {
+      type: "Point",
+      coordinates: [-83.869394, 42.293998]
     }
   },
 ];
@@ -139,6 +265,70 @@ function jobSeed(clients, contractors) {
           description:
             "We typically remodel small 3 piece bathrooms for around $7,000. ",
         },
+      ],
+    },
+    {
+      client: mongoose.Types.ObjectId(clients[3]),
+      category: "House Cleaning",
+      title: "House keeper wanted",
+      description: "Looking for house keeping services for my estate.",
+      image: "https://via.placeholder.com/300",
+      quotes: [
+      ],
+    },
+    {
+      client: mongoose.Types.ObjectId(clients[4]),
+      category: "Lawn Mowing",
+      title: "Lawn Mowing",
+      description: "Looking for a company to mow my lawn for the season",
+      image: "https://via.placeholder.com/300",
+      quotes: [
+        {
+          contractor: mongoose.Types.ObjectId(contractors[0]),
+          price: 25,
+          description: "We would love to service your lawn for $35 a cut",
+        }      ],
+    },
+    {
+      client: mongoose.Types.ObjectId(clients[4]),
+      category: "Roofing",
+      title: "I New A Roof",
+      description: "I have a 2200 sqft ranch with a hip roof. Looking for quotes.",
+      image: "https://via.placeholder.com/300",
+      quotes: [
+        {
+          contractor: mongoose.Types.ObjectId(contractors[2]),
+          price: 6000,
+          description: "Price for this type of home typically runs about $6,000",
+        }      
+      ],
+    },
+    {
+      client: mongoose.Types.ObjectId(clients[5]),
+      category: "Roofing",
+      title: "New Roof",
+      description: "I have a 2700 sqft colonial wihth a gable roof.",
+      image: "https://via.placeholder.com/300",
+      quotes: [
+        {
+          contractor: mongoose.Types.ObjectId(contractors[2]),
+          price: 10000,
+          description: "should be around $10,000",
+        }      
+      ],
+    },
+    {
+      client: mongoose.Types.ObjectId(clients[6]),
+      category: "Roofing",
+      title: "New Roof",
+      description: "I have a 10,000 sqft homestead I am in need of a roof.",
+      image: "https://via.placeholder.com/300",
+      quotes: [
+        {
+          contractor: mongoose.Types.ObjectId(contractors[2]),
+          price: 10000,
+          description: "should be around $10,000",
+        }      
       ],
     },
   ];

@@ -1,25 +1,29 @@
-import logo from './logo.svg';
+// import logo from './logo.svg';
 import './App.css';
-
+import {Route, BrowserRouter as Router} from 'react-router-dom'
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Dashboard from './Screens/Dashboard'
+import SignUp from './Screens/Signup';
+import ContractorSignUp from './Screens/ContractorSignup'
+import ContractorDashboard from './Screens/ContractorDashboard'
+import SignIn from './Screens/SignIn'
+import ContractorSignIn from './Screens/ContractorSignIn'
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <Router>
+    <Route path= '/' exact component={SignIn} />
+    <Route path= '/SignUp' exact component={SignUp} />
+    <Route path= '/Dashboard'  component={Dashboard} />
+    <Route path= '/ContractorSignup'  component={ ContractorSignUp} />
+    <Route path= '/ContractorDashboard'  component={ContractorDashboard} />
+    <Route path= '/ContractorSignIn'  component={ ContractorSignIn} />
+   
+
+
+
+    </Router>
+   
+  )
 }
 
 export default App;

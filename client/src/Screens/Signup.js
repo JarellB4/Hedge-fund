@@ -170,7 +170,7 @@ export default function SignUp() {
       
           </Grid>
           <Button
-           onClick={() => {history.push('./Dashboard')}}
+           onClick={() => {history.push('./Signup')}}
             type="submit"
             fullWidth
             variant="contained"
@@ -191,7 +191,7 @@ export default function SignUp() {
             Contractor Sign Up    
            
           </Button>
-          <Grid container justify="flex-end">
+          {/* <Grid container justify="flex-end">
             <Grid item>
               <Link href="./Signin" variant="body2">
                Customer Login
@@ -201,7 +201,7 @@ export default function SignUp() {
                 Contractor Login
                 </Link>
             </Grid>
-          </Grid>
+          </Grid> */}
         </form>
       </div>
       <Box mt={5}>

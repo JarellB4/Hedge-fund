@@ -18,13 +18,16 @@ router.route("/client/:id")
 // Matches with "/api/jobs/contractor/:id"
 //pass in contractor id
 router.route("/contractor/:id")
-  .get(jobsController.contractorFindAllJobs);  //return all jobs with quotes that belong to the contractor
+  .get(jobsController.contractorFindAllJobQuotes);  //return all jobs with quotes that belong to the contractor
   
+// Matches with "/api/jobs/contractor/:id/jobId"
 router.route("/contractor/:id/:jobId")
-  .put(jobsController.contractorUpdateJobQuote)  //update a quote
+//update a quote, pass in contractor id and jobid
+  .put(jobsController.contractorUpdateJobQuote)  
   .post(jobsController.contractorCreateJobQuote); //create a quote for a job
 
-router.route("/contractor/:id/:QuoteId")
+//update a quote, pass in contractor id and jobid
+router.route("/contractor/:id/quote/:jobId")
   .delete(jobsController.contractorDeleteJobQuote)  //delete a quote on a job
 
   module.exports = router;

@@ -1,4 +1,5 @@
 const db = require("../models");
+const mongoose = require("mongoose");
 
 module.exports = {
   contractorFindAllJobQuotes: function(req, res) {
@@ -22,18 +23,17 @@ module.exports = {
   },
   contractorDeleteJobQuote: function(req, res) {
     db.Job
-      .findOneAndUpdate({_id: req.params.jobId, "quotes.contractor": req.params.id }, { $set: { "quotes.$": [] }} , {new: true})
-      .findOneAndUpdate({ _id: req.params.jobId }, { $pull: { "quotes.$": [] }})
-      // .findById({ _id: req.params.jobId, "quotes.contractor": req.params.id })
-      // .then(dbModel => dbModel.update({ $pull: { "quotes.$[].contractor": req.params.id }}))
+      .findOneAndUpdate({ _id: req.params.jobId }, { $pull: { "quotes": {"contractor": req.params.id} }})
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
   contractorCreateJobQuote: function(req, res) {
+    const quote = req.body;
+    quote.contractor = mongoose.Types.ObjectId(req.params.id);
     db.Job
-      .create(req.body)
-      .then(dbModel => res.json(dbModel))
-      .catch(err => res.status(422).json(err));
+    .findOneAndUpdate({ _id: req.params.jobId }, { $push: { "quotes": quote }} , {new: true})
+    .then(dbModel => res.json(dbModel))
+    .catch(err => res.status(422).json(err));
   },
   clientFindAllJobs: function(req, res) { //
     db.Job
@@ -44,6 +44,7 @@ module.exports = {
   clientUpdateJob: function(req, res) { //
     const job = req.body;
     job.delete(job.quotes);
+    job.dateUpdated = Date.now();
     db.Job
       .findOneAndUpdate({ client: req.params.id }, job, {new: true})
       .then(dbModel => res.json(dbModel))

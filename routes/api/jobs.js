@@ -25,7 +25,7 @@ router.route("/contractor/:id/:jobId")
 //update a quote, pass in contractor id and jobid
   .put(jobsController.contractorUpdateJobQuote)  
   .post(jobsController.contractorCreateJobQuote); //create a quote for a job
-  
+
 //update a quote, pass in contractor id and jobid
 router.route("/contractor/:id/quote/:jobId")
   .delete(jobsController.contractorDeleteJobQuote)  //delete a quote on a job

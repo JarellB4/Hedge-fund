@@ -32,11 +32,12 @@ const JobSchema = new Schema({
   },
   quotes: [
     {
+      _id: false,
       contractor: {
         type: Schema.Types.ObjectId,
         ref: "Contractor"
       },
-      date: {
+      dateCreated: {
         type: Date,
         default: Date.now()
       },

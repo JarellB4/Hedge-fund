@@ -2,21 +2,21 @@ import React from 'react'
 import Jumbotron2 from '../components/DJumbotron/DJumbotron'
 import Nav2 from '../components/Nav/Nav'
 import Table2 from '../components/DTable/Dtable'
-// import Jumbotron from '../components/Jumbotron/Jumbotron'
-// import Card from '../components/Card/Card'
+import Footer2 from '../components/DFooter/Footer'
+
 
 const Dashboard = () => {
     return (
         <div>
        <Nav2 />
        <br />
-       <Table2/>
+       <Jumbotron2/>
        
        
        <br />
-       <Jumbotron2 />
+       <Table2 />
            
-
+     <Footer2 />
         </div>
     )
 }

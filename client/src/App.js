@@ -8,6 +8,8 @@ import ContractorSignUp from './Screens/ContractorSignup'
 import ContractorDashboard from './Screens/ContractorDashboard'
 import SignIn from './Screens/SignIn'
 import ContractorSignIn from './Screens/ContractorSignIn'
+import Main from './Screens/Main'
+
 function App() {
   return (
     <Router>
@@ -17,6 +19,8 @@ function App() {
     <Route path= '/ContractorSignup'  component={ ContractorSignUp} />
     <Route path= '/ContractorDashboard'  component={ContractorDashboard} />
     <Route path= '/ContractorSignIn'  component={ ContractorSignIn} />
+    <Route path= '/Main' component={Main} />
+    
    
 
 

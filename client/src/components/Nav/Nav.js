@@ -13,7 +13,7 @@ function Nav2() {
     <Navbar.Brand href="#home">Hedge-Fund</Navbar.Brand>
     <Nav className="mr-auto">
        <Nav.Link href="#home">Jobs</Nav.Link>
-      <Nav.Link href="#features">Create a Job</Nav.Link> 
+      {/* <Nav.Link href="#features">Create a Job</Nav.Link>  */}
        <Nav.Link href="#pricing">Pricing</Nav.Link> 
     </Nav>
     <Form inline>

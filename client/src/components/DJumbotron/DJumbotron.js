@@ -8,7 +8,7 @@ function Jumbotron2() {
     return (
 <>
 <Jumbotron>
-  <h1>Jobs posted by you!</h1>
+  <h1>Welcome To Hedge-Fund </h1>
   <p>
     <ul>
      <li> test</li>
@@ -18,9 +18,7 @@ function Jumbotron2() {
      
        </ul>
   </p>
-  <p>
-    <Button variant="primary">Bids on your Job</Button>
-  </p>
+  
 </Jumbotron>
 
  

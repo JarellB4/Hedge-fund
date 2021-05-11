@@ -113,7 +113,7 @@ export default function SignUp() {
 
            
           <Button
-           onClick={() => {history.push('./Dashboard')}}
+           onClick={() => {history.push('./Main')}}
             type="submit"
             fullWidth
             variant="contained"

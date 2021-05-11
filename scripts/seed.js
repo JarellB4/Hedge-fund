@@ -234,6 +234,8 @@ let contractorSeed = [
 function jobSeed(clients, contractors) {
   let dataSeed = [
     {
+      dateCreated: Date.now(),
+      dateUpdated: Date.now(),
       client: mongoose.Types.ObjectId(clients[0]),
       category: "Landscaping",
       title: "lawn Mowing",
@@ -241,11 +243,15 @@ function jobSeed(clients, contractors) {
       image: "https://via.placeholder.com/300",
       quotes: [
         {
+          dateCreated: Date.now(),
+          dateUpdated: Date.now(), 
           contractor: mongoose.Types.ObjectId(contractors[0]),
           price: 25,
           description: "We would love to service your lawn for $25 a cut",
         },
         {
+          dateCreated: Date.now(),
+          dateUpdated: Date.now(),
           contractor: mongoose.Types.ObjectId(contractors[1]),
           price: 23,
           description: "We beat any price!",
@@ -253,13 +259,17 @@ function jobSeed(clients, contractors) {
       ],
     },
     {
+      dateCreated: Date.now(),
+      dateUpdated: Date.now(),
       client: mongoose.Types.ObjectId(clients[2]),
       category: "Remodel",
       title: "Bathroom remodel",
       description: "I have a small 3 piece bathroom that needs remodeling ",
       image: "https://via.placeholder.com/300",
       quotes: [
-        {
+        { 
+          dateCreated: Date.now(),
+          dateUpdated: Date.now(),
           contractor: mongoose.Types.ObjectId(contractors[2]),
           price: 7000,
           description:

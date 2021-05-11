@@ -1,9 +1,29 @@
 const express = require("express");
 const aws = require("aws-sdk");
+const uuid = require('uuid');
+const aws_access_key_id = process.env.aws_access_key_id;
+const aws_secret_access_key = process.env.aws_secret_access_key;
 
-const S3_BUCKET = hedgefundphotos
+const S3_BUCKET = "hedgefundphotos"
 
 aws.config.region = "us-east-2"
+
+
+
+const mongoose = require("mongoose");
+const routes = require("./routes");
+const app = express();
+const PORT = process.env.PORT || 3001;
+
+// Define middleware here
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+// Serve up static assets (usually on heroku)
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static("client/build"));
+}
+// Add routes, both API and view
+app.use(routes);
 
 app.get('/sign-s3', (req, res) => {
   const s3 = new aws.S3();
@@ -30,21 +50,6 @@ app.get('/sign-s3', (req, res) => {
     res.end();
   });
 });
-
-const mongoose = require("mongoose");
-const routes = require("./routes");
-const app = express();
-const PORT = process.env.PORT || 3001;
-
-// Define middleware here
-app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
-// Serve up static assets (usually on heroku)
-if (process.env.NODE_ENV === "production") {
-  app.use(express.static("client/build"));
-}
-// Add routes, both API and view
-app.use(routes);
 
 // Connect to the Mongo DB
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost:27017/hedgefund");

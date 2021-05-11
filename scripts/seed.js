@@ -153,6 +153,8 @@ let clientSeed = [
   },
 ];
 
+//------Contractor Seed---------//
+
 let contractorSeed = [
   {
     email: "lawn1@email.com",
@@ -231,6 +233,8 @@ let contractorSeed = [
   },
 ];
 
+//------Job Seed-------//
+
 function jobSeed(clients, contractors) {
   let dataSeed = [
     {
@@ -240,7 +244,9 @@ function jobSeed(clients, contractors) {
       category: "Landscaping",
       title: "lawn Mowing",
       description: "I have a 1/3 acre lot that needs mowing for the season",
-      image: "https://via.placeholder.com/300",
+      images:[
+        {image: "https://via.placeholder.com/300"},
+      ],
       quotes: [
         {
           dateCreated: Date.now(),
@@ -265,7 +271,10 @@ function jobSeed(clients, contractors) {
       category: "Remodel",
       title: "Bathroom remodel",
       description: "I have a small 3 piece bathroom that needs remodeling ",
-      image: "https://via.placeholder.com/300",
+      images:[
+        {image: "https://via.placeholder.com/300"},
+        {image: "https://via.placeholder.com/300"},
+      ],
       quotes: [
         { 
           dateCreated: Date.now(),
@@ -282,7 +291,8 @@ function jobSeed(clients, contractors) {
       category: "House Cleaning",
       title: "House keeper wanted",
       description: "Looking for house keeping services for my estate.",
-      image: "https://via.placeholder.com/300",
+      images:[
+      ],
       quotes: [
       ],
     },
@@ -291,20 +301,26 @@ function jobSeed(clients, contractors) {
       category: "Lawn Mowing",
       title: "Lawn Mowing",
       description: "Looking for a company to mow my lawn for the season",
-      image: "https://via.placeholder.com/300",
+      images:[
+        {image: "https://via.placeholder.com/300"},
+      ],
       quotes: [
         {
           contractor: mongoose.Types.ObjectId(contractors[0]),
           price: 25,
           description: "We would love to service your lawn for $35 a cut",
-        }      ],
+        }      
+      ],
     },
     {
       client: mongoose.Types.ObjectId(clients[4]),
       category: "Roofing",
       title: "I New A Roof",
       description: "I have a 2200 sqft ranch with a hip roof. Looking for quotes.",
-      image: "https://via.placeholder.com/300",
+      images:[
+        {image: "https://via.placeholder.com/300"},
+        {image: "https://via.placeholder.com/300"},
+      ],
       quotes: [
         {
           contractor: mongoose.Types.ObjectId(contractors[2]),
@@ -318,7 +334,11 @@ function jobSeed(clients, contractors) {
       category: "Roofing",
       title: "New Roof",
       description: "I have a 2700 sqft colonial wihth a gable roof.",
-      image: "https://via.placeholder.com/300",
+      images:[
+        {image: "https://via.placeholder.com/300"},
+        {image: "https://via.placeholder.com/300"},
+        {image: "https://via.placeholder.com/300"}
+      ],
       quotes: [
         {
           contractor: mongoose.Types.ObjectId(contractors[2]),
@@ -332,12 +352,69 @@ function jobSeed(clients, contractors) {
       category: "Roofing",
       title: "New Roof",
       description: "I have a 10,000 sqft homestead I am in need of a roof.",
-      image: "https://via.placeholder.com/300",
+      images:[
+        {image: "https://via.placeholder.com/300"},
+      ],
       quotes: [
         {
           contractor: mongoose.Types.ObjectId(contractors[2]),
-          price: 10000,
-          description: "should be around $10,000",
+          price: 45000,
+          description: "Usually about 45,000 but because you are Kid Rock we will do it for $30,000 and concert tickets!",
+        },
+        {
+          contractor: mongoose.Types.ObjectId(contractors[4]),
+          price: 40000,
+          description: "we can replace your roof for $40,000 and we can start in 3 weeks.",
+        }      
+      
+      ],
+    },
+    {
+      client: mongoose.Types.ObjectId(clients[7]),
+      category: "Landscaping",
+      title: "I need a quote to remove 6 trees",
+      description: "I have 6 30' trees in my yard that need removing, please see the pictures for more detail.",
+      images:[
+        {image: "https://via.placeholder.com/300"},
+        {image: "https://via.placeholder.com/300"},
+        {image: "https://via.placeholder.com/300"},
+        {image: "https://via.placeholder.com/300"},
+        {image: "https://via.placeholder.com/300"},
+        {image: "https://via.placeholder.com/300"}
+      ],
+      quotes: [
+      ],
+    },
+    {
+      client: mongoose.Types.ObjectId(clients[7]),
+      category: "Lawn Mowing",
+      title: ".5 acre lawn mowing once per week",
+      description: "I need my lawn cut once a week until August.  I habve 1/2 an acre.",
+      images:[
+        {image: "https://via.placeholder.com/300"},
+      ],
+      quotes: [
+        {
+          contractor: mongoose.Types.ObjectId(contractors[0]),
+          price: 30,
+          description: "$30 a week will cover it.",
+        },
+      ],
+    },
+    {
+      client: mongoose.Types.ObjectId(clients[7]),
+      category: "Roofing",
+      title: "New Roof",
+      description: "I have a 3200 sqft walkout colonial and I am in need of a roof.",
+      images:[
+        {image: "https://via.placeholder.com/300"},
+        {image: "https://via.placeholder.com/300"},
+      ],
+      quotes: [
+        {
+          contractor: mongoose.Types.ObjectId(contractors[4]),
+          price: 15000,
+          description: "we can replace your roof for $15,000 and we can start in 3 weeks.",
         }      
       ],
     },
@@ -365,7 +442,6 @@ db.Client.deleteMany({})
           .then((data) => {
             jobIds = data.insertedIds;
             console.log(data.result.n + " job records inserted!", jobIds);
-
             db.Client.findOneAndUpdate({_id: clientIds[0]}, { $push: { jobs: { _id: mongoose.Types.ObjectId(jobIds[0]) } } }, { new: true })
             .then (updated => {
               console.log(updated + " client job id updated");
@@ -373,7 +449,6 @@ db.Client.deleteMany({})
             .catch(err => {
               console.log(err);
             });
-
             db.Client.findOneAndUpdate({_id: clientIds[2]}, { $push: { jobs: { _id: mongoose.Types.ObjectId(jobIds[1]) } } }, { new: true })
             .then (updated => {
               console.log(updated + " client job id updated");

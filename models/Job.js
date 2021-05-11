@@ -26,10 +26,14 @@ const JobSchema = new Schema({
     type: String,
     unique: false
   },
-  image: {
-    type: String,
-    unique: false
-  },
+  images: [
+    {
+      image: {
+        type: String,
+        unique: false
+      }
+    }
+  ],
   quotes: [
     {
       _id: false,

@@ -20,8 +20,6 @@ uploadPromise
     console.error(err, err.stack);
   });
 
-  module.export
-
   //sampleFile = req.files.NAMEOFTHEINPUT.data
 
   //Body: NAMEOFTHEINPUT.data

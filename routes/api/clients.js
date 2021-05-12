@@ -17,4 +17,10 @@ router.route("/:id")
   .put(clientsController.update)
   .delete(clientsController.remove);
 
+
+// Matches with "/api/clients/signin/:email"
+router.route("/signin/:email")
+  .get(clientsController.findByEmail)
+
+
 module.exports = router;

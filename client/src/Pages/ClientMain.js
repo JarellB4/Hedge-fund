@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from "react";
 import API from '../utils/API'
+import { useClientContext } from "../utils/GlobalState";
+import { CURRENT_CLIENT } from "../utils/actions";
 
 
 
 
 
-
-const ClientMain = () => {
-    const [client, setClient] = useState([]);
+const ClientMain = props => {
+    // const [client, setClient] = useState([]);
+    const [state, dispatch] = useClientContext();
 
     useEffect (()=> {
         loadClient();
@@ -15,17 +17,15 @@ const ClientMain = () => {
     }, []);
     
     function loadClient() {
-        API.getClientByEmail(clientEmail)   
     }
     return (
         <div>
-           
-            <header class="masthead bg-primary text-white text-center">
+          <header class="masthead bg-primary text-white text-center">
             <div class="container d-flex align-items-center flex-column">
                 {/* <!-- Masthead Avatar Image--> */}
                 {/* <img class="masthead-avatar mb-5" src="Assets/images/img/avataaars.svg" alt="..." /> */}
                 {/* <!-- Masthead Heading--> */}
-                <h1 class="masthead-heading text-uppercase mb-0">All Jobs</h1>
+                <h1 class="masthead-heading text-uppercase mb-0">All Jobs  {state.client.firstName} </h1>
                 {/* <!-- Icon Divider--> */}
         
            

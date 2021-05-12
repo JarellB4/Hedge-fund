@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useReducer, useRef } from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -15,18 +15,30 @@ import Container from '@material-ui/core/Container';
 import {useHistory} from 'react-router-dom'
 import {Link} from 'react-router-dom'
 import   { useState, useEffect } from "react";
+import { useClientContext } from "../utils/GlobalState";
+import { CURRENT_CLIENT } from "../utils/actions";
+import API from '../utils/API'
 
-const SignIn = () => {
-  const [clientEmail, setClientEmail] = useState([]);
-  
+
+const SignIn = props => {
+  const [state, dispatch ] = useClientContext([]);
+  const emailRef = useRef();
   let history = useHistory();
  
   function handleBtnClick(){
-    console.log(document.getElementById('email').value);
-    setClientEmail(document.getElementById('email').value);
-  
+
+    API.getClientByEmail(emailRef.current.value) 
+    .then(res => {
+      console.log(res);
+      dispatch({
+        type: CURRENT_CLIENT,
+        client: res.data
+      });
+    })
+      .catch(err => console.log(err));
+
+    //-----add validation of the form
     history.push('./ClientMain');
-    console.log(clientEmail);
   }
 
     function Copyright() {
@@ -108,6 +120,7 @@ const classes = useStyles();
                 variant="outlined"
                 required
                 fullWidth
+                inputRef={emailRef}
                 id="email"                         
                 label="Email Address"
                 name="email"

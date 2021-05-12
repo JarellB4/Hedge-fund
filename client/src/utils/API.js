@@ -12,7 +12,7 @@ export default {
     },
      //get user with specific email
      getClientByEmail: function(email) {
-        return axios.get("/api/clients/siginin/" + email);
+        return axios.get("/api/clients/signin/" + email);
     },
 
     saveClient: function(clientData) {

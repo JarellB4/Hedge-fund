@@ -1,24 +1,52 @@
-import logo from './logo.svg';
-import './App.css';
+// import logo from './logo.svg';
+import API from './utils/API'
+import "./App.css";
+import { HashRouter as Router, Route, Switch } from "react-router-dom";
+import "bootstrap/dist/css/bootstrap.min.css";
+
+import SignUp from "./Pages/Signup";
+import ContractorSignup from "./Pages/ContractorSignup";
+import ContractorDashboard from "./Pages/ContractorDashboard";
+import SignIn from "./Pages/SignIn";
+// import ContractorSignIn from "./Pages/ContractorSignIn";
+import ClientMain from "./Pages/ClientMain";
+import Header from './components/Header'
+import Footer from './components/Footer'
+import Wrapper from "./components/Wrapper";
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div>
+        <Header/>
+        <Wrapper>
+        <Switch>
+        <Route exact path={["/"]} >
+             <SignIn/>
+        </Route>
+        <Route exact path={["/SignUp"]} >
+             <SignUp/>
+        </Route>
+        <Route exact path={["/ContractorSignup"]} >
+             <ContractorSignup/>
+        </Route>
+        <Route exact path={["/ContractorDashboard"]} >
+             <ContractorDashboard/>
+        </Route>
+        {/* <Route exact path={["/ContractorSignIn"]} >
+             <ContractorSignIn/>
+        </Route> */}
+        
+        <Route exact path={["/ClientMain"]} >
+             <ClientMain/>
+        </Route>
+        
+        </Switch>
+        </Wrapper>
+        <Footer/>
+      </div>
+    </Router>
   );
 }
 

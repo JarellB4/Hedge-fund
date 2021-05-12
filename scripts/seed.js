@@ -287,14 +287,14 @@ function jobSeed(clients, contractors) {
       ],
     },
     {
+      dateCreated: Date.now(),
+      dateUpdated: Date.now(),
       client: mongoose.Types.ObjectId(clients[3]),
       category: "House Cleaning",
       title: "House keeper wanted",
       description: "Looking for house keeping services for my estate.",
-      images:[
-      ],
-      quotes: [
-      ],
+      images:[],
+      quotes: [],
     },
     {
       client: mongoose.Types.ObjectId(clients[4]),
@@ -418,6 +418,23 @@ function jobSeed(clients, contractors) {
         }      
       ],
     },
+    {
+      client: mongoose.Types.ObjectId(clients[8]),
+      category: "Remodel",
+      title: "Kitchen Remodel",
+      description: "300 sqft kitchen remodel.  Please see the pictures for what it looks like now and what I am looking for.",
+      images:[
+        {image: "https://via.placeholder.com/300"},
+        {image: "https://via.placeholder.com/300"},
+      ],
+      quotes: [
+        {
+          contractor: mongoose.Types.ObjectId(contractors[3]),
+          price: 110000,
+          description: "Great kitchen, we can do this for $110,000",
+        }      
+      ],
+    },
   ];
 
   return dataSeed;
@@ -444,12 +461,72 @@ db.Client.deleteMany({})
             console.log(data.result.n + " job records inserted!", jobIds);
             db.Client.findOneAndUpdate({_id: clientIds[0]}, { $push: { jobs: { _id: mongoose.Types.ObjectId(jobIds[0]) } } }, { new: true })
             .then (updated => {
-              console.log(updated + " client job id updated");
             })
             .catch(err => {
               console.log(err);
             });
             db.Client.findOneAndUpdate({_id: clientIds[2]}, { $push: { jobs: { _id: mongoose.Types.ObjectId(jobIds[1]) } } }, { new: true })
+            .then (updated => {
+            })
+            .catch(err => {
+              console.log(err);
+            });
+            db.Client.findOneAndUpdate({_id: clientIds[3]}, { $push: { jobs: { _id: mongoose.Types.ObjectId(jobIds[2]) } } }, { new: true })
+            .then (updated => {
+            })
+            .catch(err => {
+              console.log(err);
+            });
+            db.Client.findOneAndUpdate({_id: clientIds[4]}, { $push: { jobs: { _id: mongoose.Types.ObjectId(jobIds[3]) } } }, { new: true })
+            .then (updated => {
+              console.log(updated + " client job id updated");
+            })
+            .catch(err => {
+              console.log(err);
+            });
+            db.Client.findOneAndUpdate({_id: clientIds[4]}, { $push: { jobs: { _id: mongoose.Types.ObjectId(jobIds[4]) } } }, { new: true })
+            .then (updated => {
+              console.log(updated + " client job id updated");
+            })
+            .catch(err => {
+              console.log(err);
+            });
+            db.Client.findOneAndUpdate({_id: clientIds[5]}, { $push: { jobs: { _id: mongoose.Types.ObjectId(jobIds[5]) } } }, { new: true })
+            .then (updated => {
+              console.log(updated + " client job id updated");
+            })
+            .catch(err => {
+              console.log(err);
+            });
+            db.Client.findOneAndUpdate({_id: clientIds[6]}, { $push: { jobs: { _id: mongoose.Types.ObjectId(jobIds[6]) } } }, { new: true })
+            .then (updated => {
+              console.log(updated + " client job id updated");
+            })
+            .catch(err => {
+              console.log(err);
+            });
+            db.Client.findOneAndUpdate({_id: clientIds[7]}, { $push: { jobs: { _id: mongoose.Types.ObjectId(jobIds[7]) } } }, { new: true })
+            .then (updated => {
+              console.log(updated + " client job id updated");
+            })
+            .catch(err => {
+              console.log(err);
+            });
+            db.Client.findOneAndUpdate({_id: clientIds[7]}, { $push: { jobs: { _id: mongoose.Types.ObjectId(jobIds[8]) } } }, { new: true })
+            .then (updated => {
+              console.log(updated + " client job id updated");
+            })
+            .catch(err => {
+              console.log(err);
+            });
+            db.Client.findOneAndUpdate({_id: clientIds[7]}, { $push: { jobs: { _id: mongoose.Types.ObjectId(jobIds[9]) } } }, { new: true })
+            .then (updated => {
+              console.log(updated + " client job id updated");
+            })
+            .catch(err => {
+              console.log(err);
+            });
+            db.Client.findOneAndUpdate({_id: clientIds[8]}, { $push: { jobs: { _id: mongoose.Types.ObjectId(jobIds[10]) } } }, { new: true })
             .then (updated => {
               console.log(updated + " client job id updated");
               process.exit(0);

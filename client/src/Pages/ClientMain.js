@@ -1,12 +1,22 @@
-import React from 'react'
-
-import '../Assets/images/img/avataaars.svg'
+import React, { useState, useEffect } from "react";
 
 
 
 
 
-const Main = () => {
+
+
+const ClientMain = () => {
+    const [client, setClient] = useState([]);
+
+    useEffect (()=> {
+        loadClient();
+
+    }, []);
+    
+    function loadClient() {
+        
+    }
     return (
         <div>
            
@@ -18,6 +28,7 @@ const Main = () => {
                 <h1 class="masthead-heading text-uppercase mb-0">All Jobs</h1>
                 {/* <!-- Icon Divider--> */}
         
+           
          
 
               
@@ -39,4 +50,4 @@ const Main = () => {
     )
 }
 
-export default Main
+export default ClientMain

@@ -3,12 +3,12 @@ import "./App.css";
 import { HashRouter as Router, Route, Switch } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 
-import SignUp from "./Screens/Signup";
-import ContractorSignUp from "./Screens/ContractorSignup";
-import ContractorDashboard from "./Screens/ContractorDashboard";
-import SignIn from "./Screens/SignIn";
-import ContractorSignIn from "./Screens/ContractorSignIn";
-import Main from "./Screens/Main";
+import SignUp from "./Pages/Signup";
+import ContractorSignup from "./Pages/ContractorSignup";
+import ContractorDashboard from "./Pages/ContractorDashboard";
+import SignIn from "./Pages/SignIn";
+// import ContractorSignIn from "./Pages/ContractorSignIn";
+import ClientMain from "./Pages/ClientMain";
 import Header from './components/Header'
 import Footer from './components/Footer'
 import Wrapper from "./components/Wrapper";
@@ -21,12 +21,26 @@ function App() {
         <Header/>
         <Wrapper>
         <Switch>
-        <Route path exact path {["/"} />
-        <Route path="/SignUp" exact {SignUp} />
-        <Route path="/ContractorSignup" {ContractorSignUp} />
-        <Route path="/ContractorDashboard" {ContractorDashboard} />
-        <Route path="/ContractorSignIn" {ContractorSignIn} />
-        <Route path="/Main" {Main} />
+        <Route exact path={["/"]} >
+             <SignIn/>
+        </Route>
+        <Route exact path={["/SignUp"]} >
+             <SignUp/>
+        </Route>
+        <Route exact path={["/ContractorSignup"]} >
+             <ContractorSignup/>
+        </Route>
+        <Route exact path={["/ContractorDashboard"]} >
+             <ContractorDashboard/>
+        </Route>
+        {/* <Route exact path={["/ContractorSignIn"]} >
+             <ContractorSignIn/>
+        </Route> */}
+        
+        <Route exact path={["/ClientMain"]} >
+             <ClientMain/>
+        </Route>
+        
         </Switch>
         </Wrapper>
         <Footer/>

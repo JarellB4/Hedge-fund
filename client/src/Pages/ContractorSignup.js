@@ -197,7 +197,7 @@ export default function ContractorSignUp() {
             </Grid>
           </Grid>
           <Button
-          onClick={() => {history.push('./ContractorDashboard')}}
+          onClick={() => {history.push('')}}
             type="submit"
             fullWidth
             variant="contained"

@@ -14,6 +14,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import {useHistory} from 'react-router-dom'
 
+
 function Copyright() {
   
   return (
@@ -53,6 +54,8 @@ export default function SignUp() {
   let history = useHistory();
 
   return (
+
+
     <Container component="main" maxWidth="xs">
       <CssBaseline />
       <div className={classes.paper}>
@@ -60,11 +63,11 @@ export default function SignUp() {
           <LockOutlinedIcon />
         </Avatar>
         <Typography component="h1" variant="h5">
-          Login
+          Sign up
         </Typography>
         <form className={classes.form} noValidate>
           <Grid container spacing={2}>
-            {/* <Grid item xs={12} sm={6}>
+            <Grid item xs={12} sm={6}>
               <TextField
                 autoComplete="fname"
                 name="firstName"
@@ -86,7 +89,7 @@ export default function SignUp() {
                 name="lastName"
                 autoComplete="lname"
               />
-            </Grid> */}
+            </Grid>
             <Grid item xs={12}>
               <TextField
                 variant="outlined"
@@ -110,40 +113,7 @@ export default function SignUp() {
                 autoComplete="current-password"
               />
             </Grid>
-
-           
-          <Button
-           onClick={() => {history.push('./Dashboard')}}
-            type="submit"
-            fullWidth
-            variant="contained"
-            color="primary"
-            className={classes.submit}
-          > 
-            Customer Log in  
-           
-          </Button> 
-          <Button
-           onClick={() => {history.push('./ContractorDashboard')}}
-            type="submit"
-            fullWidth
-            variant="contained"
-            color="primary"
-            className={classes.submit}
-          > 
-            Contractor Log in
-           
-          </Button>
-
-          <Grid container justify="flex-end">
-            <Grid item>
-              <Link href="./Signup" variant="body2">
-                Dont have an account? Sign up
-              </Link>
-            </Grid>
-          </Grid>
-            
-            {/* <Grid item xs={12}>
+            <Grid item xs={12}>
               <TextField
                 variant="outlined"
                 required
@@ -199,21 +169,21 @@ export default function SignUp() {
                 autoComplete="Zip"
                />
             </Grid>
-             */}
+            
       
           </Grid>
-          {/* <Button
-           onClick={() => {history.push('./Dashboard')}}
+          <Button
+           onClick={() => {history.push('./Signup')}}
             type="submit"
             fullWidth
             variant="contained"
             color="primary"
             className={classes.submit}
           > 
-            Login  
+            Customer Sign Up    
            
-          </Button>  */}
-          {/* <Button
+          </Button> 
+          <Button
            onClick={() => {history.push('./ContractorSignup')}}
             type="submit"
             fullWidth
@@ -224,14 +194,14 @@ export default function SignUp() {
             Contractor Sign Up    
            
           </Button>
-          <Grid container justify="flex-end">
+          {/* <Grid container justify="flex-end">
             <Grid item>
-              <Link href="." variant="body2">
-               Customer Sign in
+              <Link href="./Signin" variant="body2">
+               Customer Login
                 </Link>
               <br />  
-                <Link href="./ContractorDashboard" variant="body2">
-                Contractor Sign in
+                <Link href="./ContractorSignIn" variant="body2">
+                Contractor Login
                 </Link>
             </Grid>
           </Grid> */}

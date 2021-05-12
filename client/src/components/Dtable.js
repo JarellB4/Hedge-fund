@@ -1,10 +1,12 @@
 import React from "react"
 import Table from 'react-bootstrap/Table'
-
+import Button from 'react-bootstrap/Button'
+import {useHistory} from 'react-router-dom'
 
 
 
 function Table2() {
+    let history = useHistory();
     return (
 <>
 
@@ -36,8 +38,13 @@ function Table2() {
       <td>@twitter</td>
     </tr>
   </tbody>
+    <br />
+  <p>
+    <Button  onClick={() => {history.push('')}} variant="primary">Create a Job</Button>
+  </p>
 </Table>
- 
+
+
 </>
  );
 }

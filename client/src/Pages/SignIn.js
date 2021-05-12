@@ -5,7 +5,7 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
-import Link from '@material-ui/core/Link';
+// import Link from '@material-ui/core/Link';
 import Grid from '@material-ui/core/Grid';
 import Box from '@material-ui/core/Box';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
@@ -13,6 +13,7 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import {useHistory} from 'react-router-dom'
+import {Link} from 'react-router-dom'
 
 function Copyright() {
   
@@ -109,19 +110,49 @@ export default function SignUp() {
                 id="password"
                 autoComplete="current-password"
               />
-            </Grid> 
-            <Grid item xs={12}>
-              <TextField
-                variant="outlined"
-                required
-                fullWidth
-                name="company name"
-                label="Company Name"
-                type="company name"
-                id="company name"
-                autoComplete="company name"
-              />
-            </Grid> 
+            </Grid>
+
+           
+          <Button
+           onClick={() => {history.push('./ClientMain')}}
+            type="submit"
+            fullWidth
+            variant="contained"
+            color="primary"
+            className={classes.submit}
+          > 
+            Client Log in  
+           
+          </Button> 
+          <Button
+           onClick={() => {history.push('./ContractorDashboard')}}
+            type="submit"
+            fullWidth
+            variant="contained"
+            color="primary"
+            className={classes.submit}
+          > 
+            Contractor Log in
+           
+          </Button>
+
+          <Grid container justify="flex-end">
+            <Grid item>
+            <Link
+              to="./signup"
+              className={window.location.pathname === "/signup" ? "nav-link active" : "nav-link"}
+            >
+              Don't have an account? Sign up as a Client
+        </Link>  
+        <Link
+              to="./ContractorSignup"
+              className={window.location.pathname === "/ContractorSignup" ? "nav-link active" : "nav-link"}
+            >
+              Don't have an account? Sign up as a Contractor
+        </Link>  
+            </Grid>
+          </Grid>
+            
             {/* <Grid item xs={12}>
               <TextField
                 variant="outlined"
@@ -181,17 +212,17 @@ export default function SignUp() {
              */}
       
           </Grid>
-          <Button
-           onClick={() => {history.push('./ContractorDashboard')}}
+          {/* <Button
+           onClick={() => {history.push('./Dashboard')}}
             type="submit"
             fullWidth
             variant="contained"
             color="primary"
             className={classes.submit}
           > 
-            Login    
+            Login  
            
-          </Button> 
+          </Button>  */}
           {/* <Button
            onClick={() => {history.push('./ContractorSignup')}}
             type="submit"

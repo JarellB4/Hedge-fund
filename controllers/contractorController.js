@@ -1,6 +1,14 @@
 const db = require("../models");
 
 module.exports = {
+
+    contractorName: function () {
+        db.Contractor.post("/api/login", passport.authenticate("local"), (req, res) => {
+        res.json({ contractorName: req.user.CompanyName });
+        })
+      },
+
+
   findAll: function(req, res) {
     db.Contractor
       .find({})

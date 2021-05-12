@@ -1,6 +1,18 @@
 const db = require("../models");
+const passport = require("../config/passport");
+
 
 module.exports = {
+
+
+    // when user logs on we send you back the client name
+  clientName: function () {
+    db.Client.post("/api/login", passport.authenticate("local"), (req, res) => {
+    res.json({ clientName: req.user.firstName });
+    })
+  },
+    
+
   findWithinRadius: function(req,res){
     let radius = parseInt(req.params.radius);
     let lon = parseFloat(req.params.lon);
@@ -17,6 +29,7 @@ module.exports = {
       })      
       .catch(err => res.status(422).json(err));
   },
+
   findAll: function(req, res) {
     db.Client
       .find({})

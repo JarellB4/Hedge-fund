@@ -1,3 +1,4 @@
+/* eslint-disable import/no-anonymous-default-export */
 import axios from "axios";
 
 export default {
@@ -8,6 +9,10 @@ export default {
     //get user with specific id
     getClient: function(id) {
         return axios.get("/api/clients/" + id);
+    },
+     //get user with specific email
+     getClientByEmail: function(email) {
+        return axios.get("/api/clients/siginin/" + email);
     },
 
     saveClient: function(clientData) {

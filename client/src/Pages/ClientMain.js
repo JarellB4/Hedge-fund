@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-
+import API from '../utils/API'
 
 
 
@@ -11,11 +11,11 @@ const ClientMain = () => {
 
     useEffect (()=> {
         loadClient();
-
+       
     }, []);
     
     function loadClient() {
-        
+        API.getClientByEmail(clientEmail)   
     }
     return (
         <div>

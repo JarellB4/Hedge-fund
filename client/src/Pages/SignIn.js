@@ -14,9 +14,24 @@ import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import {useHistory} from 'react-router-dom'
 import {Link} from 'react-router-dom'
+import   { useState, useEffect } from "react";
 
-function Copyright() {
+const SignIn = () => {
+  const [clientEmail, setClientEmail] = useState([]);
   
+  let history = useHistory();
+ 
+  function handleBtnClick(){
+    console.log(document.getElementById('email').value);
+    setClientEmail(document.getElementById('email').value);
+  
+    history.push('./ClientMain');
+    console.log(clientEmail);
+  }
+
+    function Copyright() {
+    
+    
   return (
     <Typography variant="body2" color="textSecondary" align="center">
       {'Copyright © '}
@@ -49,9 +64,9 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function SignUp() {
-  const classes = useStyles();
-  let history = useHistory();
+const classes = useStyles();
+ 
+  
 
   return (
     <Container component="main" maxWidth="xs">
@@ -93,7 +108,7 @@ export default function SignUp() {
                 variant="outlined"
                 required
                 fullWidth
-                id="email"
+                id="email"                         
                 label="Email Address"
                 name="email"
                 autoComplete="email"
@@ -113,8 +128,8 @@ export default function SignUp() {
             </Grid>
 
            
-          <Button
-           onClick={() => {history.push('./ClientMain')}}
+          <Button onClick={handleBtnClick}
+          //  handleBtnClick = {handleBtnClick(document.getElementById('email'.val))}
             type="submit"
             fullWidth
             variant="contained"
@@ -252,4 +267,5 @@ export default function SignUp() {
       </Box>
     </Container>
   );
-}
+  }
+  export default SignIn;

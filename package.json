@@ -21,18 +21,14 @@
   },
   "dependencies": {
     "aws-sdk": "2.x",
-
     "@material-ui/core": "^4.11.4",
     "@material-ui/icons": "^4.11.2",
-
     "bcrypt": "^5.0.1",
     "bootstrap": "^5.0.0",
     "express": "^4.16.3",
     "mongoose": "^5.3.16",
-
     "passport-local": "^1.0.0",
-    "uuid": "^8.3.2"
-
+    "uuid": "^8.3.2",
     "react-bootstrap": "^1.5.2",
     "react-router-dom": "^5.2.0"
   }

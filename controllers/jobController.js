@@ -1,9 +1,11 @@
 const db = require("../models");
+const mongoose = require("mongoose");
 
 module.exports = {
-  contractorFindAllJobs: function(req, res) {
+  contractorFindAllJobQuotes: function(req, res) {
     db.Job
-      .find({ quotes: req.params.id })
+      .find({ "quotes.contractor": req.params.id })
+      
       .then(dbModel => {
         console.log(dbModel)  
         res.json(dbModel);
@@ -11,23 +13,27 @@ module.exports = {
       .catch(err => res.status(422).json(err));
   },
   contractorUpdateJobQuote: function(req, res) {
+    let quote = req.body.jobs[0].quotes.filter(function(q) { return q.contractor === req.params.id; });
     db.Job
-      .findOneAndUpdate({ _id: req.params.id }, req.body)
-      .then(dbModel => res.json(dbModel))
-      .catch(err => res.status(422).json(err));
+      .findOneAndUpdate({_id: req.params.jobId, "quotes.contractor": req.params.id }, { $set: { "quotes.$": quote }} , {new: true})
+      .then(dbModel => {
+        console.log(dbModel);
+        res.json(dbModel)})
+        .catch(err => res.status(422).json(err));
   },
   contractorDeleteJobQuote: function(req, res) {
     db.Job
-      .findById({ _id: req.params.id })
-      .then(dbModel => dbModel.remove())
+      .findOneAndUpdate({ _id: req.params.jobId }, { $pull: { "quotes": {"contractor": req.params.id} }})
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
   contractorCreateJobQuote: function(req, res) {
+    const quote = req.body;
+    quote.contractor = mongoose.Types.ObjectId(req.params.id);
     db.Job
-      .create(req.body)
-      .then(dbModel => res.json(dbModel))
-      .catch(err => res.status(422).json(err));
+    .findOneAndUpdate({ _id: req.params.jobId }, { $push: { "quotes": quote }} , {new: true})
+    .then(dbModel => res.json(dbModel))
+    .catch(err => res.status(422).json(err));
   },
   clientFindAllJobs: function(req, res) { //
     db.Job
@@ -38,6 +44,7 @@ module.exports = {
   clientUpdateJob: function(req, res) { //
     const job = req.body;
     job.delete(job.quotes);
+    job.dateUpdated = Date.now();
     db.Job
       .findOneAndUpdate({ client: req.params.id }, job, {new: true})
       .then(dbModel => res.json(dbModel))

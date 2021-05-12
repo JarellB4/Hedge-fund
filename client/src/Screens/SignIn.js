@@ -110,6 +110,39 @@ export default function SignUp() {
                 autoComplete="current-password"
               />
             </Grid>
+
+           
+          <Button
+           onClick={() => {history.push('./Dashboard')}}
+            type="submit"
+            fullWidth
+            variant="contained"
+            color="primary"
+            className={classes.submit}
+          > 
+            Customer Log in  
+           
+          </Button> 
+          <Button
+           onClick={() => {history.push('./ContractorDashboard')}}
+            type="submit"
+            fullWidth
+            variant="contained"
+            color="primary"
+            className={classes.submit}
+          > 
+            Contractor Log in
+           
+          </Button>
+
+          <Grid container justify="flex-end">
+            <Grid item>
+              <Link href="./Signup" variant="body2">
+                Dont have an account? Sign up
+              </Link>
+            </Grid>
+          </Grid>
+            
             {/* <Grid item xs={12}>
               <TextField
                 variant="outlined"
@@ -169,7 +202,7 @@ export default function SignUp() {
              */}
       
           </Grid>
-          <Button
+          {/* <Button
            onClick={() => {history.push('./Dashboard')}}
             type="submit"
             fullWidth
@@ -179,7 +212,7 @@ export default function SignUp() {
           > 
             Login  
            
-          </Button> 
+          </Button>  */}
           {/* <Button
            onClick={() => {history.push('./ContractorSignup')}}
             type="submit"

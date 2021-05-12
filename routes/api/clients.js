@@ -1,6 +1,11 @@
 const router = require("express").Router();
 const clientsController = require("../../controllers/clientController");
 
+// Matches with "/api/clients/map"
+router.route("/map/:lon/:lat/:radius")
+  .get(clientsController.findWithinRadius);
+
+
 // Matches with "/api/clients"
 router.route("/")
   .get(clientsController.findAll)
@@ -11,5 +16,11 @@ router.route("/:id")
   .get(clientsController.findById)
   .put(clientsController.update)
   .delete(clientsController.remove);
+
+
+// Matches with "/api/clients/signin/:email"
+router.route("/signin/:email")
+  .get(clientsController.findByEmail)
+
 
 module.exports = router;

@@ -12,4 +12,8 @@ router.route("/:id")
   .put(contractorsController.update)
   .delete(contractorsController.remove);
 
+// Matches with "/api/contractors/signin/:email"
+router.route("/signin/:email")
+  .get(contractorsController.findByEmail)
+
 module.exports = router;

@@ -14,6 +14,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import {useHistory} from 'react-router-dom'
 
+
 function Copyright() {
   
   return (
@@ -53,6 +54,8 @@ export default function SignUp() {
   let history = useHistory();
 
   return (
+
+
     <Container component="main" maxWidth="xs">
       <CssBaseline />
       <div className={classes.paper}>

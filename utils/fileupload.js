@@ -8,7 +8,6 @@ app.use(fileUpload());
 
 app.post("/upload", function (req, res) {
   let sampleFile;
-  let uploadPath;
 
   if (!req.files || Object.keys(req.files).length === 0) {
     return res.status(400).send("No files were uploaded.");
@@ -20,6 +19,7 @@ app.post("/upload", function (req, res) {
 
 // The name of the input field (i.e. "sampleFile") is used to retrieve the uploaded file
   sampleFile = req.files.sampleFile.data;
+  console.log(sampleFile)
 //   uploadPath = __dirname + "/somewhere/on/your/server/" + sampleFile.name;
 //   var keyName = Date.now() + ".txt";
 

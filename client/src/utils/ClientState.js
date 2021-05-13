@@ -52,7 +52,7 @@ const ClientProvider = ({ value = [], ...props }) => {
                 "dateCreated": "2021-05-11T14:10:38.941Z",
                 "dateUpdated": "2021-05-11T14:10:38.941Z",
                 "contractor": "609a905e4589cb711c54a959",
-                "price": 7000,
+                "price": 1000,
                 "description": "We typically remodel small 3 piece bathrooms for around $7,000. "
             }
         ]
@@ -78,7 +78,7 @@ const ClientProvider = ({ value = [], ...props }) => {
               "dateCreated": "2021-05-11T14:10:38.941Z",
               "dateUpdated": "2021-05-11T14:10:38.941Z",
               "contractor": "609a905e4589cb711c54a959",
-              "price": 7000,
+              "price": 2000,
               "description": "We typically remodel small 3 piece bathrooms for around $7,000. "
           }
       ]
@@ -104,7 +104,7 @@ const ClientProvider = ({ value = [], ...props }) => {
             "dateCreated": "2021-05-11T14:10:38.941Z",
             "dateUpdated": "2021-05-11T14:10:38.941Z",
             "contractor": "609a905e4589cb711c54a959",
-            "price": 7000,
+            "price": 3000,
             "description": "We typically remodel small 3 piece bathrooms for around $7,000. "
         }
     ]

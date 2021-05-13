@@ -1,18 +1,17 @@
 import React, { useState, useEffect } from "react";
 import API from "../utils/API";
 import { useClientContext } from "../utils/ClientState";
-import { CURRENT_CLIENT } from "../utils/actions";
-import CustomerCard from "../components/CustomerCard";
+import CustomerCard from "../components/CustomerCard/CustomerCard";
 
 const ClientMain = (props) => {
   // const [client, setClient] = useState([]);
   const [clientState, dispatch] = useClientContext();
 
-  useEffect(() => {
-    loadClient();
-  }, []);
+//   useEffect(() => {
+//     loadClient();
+//   }, []);
 
-  function loadClient() {}
+//   function loadClient() {}
   return (
     <div>
       <header class="masthead bg-primary text-white text-center">
@@ -21,7 +20,7 @@ const ClientMain = (props) => {
           {/* <img class="masthead-avatar mb-5" src="Assets/images/img/avataaars.svg" alt="..." /> */}
           {/* <!-- Masthead Heading--> */}
           <h1 class="masthead-heading text-uppercase mb-0">
-            All Jobs {clientState.client.firstName}{" "}
+            My Jobs
           </h1>
           {/* <!-- Icon Divider--> */}
 
@@ -29,11 +28,10 @@ const ClientMain = (props) => {
             {clientState.client.jobs.map((job) => (
                 <CustomerCard
                   key={job._id}
-                //   imageLink={project.imageLink}
-                  name={job.name}
-                //   image={project.image}
+                  image={job.images[0].image}
+                  name={job.title}
                   description={job.description}
-                //   repoLink={project.repoLink}
+                  quotes={job.quotes}  
                 />
             ))}
           </div>

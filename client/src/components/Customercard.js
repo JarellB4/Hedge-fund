@@ -4,6 +4,7 @@ import { useClientContext } from "../utils/ClientState";
 const CustomerCard = (props) => {
   const [clientState, dispatch] = useClientContext();
 
+
   // function QuoteList(props) {
   //   // const quotes = clientState.client.jobs.quotes;
   //   const listItems = clientState.client.jobs.quotes.map((quote) => <li>{quote}</li>);
@@ -18,10 +19,11 @@ const CustomerCard = (props) => {
           alt={clientState.client.jobs.name}
           src={clientState.client.jobs.image}
         /> */}
+        {console.log(clientState)}
         <div className="card-body">
-          <h5 className="card-title ">{clientState.client.jobs.title}</h5>
+          <h5 className="card-title ">{props.title}</h5>
           <div className="flex-grow-1">
-            <p className="card-text ">{clientState.client.jobs.description}</p>
+            <p className="card-text ">{props.description}</p>
           </div>
         </div>
         <h3 className="card-title ">Quotes</h3>

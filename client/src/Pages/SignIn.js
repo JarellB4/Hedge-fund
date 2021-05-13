@@ -15,13 +15,13 @@ import Container from '@material-ui/core/Container';
 import {useHistory} from 'react-router-dom'
 import {Link} from 'react-router-dom'
 import   { useState, useEffect } from "react";
-import { useClientContext } from "../utils/GlobalState";
+import { useClientContext } from "../utils/ClientState";
 import { CURRENT_CLIENT } from "../utils/actions";
 import API from '../utils/API'
 
 
 const SignIn = props => {
-  const [state, dispatch ] = useClientContext([]);
+  const [clientState, dispatch ] = useClientContext([]);
   const emailRef = useRef();
   let history = useHistory();
  

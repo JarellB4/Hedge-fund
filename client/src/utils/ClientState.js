@@ -21,7 +21,7 @@ const reducer = (state, action) => {
 };
 
 const ClientProvider = ({ value = [], ...props }) => {
-  const [state, dispatch] = useReducer(reducer,{
+  const [clientState, dispatch] = useReducer(reducer,{
     client: {
       _id: "",
       email: "",
@@ -40,7 +40,7 @@ const ClientProvider = ({ value = [], ...props }) => {
       jobs: []
     }});
 
-  return <Provider value={[state, dispatch]} {...props} />;
+  return <Provider value={[clientState, dispatch]} {...props} />;
 };
 
 const useClientContext = () => {

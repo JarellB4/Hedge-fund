@@ -53,11 +53,12 @@ module.exports = {
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
-  findByEmail: function(req, res) {
+  findByEmail: function(req, res) { 
     db.Client
       .findOne({email: req.params.email})
       .populate({ 
         path: "jobs",
+        populate: {path: "quotes.contractor"}
       })
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));

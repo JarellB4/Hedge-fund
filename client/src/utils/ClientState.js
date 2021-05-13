@@ -51,9 +51,27 @@ const ClientProvider = ({ value = [], ...props }) => {
             {
                 "dateCreated": "2021-05-11T14:10:38.941Z",
                 "dateUpdated": "2021-05-11T14:10:38.941Z",
-                "contractor": "609a905e4589cb711c54a959",
+                "contractor": {
+                  "location": {
+                      "coordinates": [
+                          -82.827898,
+                          42.632254
+                      ],
+                      "type": "Point"
+                  },
+                  "_id": "609d49e1eb336596d49589aa",
+                  "email": "roof1@email.com",
+                  "password": "$2a$10$rrCvSWi9EjdzJBGrG28RgeNIne3kMNCwoLEbcE5zbRcGyW7AFfiEy",
+                  "companyName": "Schena Roofing & Sheet Metal",
+                  "phone": "586-949-4777",
+                  "streetAddress1": "28299 Kehrig St,",
+                  "StreetAddress2": "",
+                  "city": "Chesterfield",
+                  "state": "MI",
+                  "zip": 48047
+              },
                 "price": 1000,
-                "description": "We typically remodel small 3 piece bathrooms for around $7,000. "
+                "description": "We typically remodel small 3 piece bathrooms for around $1,000. "
             }
         ]
     },
@@ -74,14 +92,82 @@ const ClientProvider = ({ value = [], ...props }) => {
           }
       ],
       "quotes": [
-          {
-              "dateCreated": "2021-05-11T14:10:38.941Z",
-              "dateUpdated": "2021-05-11T14:10:38.941Z",
-              "contractor": "609a905e4589cb711c54a959",
-              "price": 2000,
-              "description": "We typically remodel small 3 piece bathrooms for around $7,000. "
-          }
-      ]
+        {
+          "dateCreated": "2021-05-11T14:10:38.941Z",
+          "dateUpdated": "2021-05-11T14:10:38.941Z",
+          "contractor": {
+            "location": {
+                "coordinates": [
+                    -82.827898,
+                    42.632254
+                ],
+                "type": "Point"
+            },
+            "_id": "609d49e1eb336596d49589ff",
+            "email": "roof2@email.com",
+            "password": "$2a$10$rrCvSWi9EjdzJBGrG28RgeNIne3kMNCwoLEbcE5zbRcGyW7AFfiEy",
+            "companyName": "2Schena Roofing & Sheet Metal",
+            "phone": "586-949-4777",
+            "streetAddress1": "28299 Kehrig St,",
+            "StreetAddress2": "",
+            "city": "Chesterfield",
+            "state": "MI",
+            "zip": 48047
+        },
+"price": 2000,
+          "description": "We typically remodel small 3 piece bathrooms for around $2,000. "
+        },
+        {
+          "dateCreated": "2021-05-11T14:10:38.941Z",
+          "dateUpdated": "2021-05-11T14:10:38.941Z",
+          "contractor": {
+            "location": {
+                "coordinates": [
+                    -82.827898,
+                    42.632254
+                ],
+                "type": "Point"
+            },
+            "_id": "609d49e1eb336596d49589bb",
+            "email": "roof31@email.com",
+            "password": "$2a$10$rrCvSWi9EjdzJBGrG28RgeNIne3kMNCwoLEbcE5zbRcGyW7AFfiEy",
+            "companyName": "3Schena Roofing & Sheet Metal",
+            "phone": "586-949-4777",
+            "streetAddress1": "28299 Kehrig St,",
+            "StreetAddress2": "",
+            "city": "Chesterfield",
+            "state": "MI",
+            "zip": 48047
+        },
+          "price": 4000,
+          "description": "We typically remodel small 3 piece bathrooms for around $4,000. "
+        },
+        {
+          "dateCreated": "2021-05-11T14:10:38.941Z",
+          "dateUpdated": "2021-05-11T14:10:38.941Z",
+          "contractor": {
+            "location": {
+                "coordinates": [
+                    -82.827898,
+                    42.632254
+                ],
+                "type": "Point"
+            },
+            "_id": "609d49e1eb336596d49589cc",
+            "email": "roof4@email.com",
+            "password": "$2a$10$rrCvSWi9EjdzJBGrG28RgeNIne3kMNCwoLEbcE5zbRcGyW7AFfiEy",
+            "companyName": "4Schena Roofing & Sheet Metal",
+            "phone": "586-949-4777",
+            "streetAddress1": "28299 Kehrig St,",
+            "StreetAddress2": "",
+            "city": "Chesterfield",
+            "state": "MI",
+            "zip": 48047
+        },
+"price": 5000,
+          "description": "We typically remodel small 3 piece bathrooms for around $5,000. "
+      }
+]
   },
   {
     "dateCreated": "2021-05-11T14:10:38.941Z",
@@ -103,9 +189,27 @@ const ClientProvider = ({ value = [], ...props }) => {
         {
             "dateCreated": "2021-05-11T14:10:38.941Z",
             "dateUpdated": "2021-05-11T14:10:38.941Z",
-            "contractor": "609a905e4589cb711c54a959",
-            "price": 3000,
-            "description": "We typically remodel small 3 piece bathrooms for around $7,000. "
+            "contractor": {
+              "location": {
+                  "coordinates": [
+                      -82.827898,
+                      42.632254
+                  ],
+                  "type": "Point"
+              },
+              "_id": "609d49e1eb336596d49589rr",
+              "email": "roof5@email.com",
+              "password": "$2a$10$rrCvSWi9EjdzJBGrG28RgeNIne3kMNCwoLEbcE5zbRcGyW7AFfiEy",
+              "companyName": "5Schena Roofing & Sheet Metal",
+              "phone": "586-949-4777",
+              "streetAddress1": "28299 Kehrig St,",
+              "StreetAddress2": "",
+              "city": "Chesterfield",
+              "state": "MI",
+              "zip": 48047
+          },
+  "price": 3000,
+            "description": "We typically remodel small 3 piece bathrooms for around $3,000. "
         }
     ]
 }

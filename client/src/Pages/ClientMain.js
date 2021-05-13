@@ -7,7 +7,7 @@ const ClientMain = (props) => {
   const [clientState, dispatch] = useClientContext();
 
   return (
-    <Container component="main" maxWidth="xl">
+    <Container fluid>
       <div>
         <header class="masthead bg-primary text-white text-center">
           <div class="container d-flex align-items-center flex-column">

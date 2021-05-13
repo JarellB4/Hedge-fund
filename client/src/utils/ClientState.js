@@ -114,7 +114,7 @@ const ClientProvider = ({ value = [], ...props }) => {
             "state": "MI",
             "zip": 48047
         },
-"price": 2000,
+          "price": 2000,
           "description": "We typically remodel small 3 piece bathrooms for around $2,000. "
         },
         {
@@ -164,7 +164,7 @@ const ClientProvider = ({ value = [], ...props }) => {
             "state": "MI",
             "zip": 48047
         },
-"price": 5000,
+          "price": 5000,
           "description": "We typically remodel small 3 piece bathrooms for around $5,000. "
       }
 ]
@@ -208,7 +208,7 @@ const ClientProvider = ({ value = [], ...props }) => {
               "state": "MI",
               "zip": 48047
           },
-  "price": 3000,
+            "price": 3000,
             "description": "We typically remodel small 3 piece bathrooms for around $3,000. "
         }
     ]

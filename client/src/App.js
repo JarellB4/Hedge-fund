@@ -11,7 +11,7 @@ import ContractorDashboard from "./Pages/ContractorDashboard";
 import SignIn from "./Pages/SignIn";
 // import ContractorSignIn from "./Pages/ContractorSignIn";
 import ClientMain from "./Pages/ClientMain";
-import Header from './components/Header'
+import Header from './components/Header/Header'
 import Footer from './components/Footer'
 import Wrapper from "./components/Wrapper";
 

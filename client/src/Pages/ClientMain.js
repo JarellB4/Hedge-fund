@@ -1,7 +1,7 @@
 import React from "react";
 import { Col, Row, Container } from "../components/Grid";
 import CustomerCard from "../components/CustomerCard/CustomerCard";
-import { useClientContext } from "../utils/ClientState";
+import { useClientContext } from "../utils/ContractorState";
 
 const ClientMain = (props) => {
   const [clientState, dispatch] = useClientContext();

@@ -1,7 +1,7 @@
 // import logo from './logo.svg';
 import API from './utils/API'
-import { ClientProvider } from "./utils/ClientState";
-import { ContractorProvider } from "./utils/ClientState";
+import { ClientProvider } from "./utils/ContractorState";
+import { ContractorProvider } from "./utils/ContractorState";
 import "./App.css";
 import { HashRouter as Router, Route, Switch } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";

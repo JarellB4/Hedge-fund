@@ -1,5 +1,5 @@
 import React from "react";
-import { useClientContext } from "../../utils/ClientState";
+import { useClientContext } from "../../utils/ContractorState";
 import "./style.css";
 
 const CustomerCard = (props) => {

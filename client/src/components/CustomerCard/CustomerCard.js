@@ -1,9 +1,7 @@
 import React from "react";
-import { useClientContext } from "../../utils/ClientState";
 import "./style.css";
 
 const CustomerCard = (props) => {
-  const [clientState, dispatch] = useClientContext();
   
   return (
     <div>
@@ -13,7 +11,6 @@ const CustomerCard = (props) => {
           alt={props.title}
           src={props.image}
         />
-        {console.log(clientState)}
         <div className="card-body">
           <h5 className="card-title ">{props.name}</h5>
           <div className="flex-grow-1">

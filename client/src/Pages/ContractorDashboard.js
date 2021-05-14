@@ -1,17 +1,19 @@
 import React from "react";
 import { Col, Row, Container } from "../components/Grid";
-import ContractorQuoteCard from "../components/ContractorQuoteCard/ContractorQuoteCard";
+import ContractorImageCarousel from "../components/ContractorImageCarousel";
 import { useContractorContext } from "../utils/ContractorState";
+import { useContractorJobsContext } from "../utils/ContractorJobsState";
 
 const ContractorDashboard = () => {
-  const [contractorState, dispatch] = useContractorContext();
+  const [contractorState, contractorDispatch] = useContractorContext();
+  const [contractorJobsState, contractorJobsdispatch] = useContractorJobsContext();
 
   return (
     <Container fluid>
       <div>
         <header class="masthead bg-primary text-white text-center">
           <div class="container d-flex align-items-center flex-column">
-            <h1 class="masthead-heading text-uppercase mb-0">My Jobs</h1>
+            <h1 class="masthead-heading text-uppercase mb-0">My Quotes</h1>
             <br />
             <div class="divider-custom divider-light">
               <div class="divider-custom-line"></div>
@@ -25,16 +27,17 @@ const ContractorDashboard = () => {
 
             <Row className="quadContainer">
                 <Col size="md-6" ClassName="quarter">
-                  <h1>Content</h1>
+                  <h1>Content1</h1>
                 </Col>
                 <Col size="md-6" ClassName="quarter">
-                  <h1>Content</h1>
+                  <h1>My Quotes</h1>
+                  <ContractorImageCarousel />
                 </Col>
                 <Col size="md-6" ClassName="quarter">
-                  <h1>Content</h1>
+                  <h1>Content3</h1>
                 </Col>
                 <Col size="md-6" ClassName="quarter">
-                  <h1>Content</h1>
+                  <h1>Content4</h1>
                 </Col>
             </Row>
           </div>

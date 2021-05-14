@@ -17,13 +17,17 @@ import {Link} from 'react-router-dom'
 import   { useState, useEffect } from "react";
 import { useClientContext } from "../utils/ClientState";
 import { useContractorContext } from "../utils/ContractorState";
+import { useContractorJobsContext } from "../utils/ContractorState";
 import { CURRENT_CLIENT } from "../utils/actions";
 import { CURRENT_CONTRACTOR } from "../utils/actions";
+import { CONTRACTOR_JOBS } from "../utils/actions";
 import API from '../utils/API'
 
 
 const SignIn = props => {
-  const [clientState, dispatch ] = useClientContext([]);
+  const [clientState, clientDispatch ] = useClientContext([]);
+  const [contractorState, contractorDispatch] = useContractorContext();
+
   const emailRef = useRef();
   let history = useHistory();
  
@@ -32,7 +36,7 @@ const SignIn = props => {
     API.getClientByEmail(emailRef.current.value) 
     .then(res => {
       console.log(res);
-      dispatch({
+      clientDispatch({
         type: CURRENT_CLIENT,
         client: res.data
       });
@@ -47,13 +51,23 @@ const SignIn = props => {
     API.findByEmail(emailRef.current.value) 
     .then(res => {
       console.log(res);
-      dispatch({
+      contractorDispatch({
         type: CURRENT_CONTRACTOR,
         contractor: res.data
-      });
+      })
+        .then(x => {
+          API.ContractorFindAllJobQuotes(contractorState._id)
+          .then(data => {
+            contractorDispatch({
+              type: CONTRACTOR_JOBS,
+              contractor: data.data
+            })
+          })
+        });
+      
     })
       .catch(err => console.log(err));
-
+   
     //-----add validation of the form
     history.push('./ContractorDashboard');
   }

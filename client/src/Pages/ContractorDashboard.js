@@ -4,47 +4,44 @@ import ContractorQuoteCard from "../components/ContractorQuoteCard/ContractorQuo
 import { useContractorContext } from "../utils/ContractorState";
 
 const ContractorDashboard = () => {
-    const [ContracotrState, dispatch] = useContractorContext();
+  const [contractorState, dispatch] = useContractorContext();
 
-    return (
-      <Container fluid>
-        <div>
-          <header class="masthead bg-primary text-white text-center">
-            <div class="container d-flex align-items-center flex-column">
-              <h1 class="masthead-heading text-uppercase mb-0">My Jobs</h1>
-              <br />
-              <div class="divider-custom divider-light">
-                <div class="divider-custom-line"></div>
-                <div class="divider-custom-icon">
-                  <i class="fas fa-tools"></i>
-                </div>
-                <div class="divider-custom-line"></div>
+  return (
+    <Container fluid>
+      <div>
+        <header class="masthead bg-primary text-white text-center">
+          <div class="container d-flex align-items-center flex-column">
+            <h1 class="masthead-heading text-uppercase mb-0">My Jobs</h1>
+            <br />
+            <div class="divider-custom divider-light">
+              <div class="divider-custom-line"></div>
+              <div class="divider-custom-icon">
+                <i class="fas fa-tools"></i>
               </div>
-              <p class="masthead-subheading font-weight-light mb-0"></p>
-  
-              <Row>
-                <Col size="md-6" className="col-project">
-                  {ContracotrState.Contractor.jobs.map((job) => (
-                    <Col size="md-4" className="col-project">
-                      <ContractorQuoteCard
-                        key={job._id}
-                        image={job.images[0].image}
-                        name={job.title}
-                        description={job.description}
-                        quotes={job.quotes}
-                      />
-                    </Col>
-                  ))}
-                </Col>
-                <Col size="md-6" className="col-project">
-                  <h1 class="masthead-heading text-uppercase mb-0">My Jobs</h1>
-                </Col>
-              </Row>
+              <div class="divider-custom-line"></div>
             </div>
-          </header>
-        </div>{" "}
-      </Container>
-    );
-}
+            <p class="masthead-subheading font-weight-light mb-0"></p>
 
-export default ContractorDashboard
+
+            <Row className="quadContainer">
+                <Col size="md-6" ClassName="quarter">
+                  <h1>Content</h1>
+                </Col>
+                <Col size="md-6" ClassName="quarter">
+                  <h1>Content</h1>
+                </Col>
+                <Col size="md-6" ClassName="quarter">
+                  <h1>Content</h1>
+                </Col>
+                <Col size="md-6" ClassName="quarter">
+                  <h1>Content</h1>
+                </Col>
+            </Row>
+          </div>
+        </header>
+      </div>{" "}
+    </Container>
+  );
+};
+
+export default ContractorDashboard;

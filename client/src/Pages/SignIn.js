@@ -16,7 +16,9 @@ import {useHistory} from 'react-router-dom'
 import {Link} from 'react-router-dom'
 import   { useState, useEffect } from "react";
 import { useClientContext } from "../utils/ClientState";
+import { useContractorContext } from "../utils/ContractorState";
 import { CURRENT_CLIENT } from "../utils/actions";
+import { CURRENT_CONTRACTOR } from "../utils/actions";
 import API from '../utils/API'
 
 
@@ -40,6 +42,23 @@ const SignIn = props => {
     //-----add validation of the form
     history.push('./ClientMain');
   }
+  function handleContractorBtnClick(){
+    
+    API.findByEmail(emailRef.current.value) 
+    .then(res => {
+      console.log(res);
+      dispatch({
+        type: CURRENT_CONTRACTOR,
+        contractor: res.data
+      });
+    })
+      .catch(err => console.log(err));
+
+    //-----add validation of the form
+    history.push('./ContractorDashboard');
+  }
+
+  
 
     function Copyright() {
     
@@ -142,7 +161,6 @@ const classes = useStyles();
 
            
           <Button onClick={handleBtnClick}
-          //  handleBtnClick = {handleBtnClick(document.getElementById('email'.val))}
             type="submit"
             fullWidth
             variant="contained"
@@ -152,8 +170,7 @@ const classes = useStyles();
             Client Log in  
            
           </Button> 
-          <Button
-           onClick={() => {history.push('./ContractorDashboard')}}
+          <Button onClick={handleContractorBtnClick} 
             type="submit"
             fullWidth
             variant="contained"

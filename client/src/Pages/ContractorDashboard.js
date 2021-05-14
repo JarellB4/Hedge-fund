@@ -1,7 +1,7 @@
 import React from "react";
 import { Col, Row, Container } from "../components/Grid";
-import ContracotrQuoteCard from "../components/ContracotrQuoteCard/ContracotrQuoteCard";
-import { useContractorContext } from "../utils/ClientState";
+import ContractorQuoteCard from "../components/ContractorQuoteCard/ContractorQuoteCard";
+import { useContractorContext } from "../utils/ContractorState";
 
 const ContractorDashboard = () => {
     const [ContracotrState, dispatch] = useContractorContext();

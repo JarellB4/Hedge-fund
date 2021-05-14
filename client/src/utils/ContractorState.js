@@ -7,6 +7,7 @@ const { Provider } = ContractorContext;
 const reducer = (state, action) => {
   switch (action.type) {
     case CURRENT_CONTRACTOR:
+      console.log("CONTRACTOR ",  action.contractor )
       return {
         ...state,
         Contractor: action.contractor,

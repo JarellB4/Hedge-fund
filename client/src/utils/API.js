@@ -18,7 +18,7 @@ export default {
         return axios.get("/api/contractors/signin/" + email);
     },
     saveClient: function(clientData) {
-        return axios.get("/api/clients", clientData);
+        return axios.get("/api/clients/", clientData);
     },
 
     getJob: function() {
@@ -26,7 +26,7 @@ export default {
     },
 
     saveJob: function(jobData) {
-        return axios.get("/api/job", jobData);
+        return axios.get("/api/job/", jobData);
     },
 
     getJobs: function(id) {
@@ -46,9 +46,9 @@ export default {
     },
 
     saveContractor: function(contractorData) {
-        return axios.get("api/contractor" + contractorData);
+        return axios.get("api/contractor/" + contractorData);
     },
     getContractorJobs: function(id) {
-        return axios.get("/api/jobs/Contractor" + id);
+        return axios.get("/api/jobs/Contractor/" + id);
     },
 }

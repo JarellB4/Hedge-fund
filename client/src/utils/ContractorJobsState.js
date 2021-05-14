@@ -7,6 +7,7 @@ const { Provider } = ContractorJobsContext;
 const reducer = (state, action) => {
   switch (action.type) {
     case CONTRACTOR_JOBS:
+      console.log("CONTRACTOR_JOBS ",  action.contractorJobs )
       return {
         ...state,
         ContractorJobs: action.contractorJobs,
@@ -31,10 +32,16 @@ const ContractorJobsProvider = ({ value = [], ...props }) => {
         "title": "lawn Mowing",
         "description": "I have a 1/3 acre lot that needs mowing for the season",
         "images": [
-            {
-                "image": "https://via.placeholder.com/300"
-            }
-        ],
+          {
+            "image": "https://via.placeholder.com/300"
+          },
+          {
+            "image": "https://via.placeholder.com/50"
+          },
+          {
+            "image": "https://via.placeholder.com/200"
+          }
+  ],
         "quotes": [
             {
                 "dateCreated": "2021-05-13T15:46:41.317Z",
@@ -61,10 +68,19 @@ const ContractorJobsProvider = ({ value = [], ...props }) => {
         "title": "Lawn Mowing",
         "description": "Looking for a company to mow my lawn for the season",
         "images": [
-            {
-                "image": "https://via.placeholder.com/300"
-            }
-        ],
+          {
+            "image": "https://via.placeholder.com/300"
+          },
+          {
+            "image": "https://via.placeholder.com/150"
+          },
+          {
+            "image": "https://via.placeholder.com/350"
+          },
+          {
+            "image": "https://via.placeholder.com/200"
+          }
+],
         "quotes": [
             {
                 "dateCreated": "2021-05-14T15:00:22.991Z",
@@ -84,10 +100,22 @@ const ContractorJobsProvider = ({ value = [], ...props }) => {
         "title": ".5 acre lawn mowing once per week",
         "description": "I need my lawn cut once a week until August.  I habve 1/2 an acre.",
         "images": [
-            {
-                "image": "https://via.placeholder.com/300"
-            }
-        ],
+          {
+            "image": "https://via.placeholder.com/300"
+          },
+          {
+            "image": "https://via.placeholder.com/300"
+          },
+          {
+            "image": "https://via.placeholder.com/300"
+          },
+          {
+            "image": "https://via.placeholder.com/300"
+          },
+          {
+            "image": "https://via.placeholder.com/300"
+          }
+],
         "quotes": [
             {
                 "dateCreated": "2021-05-14T15:00:22.991Z",

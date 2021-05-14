@@ -4,9 +4,9 @@ import ContractorImageCarousel from "../components/ContractorImageCarousel";
 import { useContractorContext } from "../utils/ContractorState";
 import { useContractorJobsContext } from "../utils/ContractorJobsState";
 
-const ContractorDashboard = () => {
+const ContractorDashboard = (props) => {
   const [contractorState, contractorDispatch] = useContractorContext();
-  const [contractorJobsState, contractorJobsdispatch] = useContractorJobsContext();
+  const [contractorJobsState, contractorJobsDispatch] = useContractorJobsContext();
 
   return (
     <Container fluid>
@@ -24,21 +24,23 @@ const ContractorDashboard = () => {
             </div>
             <p class="masthead-subheading font-weight-light mb-0"></p>
 
-
             <Row className="quadContainer">
-                <Col size="md-6" ClassName="quarter">
-                  <h1>Content1</h1>
-                </Col>
-                <Col size="md-6" ClassName="quarter">
-                  <h1>My Quotes</h1>
-                  <ContractorImageCarousel />
-                </Col>
-                <Col size="md-6" ClassName="quarter">
-                  <h1>Content3</h1>
-                </Col>
-                <Col size="md-6" ClassName="quarter">
-                  <h1>Content4</h1>
-                </Col>
+              <Col size="md-6" ClassName="quarter">
+                <h1>Content1</h1>
+              </Col>
+              <Col size="md-6" ClassName="quarter">
+                <h1>My Quotes</h1>
+                { console.log("h", contractorJobsState) }
+                {contractorJobsState.contractorJobs.map((job) => (
+                  <ContractorImageCarousel images={job.images} />
+                ))}
+              </Col>
+              <Col size="md-6" ClassName="quarter">
+                <h1>Content3</h1>
+              </Col>
+              <Col size="md-6" ClassName="quarter">
+                <h1>Content4</h1>
+              </Col>
             </Row>
           </div>
         </header>

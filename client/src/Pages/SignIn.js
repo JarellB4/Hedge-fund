@@ -44,7 +44,7 @@ const SignIn = props => {
     })
       .catch(err => console.log(err));
 
-    //-----add validation of the form
+    //-----add validation of the forms
     history.push('./ClientMain');
   }
   function handleContractorBtnClick(){

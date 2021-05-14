@@ -14,7 +14,9 @@ export default {
      getClientByEmail: function(email) {
         return axios.get("/api/clients/signin/" + email);
     },
-
+    getContractorByEmail: function(email) {
+        return axios.get("/api/contractors/signin/" + email);
+    },
     saveClient: function(clientData) {
         return axios.get("/api/clients", clientData);
     },
@@ -45,5 +47,8 @@ export default {
 
     saveContractor: function(contractorData) {
         return axios.get("api/contractor" + contractorData);
-    }
+    },
+    getContractorJobs: function(id) {
+        return axios.get("/api/jobs/Contractor" + id);
+    },
 }

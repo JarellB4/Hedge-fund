@@ -1,15 +1,23 @@
 .card {
   margin-bottom: 20px;
-}
+  display: flex;
+  float: left;
+  width: 50%;
+  text-align: center;
+  vertical-align: auto;
+
+
+ }
 
 .img-container {
   padding: 0px;
 }
-.card-body {
+.card {
   /* height: 300px; */
   display: flex;
   flex-direction: column;
   align-content: stretch;
+ 
 }
 
 .card-img-top{

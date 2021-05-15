@@ -5,7 +5,7 @@ const CustomerCard = (props) => {
   
   return (
     <div>
-      <div className="card" style={{width: 18 + "rem"}}>
+      <di className="card" style={{width: 18 + "rem"}}>
         <img
           className="card-img-top"
           alt={props.title}
@@ -27,7 +27,7 @@ const CustomerCard = (props) => {
         ))}
       </ul>
         
-      </div>
+      </di>
     </div>
   );
 };

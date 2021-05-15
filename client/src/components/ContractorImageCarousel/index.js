@@ -10,7 +10,7 @@ const ContractorImageCarousel = (props) => {
   };
     return (
     <Carousel activeIndex={index} onSelect={handleSelect}>
-    {props.images.map((image, index) => (
+    {/* {props.images.map((image, index) => (
       <Carousel.Item  interval={1000000}>
         <img 
           // className="d-block w-300"
@@ -19,7 +19,7 @@ const ContractorImageCarousel = (props) => {
           alt={index}
         />
       </Carousel.Item>
-    ))}
+    ))} */}
     </Carousel>
 
     // <div

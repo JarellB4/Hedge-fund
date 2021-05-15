@@ -1,6 +1,7 @@
 import React from "react";
 import { Col, Row, Container } from "../components/Grid";
 import ContractorImageCarousel from "../components/ContractorImageCarousel";
+import ContractorQuoteCard from "../components/ContractorQuoteCard";
 import { useContractorContext } from "../utils/ContractorState";
 import { useContractorJobsContext } from "../utils/ContractorJobsState";
 
@@ -34,6 +35,7 @@ const ContractorDashboard = (props) => {
                 {contractorJobsState.contractorJobs.map((job) => (
                   <ContractorImageCarousel images={job.images} />
                 ))}
+                <ContractorQuoteCard />
               </Col>
               <Col size="md-6" ClassName="quarter">
                 <h1>Content3</h1>

@@ -4,6 +4,7 @@ import "./style.css";
 
 const ContractorImageCarousel = (props) => {
   return (
+
     <Carousel fade>
     {props.images.map((image, index) => (
       <Carousel.Item  interval={1000000}>

@@ -32,7 +32,9 @@ export default {
     getJobs: function(id) {
         return axios.get("/api/job/" + id);
     },
-
+    getJobsInRadius: function(longitude, latitude, radius) {
+        return axios.get(`/api/clients/map/${longitude}/${latitude}/${radius}`);
+    },
     deleteJob: function(id) {
         return axios.delete("/api/job/" + id)
     },

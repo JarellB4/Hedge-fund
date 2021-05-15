@@ -3,6 +3,7 @@ import { Col, Row, Container } from "../components/Grid";
 import ContractorQuoteCard from "../components/ContractorQuoteCard";
 import { useContractorContext } from "../utils/ContractorState";
 import { useContractorJobsContext } from "../utils/ContractorJobsState";
+import MapContainer from "../components/MapContainer";
 
 const ContractorDashboard = (props) => {
   const [contractorState, contractorDispatch] = useContractorContext();
@@ -28,6 +29,10 @@ const ContractorDashboard = (props) => {
             <Row className="quadContainer">
               <Col size="md-6" ClassName="quarter">
                 <h1>Content1</h1>
+                <MapContainer
+                  contractor={contractorState.contractor}
+                >
+                </MapContainer>
               </Col>
               <Col size="md-6" ClassName="quarter">
                 <h1>My Quotes</h1>

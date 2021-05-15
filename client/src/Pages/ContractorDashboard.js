@@ -7,7 +7,8 @@ import { useContractorJobsContext } from "../utils/ContractorJobsState";
 
 const ContractorDashboard = (props) => {
   const [contractorState, contractorDispatch] = useContractorContext();
-  const [contractorJobsState, contractorJobsDispatch] = useContractorJobsContext();
+  const [contractorJobsState, contractorJobsDispatch] =
+    useContractorJobsContext();
 
   return (
     <Container fluid>
@@ -31,11 +32,13 @@ const ContractorDashboard = (props) => {
               </Col>
               <Col size="md-6" ClassName="quarter">
                 <h1>My Quotes</h1>
-                { console.log("h", contractorJobsState) }
+                {console.log("h", contractorJobsState)}
                 {contractorJobsState.contractorJobs.map((job) => (
-                  <ContractorImageCarousel images={job.images} />
+                  <div>
+                    <ContractorImageCarousel images={job.images} />
+                    <ContractorQuoteCard job={job}/>
+                  </div>
                 ))}
-                <ContractorQuoteCard />
               </Col>
               <Col size="md-6" ClassName="quarter">
                 <h1>Content3</h1>

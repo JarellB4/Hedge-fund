@@ -36,10 +36,10 @@ const ContractorJobsProvider = ({ value = [], ...props }) => {
             "image": "https://via.placeholder.com/300"
           },
           {
-            "image": "https://via.placeholder.com/50"
+            "image": "https://via.placeholder.com/300"
           },
           {
-            "image": "https://via.placeholder.com/200"
+            "image": "https://via.placeholder.com/300"
           }
   ],
         "quotes": [
@@ -72,13 +72,13 @@ const ContractorJobsProvider = ({ value = [], ...props }) => {
             "image": "https://via.placeholder.com/300"
           },
           {
-            "image": "https://via.placeholder.com/150"
+            "image": "https://via.placeholder.com/300"
           },
           {
-            "image": "https://via.placeholder.com/350"
+            "image": "https://via.placeholder.com/300"
           },
           {
-            "image": "https://via.placeholder.com/200"
+            "image": "https://via.placeholder.com/300"
           }
 ],
         "quotes": [

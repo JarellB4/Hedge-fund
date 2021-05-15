@@ -103,7 +103,7 @@ const ContractorJobsProvider = ({ value = [], ...props }) => {
         "category": "Lawn Mowing",
         "title": "Lawn Mowing",
         "description": "Looking for a company to mow my lawn for the season",
-        "ContractorImageCarousel": [
+        "images": [
           {
             "image": "https://via.placeholder.com/300",
           },

@@ -1,6 +1,5 @@
 import React from "react";
 import { Col, Row, Container } from "../components/Grid";
-import ContractorImageCarousel from "../components/ContractorImageCarousel";
 import ContractorQuoteCard from "../components/ContractorQuoteCard";
 import { useContractorContext } from "../utils/ContractorState";
 import { useContractorJobsContext } from "../utils/ContractorJobsState";
@@ -33,9 +32,9 @@ const ContractorDashboard = (props) => {
               <Col size="md-6" ClassName="quarter">
                 <h1>My Quotes</h1>
                 {console.log("h", contractorJobsState)}
+                {console.log("contractorJobsState.contractorJobs ",contractorJobsState.contractorJobs)}
                 {contractorJobsState.contractorJobs.map((job) => (
                   <div>
-                    <ContractorImageCarousel images={job.images} />
                     <ContractorQuoteCard job={job}/>
                   </div>
                 ))}

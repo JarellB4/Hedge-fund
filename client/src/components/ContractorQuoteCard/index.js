@@ -1,5 +1,6 @@
 import React from "react";
 import { useContractorContext } from "../../utils/ContractorState";
+import ContractorImageCarousel from "../ContractorImageCarousel";
 import "./style.css";
 
 //contractorDashboard page, shows the jobs the contractor has quotes on
@@ -10,12 +11,12 @@ const ContractorQuoteCard = (props) => {
   return (
     <div>
       <div>
-        <div className="card" style={{ width: 50 + "rem" }}>
-          {/* <img className="card-img-top" alt={props.title} src={props.image} /> */}
+        <div className="card" style={{ width: 20 + "rem" }}>
+          <ContractorImageCarousel images={props.job.images}/>
           <div className="card-body">
-            <h3 className="card-title ">
+            <h4 className="card-title ">
               {props.job.client.firstName + " " + props.job.client.lastName + ", " + props.job.client.city}
-            </h3>
+            </h4>
             <h5 className="card-title ">{props.job.title}</h5>
             <div className="flex-grow-1">
               <p className="card-text ">{props.job.description}</p>

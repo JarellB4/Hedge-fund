@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 const JobSchema = new Schema({
   client: {
     type: Schema.Types.ObjectId,
-    ref: 'client'
+    ref: 'Client'
   },
   dateCreated: {
     type: Date,

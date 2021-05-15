@@ -44,26 +44,26 @@ const SignIn = props => {
     })
       .catch(err => console.log(err));
 
-    //-----add validation of the form
+    //-----add validation of the forms
     history.push('./ClientMain');
   }
   function handleContractorBtnClick(){
     
     API.getContractorByEmail(emailRef.current.value) 
     .then(res => {
-      console.log(res);
+      console.log(res.data);
+      API.getContractorJobs(res.data._id)
+      .then(result => {
+        console.log(result.data);
+        contractorJobsDispatch({
+          type: CONTRACTOR_JOBS,
+          contractorJobs: result.data
+        })
+      });
       contractorDispatch({
         type: CURRENT_CONTRACTOR,
         contractor: res.data
-      });
-      API.getContractorJobs(res.data._id)
-      .then(data => {
-        contractorJobsDispatch({
-          type: CONTRACTOR_JOBS,
-          contractorJobs: data.data
-        })
-      });
-      
+      });      
     })
       .catch(err => console.log(err));
    

@@ -246,6 +246,9 @@ function jobSeed(clients, contractors) {
       description: "I have a 1/3 acre lot that needs mowing for the season",
       images:[
         {image: "https://via.placeholder.com/300"},
+        {image: "https://via.placeholder.com/300"},
+        {image: "https://via.placeholder.com/300"},
+        {image: "https://via.placeholder.com/300"}
       ],
       quotes: [
         {
@@ -303,6 +306,10 @@ function jobSeed(clients, contractors) {
       description: "Looking for a company to mow my lawn for the season",
       images:[
         {image: "https://via.placeholder.com/300"},
+        {image: "https://via.placeholder.com/300"},
+        {image: "https://via.placeholder.com/300"},
+        {image: "https://via.placeholder.com/300"},
+        {image: "https://via.placeholder.com/300"}
       ],
       quotes: [
         {
@@ -392,6 +399,11 @@ function jobSeed(clients, contractors) {
       description: "I need my lawn cut once a week until August.  I habve 1/2 an acre.",
       images:[
         {image: "https://via.placeholder.com/300"},
+        {image: "https://via.placeholder.com/300"},
+        {image: "https://via.placeholder.com/300"},
+        {image: "https://via.placeholder.com/300"},
+        {image: "https://via.placeholder.com/300"},
+        {image: "https://via.placeholder.com/300"}
       ],
       quotes: [
         {

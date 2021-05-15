@@ -5,7 +5,9 @@ module.exports = {
   contractorFindAllJobQuotes: function(req, res) {
     db.Job
       .find({ "quotes.contractor": req.params.id })
-      
+      .populate({ 
+        path: "client",
+      })
       .then(dbModel => {
         console.log(dbModel)  
         res.json(dbModel);

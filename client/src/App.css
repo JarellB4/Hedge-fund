@@ -6,9 +6,11 @@
   margin:0;
   height:100%;
   min-height:100%;
- }.quarter{
+ }
+ .quarter{
   width:50%;
   height:100%;
+  max-height: 600 px;
   float:left;
 }
 .contents{

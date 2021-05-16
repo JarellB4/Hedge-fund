@@ -11,7 +11,7 @@ const ContractorQuoteCard = (props) => {
   return (
     <div>
       <div>
-        <div className="card" style={{ width: 20 + "rem" }}>
+        <div className="card" style={{ width: 25 + "rem" }}>
           <ContractorImageCarousel images={props.job.images}/>
           <div className="card-body">
             <h4 className="card-title ">

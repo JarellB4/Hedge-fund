@@ -1,124 +1,113 @@
-import React, { useReducer, useRef } from 'react';
-import Avatar from '@material-ui/core/Avatar';
-import Button from '@material-ui/core/Button';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import TextField from '@material-ui/core/TextField';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Checkbox from '@material-ui/core/Checkbox';
-// import Link from '@material-ui/core/Link';
-import Grid from '@material-ui/core/Grid';
-import Box from '@material-ui/core/Box';
-import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
-import Typography from '@material-ui/core/Typography';
-import { makeStyles } from '@material-ui/core/styles';
-import Container from '@material-ui/core/Container';
-import {useHistory} from 'react-router-dom'
-import {Link} from 'react-router-dom'
-import   { useState, useEffect } from "react";
+import React, { useReducer, useRef } from "react";
+import Avatar from "@material-ui/core/Avatar";
+import Button from "@material-ui/core/Button";
+import CssBaseline from "@material-ui/core/CssBaseline";
+import TextField from "@material-ui/core/TextField";
+import Grid from "@material-ui/core/Grid";
+import Box from "@material-ui/core/Box";
+import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
+import Typography from "@material-ui/core/Typography";
+import { makeStyles } from "@material-ui/core/styles";
+import Container from "@material-ui/core/Container";
+import { useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useClientContext } from "../utils/ClientState";
 import { useContractorContext } from "../utils/ContractorState";
 import { useContractorJobsContext } from "../utils/ContractorJobsState";
 import { CURRENT_CLIENT } from "../utils/actions";
 import { CURRENT_CONTRACTOR } from "../utils/actions";
 import { CONTRACTOR_JOBS } from "../utils/actions";
-import API from '../utils/API'
+import API from "../utils/API";
 
-
-const SignIn = props => {
-  const [clientState, clientDispatch ] = useClientContext([]);
+const SignIn = (props) => {
+  const [clientState, clientDispatch] = useClientContext([]);
   const [contractorState, contractorDispatch] = useContractorContext([]);
-  const [contractorJobsState, contractorJobsDispatch] = useContractorJobsContext([]);
+  const [contractorJobsState, contractorJobsDispatch] =
+    useContractorJobsContext([]);
 
   const emailRef = useRef();
   let history = useHistory();
- 
-  function handleBtnClick(){
 
-    API.getClientByEmail(emailRef.current.value) 
-    .then(res => {
-      console.log(res);
-      clientDispatch({
-        type: CURRENT_CLIENT,
-        client: res.data
-      });
-    })
-      .catch(err => console.log(err));
+  function handleBtnClick() {
+    API.getClientByEmail(emailRef.current.value)
+      .then((res) => {
+        clientDispatch({
+          type: CURRENT_CLIENT,
+          client: res.data,
+        });
+      })
+      .catch((err) => console.log(err));
 
     //-----add validation of the forms
-    history.push('./ClientMain');
+    history.push("./ClientMain");
   }
-  function handleContractorBtnClick(){
-    
-    API.getContractorByEmail(emailRef.current.value) 
-    .then(res => {
-      console.log(res.data);
-      API.getContractorJobs(res.data._id)
-      .then(result => {
-        console.log(result.data);
-        contractorJobsDispatch({
-          type: CONTRACTOR_JOBS,
-          contractorJobs: result.data
-        })
-      });
-      contractorDispatch({
-        type: CURRENT_CONTRACTOR,
-        contractor: res.data
-      });      
-    })
-      .catch(err => console.log(err));
-   
+  function handleContractorBtnClick() {
+    API.getContractorByEmail(emailRef.current.value)
+      .then((res) => {
+        API.getContractorJobs(res.data._id).then((result) => {
+          contractorJobsDispatch({
+            type: CONTRACTOR_JOBS,
+            contractorJobs: result.data,
+          });
+        });
+        contractorDispatch({
+          type: CURRENT_CONTRACTOR,
+          contractor: res.data,
+        });
+      })
+      .catch((err) => console.log(err));
+
     //-----add validation of the form
-    history.push('./ContractorDashboard');
+    history.push("./ContractorQuotes");
   }
 
-  
+  function Copyright() {
+    return (
+      <Typography variant="body2" color="textSecondary" align="center">
+        {"Copyright © "}
+        <Link color="inherit" href="https://material-ui.com/">
+          Hedge Fund
+        </Link>{" "}
+        {new Date().getFullYear()}
+        {"."}
+      </Typography>
+    );
+  }
 
-    function Copyright() {
-    
-    
-  return (
-    <Typography variant="body2" color="textSecondary" align="center">
-      {'Copyright © '}
-      <Link color="inherit" href="https://material-ui.com/">
-        Your Website
-      </Link>{' '}
-      {new Date().getFullYear()}
-      {'.'}
-    </Typography>
-  );
-}
+  const useStyles = makeStyles((theme) => ({
+    paper: {
+      marginTop: theme.spacing(8),
+      display: "flex",
+      flexDirection: "column",
+      alignItems: "center",
+    },
+    avatar: {
+      margin: theme.spacing(1),
+      backgroundColor: theme.palette.secondary.main,
+    },
+    form: {
+      width: "100%", // Fix IE 11 issue.
+      marginTop: theme.spacing(3),
+    },
+    submit: {
+      margin: theme.spacing(3, 0, 2),
+    },
+  }));
 
-const useStyles = makeStyles((theme) => ({
-  paper: {
-    marginTop: theme.spacing(8),
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-  },
-  avatar: {
-    margin: theme.spacing(1),
-    backgroundColor: theme.palette.secondary.main,
-  },
-  form: {
-    width: '100%', // Fix IE 11 issue.
-    marginTop: theme.spacing(3),
-  },
-  submit: {
-    margin: theme.spacing(3, 0, 2),
-  },
-}));
-
-const classes = useStyles();
- 
-  
+  const classes = useStyles();
 
   return (
     <Container component="main" maxWidth="xs">
+      <br />
+      <br />
+      <br />
+
       <CssBaseline />
       <div className={classes.paper}>
         <Avatar className={classes.avatar}>
           <LockOutlinedIcon />
         </Avatar>
+
         <Typography component="h1" variant="h5">
           Login
         </Typography>
@@ -153,7 +142,7 @@ const classes = useStyles();
                 required
                 fullWidth
                 inputRef={emailRef}
-                id="email"                         
+                id="email"
                 label="Email Address"
                 name="email"
                 autoComplete="email"
@@ -172,45 +161,56 @@ const classes = useStyles();
               />
             </Grid>
 
-           
-          <Button onClick={handleBtnClick}
-            type="submit"
-            fullWidth
-            variant="contained"
-            color="primary"
-            className={classes.submit}
-          > 
-            Client Log in  
-           
-          </Button> 
-          <Button onClick={handleContractorBtnClick} 
-            type="submit"
-            fullWidth
-            variant="contained"
-            color="primary"
-            className={classes.submit}
-          > 
-            Contractor Log in
-           
-          </Button>
+            <Button
+              onClick={handleBtnClick}
+              type="submit"
+              fullWidth
+              variant="contained"
+              color="primary"
+              className={classes.submit}
+            >
+              Client Log in
+            </Button>
+            <Button
+              onClick={handleContractorBtnClick}
+              type="submit"
+              fullWidth
+              variant="contained"
+              color="primary"
+              className={classes.submit}
+            >
+              Contractor Log in
+            </Button>
 
-          <Grid container justify="flex-end">
-            <Grid item>
-            <Link
-              to="./signup"
-              className={window.location.pathname === "/signup" ? "nav-link active" : "nav-link"}
-            >
-              Don't have an account? Sign up as a Client
-        </Link>  
-        <Link
-              to="./ContractorSignup"
-              className={window.location.pathname === "/ContractorSignup" ? "nav-link active" : "nav-link"}
-            >
-              Don't have an account? Sign up as a Contractor
-        </Link>  
+            <Grid container justify="flex-end">
+              <Grid item>
+                <Link
+                  to="./signup"
+                  className={
+                    window.location.pathname === "/signup"
+                      ? "nav-link active"
+                      : "nav-link"
+                  }
+                >
+                  Don't have an account? Sign up as a Client
+                </Link>
+                <Link
+                  to="./ContractorSignup"
+                  className={
+                    window.location.pathname === "/ContractorSignup"
+                      ? "nav-link active"
+                      : "nav-link"
+                  }
+                >
+                  Don't have an account? Sign up as a Contractor
+                  <br />
+                  <br />
+                  <br />
+                  <br />
+                </Link>
+              </Grid>
             </Grid>
-          </Grid>
-            
+
             {/* <Grid item xs={12}>
               <TextField
                 variant="outlined"
@@ -268,7 +268,6 @@ const classes = useStyles();
                />
             </Grid>
              */}
-      
           </Grid>
           {/* <Button
            onClick={() => {history.push('./Dashboard')}}
@@ -310,5 +309,5 @@ const classes = useStyles();
       </Box>
     </Container>
   );
-  }
-  export default SignIn;
+};
+export default SignIn;

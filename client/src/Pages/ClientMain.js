@@ -20,29 +20,30 @@ const ClientMain = (props) => {
               </div>
               <div class="divider-custom-line"></div>
             </div>
-            <p class="masthead-subheading font-weight-light mb-0"></p>
-
-            <Row>
-              <Col size="md-6" className="col-project">
-                {clientState.client.jobs.map((job) => (
-                  <Col size="md-4" className="col-project">
-                    <CustomerCard
-                      key={job._id}
-                      image={job.images[0].image}
-                      name={job.title}
-                      description={job.description}
-                      quotes={job.quotes}
-                    />
-                  </Col>
-                ))}
+          </div>
+          <Row>
+              <Col size="md-4" className="">
+                <h1 className="text-uppercase mb-0">My Jobs1</h1>
+              {
+                clientState.client.jobs ?              
+                  clientState.client.jobs.map((job) => (
+                      <CustomerCard
+                        key={job._id}
+                        image={job.images[0].image}
+                        name={job.title}
+                        description={job.description}
+                        quotes={job.quotes}
+                      />
+                  ))
+                : null
+              }
               </Col>
-              <Col size="md-6" className="col-project">
-                <h1 class="masthead-heading text-uppercase mb-0">My Jobs</h1>
+              <Col size="md-8" className="">
+                <h1 className="text-uppercase mb-0">My Jobs2</h1>
               </Col>
             </Row>
-          </div>
         </header>
-      </div>{" "}
+      </div>
     </Container>
   );
 };

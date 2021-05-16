@@ -11,6 +11,7 @@ const ContractorDashboard = (props) => {
     useContractorJobsContext();
 
   return (
+    
     <Container fluid>
       <div>
         <header class="masthead bg-primary text-white text-center">
@@ -29,18 +30,22 @@ const ContractorDashboard = (props) => {
             <Row className="quadContainer">
               <Col size="md-6" ClassName="quarter">
                 <h1>Content1</h1>
-                <MapContainer
-                  contractor={contractorState.contractor}
-                >
-                </MapContainer>
+                {contractorState.contractor._id ? (
+                  <MapContainer
+                    contractor={contractorState.contractor}
+                  ></MapContainer>
+                ) : null}
               </Col>
               <Col size="md-6" ClassName="quarter">
                 <h1>My Quotes</h1>
                 {console.log("h", contractorJobsState)}
-                {console.log("contractorJobsState.contractorJobs ",contractorJobsState.contractorJobs)}
+                {console.log(
+                  "contractorJobsState.contractorJobs ",
+                  contractorJobsState.contractorJobs
+                )}
                 {contractorJobsState.contractorJobs.map((job) => (
                   <div>
-                    <ContractorQuoteCard job={job}/>
+                    <ContractorQuoteCard job={job} />
                   </div>
                 ))}
               </Col>

@@ -546,8 +546,8 @@ pre code {
 .container-md,
 .container-sm {
   width: 100%;
-  padding-right: 1.5rem;
-  padding-left: 1.5rem;
+  padding-right: 0;
+  padding-left: 0;
   margin-right: auto;
   margin-left: auto;
 }
@@ -10157,7 +10157,7 @@ h3 {
 
 @media (min-width: 992px) {
   .masthead {
-    padding-top: calc(6rem + 104px);
+    padding-top: calc(6rem + 1px);
     padding-bottom: 6rem;
   }
   .masthead .masthead-heading {
@@ -10259,8 +10259,8 @@ form .row:first-child .floating-label-form-group {
 }
 
 .footer {
-  padding-top: 5rem;
-  padding-bottom: 5rem;
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
   background-color: #2c3e50;
   color: #fff;
 }

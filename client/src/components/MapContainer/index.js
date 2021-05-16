@@ -3,12 +3,17 @@ import { GoogleMap, LoadScript, Marker } from "@react-google-maps/api";
 import API from "../../utils/API"
 
 const MapContainer = (props) => {
-  
+  const [ selected, setSelected ] = useState({});
   const [mapStateData, setMapStateData] = useState([]);
 
   const longitude = props.contractor.location.coordinates[0];
   const latitude = props.contractor.location.coordinates[1];
   let radius = 20;
+
+  const onSelect = client => {
+    setSelected(client);
+    console.log("Selected Client: ", client);
+  }
 
   useEffect(() => {
     async function getClientJobsInRadius() {
@@ -17,7 +22,7 @@ const MapContainer = (props) => {
         
         const data = {
           mapStyles : {
-            height: "100vh",
+            height: "600px",
             width: "100%"
                 },
           defaultCenter : {
@@ -59,8 +64,18 @@ const MapContainer = (props) => {
           zoom={13}
           center={mapStateData.defaultCenter}
         >
-          {/* { console.log("Clients Map Data:", mapStateData.clients)} */}
-          {renderMarkers}
+          {
+            mapStateData.clients ?
+            mapStateData.clients.map(client => {
+              return (
+              <Marker 
+                key={client.email} 
+                position={{ lat: client.location.coordinates[1], lng: client.location.coordinates[0]}}
+                onClick={() => onSelect(client)}
+              />
+              )
+            }) : null
+          }
         </GoogleMap>
      </LoadScript>
   )

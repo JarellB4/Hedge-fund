@@ -55,6 +55,20 @@ const MapContainer = (props) => {
 
   return (
     <div className="mt-2 ml-5">
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <button class="btn btn-secondary" type="button">
+            Search
+          </button>
+        </div>
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Enter search radius in miles"
+          aria-label=""
+          aria-describedby="basic-addon1"
+        />
+      </div>
       <LoadScript googleMapsApiKey="AIzaSyDH6tFUYbWJcIgzAcqC6qW_Spr3IIfR7mY">
         <GoogleMap
           mapContainerStyle={mapStateData.mapStyles}

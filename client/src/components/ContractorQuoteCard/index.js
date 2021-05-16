@@ -37,11 +37,12 @@ const ContractorQuoteCard = (props) => {
             <h4 className="card-title">
               {props.job.client.firstName +
                 " " +
-                props.job.client.lastName +
-                ", " +
-                props.job.client.city}
+                props.job.client.lastName}
             </h4>
-            <h5 className="card-title ">{props.job.title}</h5>
+            <h5>{props.job.client.streetAddress1 + ", " + props.job.client.city + ", " + props.job.client.state + " " + props.job.client.zip}</h5>
+            <h5 className="card-title ">{"Email: " + props.job.client.email}</h5>
+            <h5>Last Updated: {new Date(props.job.dateUpdated).toLocaleDateString()}</h5>
+            <h4 className="card-title ">{props.job.title}</h4>
             <div className="flex-grow-1">
               <p className="card-text ">{props.job.description}</p>
             </div>

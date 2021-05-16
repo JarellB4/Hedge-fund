@@ -245,10 +245,10 @@ function jobSeed(clients, contractors) {
       title: "lawn Mowing",
       description: "I have a 1/3 acre lot that needs mowing for the season",
       images:[
-        {image: "https://via.placeholder.com/300"},
-        {image: "https://via.placeholder.com/300"},
-        {image: "https://via.placeholder.com/300"},
-        {image: "https://via.placeholder.com/300"}
+        {image: "https://hedgefundphotos.s3.us-east-2.amazonaws.com/free-stock-photo-sites-2-620x414.jpg"},
+        {image: "https://hedgefundphotos.s3.us-east-2.amazonaws.com/funny-weird-wtf-stock-photos-19-5a3926af95d9d__700.jpg"},
+        {image: "https://hedgefundphotos.s3.us-east-2.amazonaws.com/stockimage2.png"},
+        {image: "https://hedgefundphotos.s3.us-east-2.amazonaws.com/LnRrYf6e.jpg"}
       ],
       quotes: [
         {
@@ -396,7 +396,7 @@ function jobSeed(clients, contractors) {
       client: mongoose.Types.ObjectId(clients[7]),
       category: "Lawn Mowing",
       title: ".5 acre lawn mowing once per week",
-      description: "I need my lawn cut once a week until August.  I habve 1/2 an acre.",
+      description: "I need my lawn cut once a week until August.  I have 1/2 an acre.",
       images:[
         {image: "https://via.placeholder.com/300"},
         {image: "https://via.placeholder.com/300"},

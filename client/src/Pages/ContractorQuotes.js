@@ -13,27 +13,27 @@ const ContractorQuotes = (props) => {
   return (
     <Container fluid>
       <div>
-        <header class="masthead bg-primary text-white text-center">
-          <div class="container d-flex align-items-center flex-column">
-            <h1 class="masthead-heading text-uppercase mb-0">My Jobs</h1>
+        <header className="masthead bg-primary text-white text-center">
+          <div className="container d-flex align-items-center flex-column">
+            <h1 className="masthead-heading text-uppercase mb-0">My Jobs</h1>
             <br />
-            <div class="divider-custom divider-light">
-              <div class="divider-custom-line"></div>
-              <div class="divider-custom-icon">
-                <i class="fas fa-tools"></i>
+            <div className="divider-custom divider-light">
+              <div className="divider-custom-line"></div>
+              <div className="divider-custom-icon">
+                <i className="fas fa-tools"></i>
               </div>
-              <div class="divider-custom-line"></div>
+              <div className="divider-custom-line"></div>
             </div>
           </div>
-          <Row className="container d-flex align-items-center flex-column">
-            <Col size="md-4" className="">
+          <Row >
+            <Col size="md-6" >
               <h1 className="text-uppercase mb-0 ml-5">My Jobs</h1>
               {
                 ContractorJobsState.contractorJobs.length > 0 ? 
                   <ContractorQuoteList jobs={ContractorJobsState.contractorJobs} />
                 : null}
             </Col>
-            <Col size="md-8" className="">
+            <Col size="md-6" className="">
               <h1 className="text-uppercase mb-0 mr-5" >Job Detail</h1>
               {
                 ContractorJobsState.selectedJob._id ? 

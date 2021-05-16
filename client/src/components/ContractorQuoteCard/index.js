@@ -29,9 +29,9 @@ const ContractorQuoteCard = (props) => {
   };
 
   return (
-    <div className="mt-2">
+    <div className="mt-2 mr-5">
       <div>
-        <div className="card" style={{ width: 40 + "rem" }}>
+        <div className="card" >
           <ContractorImageCarousel images={props.job.images} />
           <div className="card-body text-dark">
             <h4 className="card-title">

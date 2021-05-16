@@ -1,15 +1,11 @@
-.card {
-  margin-bottom: 20px;
-}
-
 .img-container {
   padding: 0px;
 }
 .card-body {
   /* height: 300px; */
-  display: flex;
-  flex-direction: column;
-  align-content: stretch;
+  /* display: flex; */
+  /* flex-direction: column; */
+  /* align-content: stretch; */
 }
 
 .card-img-top{

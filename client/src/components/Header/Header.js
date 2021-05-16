@@ -48,8 +48,8 @@ const Header = () => {
                     to="/contractorQuotes"
                     className={
                       window.location.pathname === "/contractorQuotes"
-                        ? "nav-link active nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger"
-                        : "nav-link nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger"
+                        ? "nav-link active nav-link py-3 px-3 px-lg-3 rounded js-scroll-trigger"
+                        : "nav-link nav-link py-3 px-3 px-lg-3 rounded js-scroll-trigger"
                     }
                   >
                     My Quotes

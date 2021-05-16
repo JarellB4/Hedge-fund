@@ -3,6 +3,7 @@ import { Col, Row, Container } from "../components/Grid";
 import { useContractorContext } from "../utils/ContractorState";
 import { useContractorJobsContext } from "../utils/ContractorJobsState";
 import ContractorQuoteCard from "../components/ContractorQuoteCard";
+import ContractorQuoteList from "../components/ContractorQuoteList";
 
 const ContractorQuotes = (props) => {
   const [ContractorState, dispatch] = useContractorContext();
@@ -26,14 +27,17 @@ const ContractorQuotes = (props) => {
           </div>
           <Row>
             <Col size="md-4" className="">
-              <h1 className="text-uppercase mb-0">My Jobs1</h1>
+              <h1 className="text-uppercase mb-0 ml-5">My Jobs</h1>
+              {
+                ContractorJobsState.contractorJobs.length > 0 ? 
+                  <ContractorQuoteList jobs={ContractorJobsState.contractorJobs} />
+                : null}
             </Col>
             <Col size="md-8" className="">
-              <h1 className="text-uppercase mb-0">My Jobs2</h1>
-              {ContractorJobsState.contractorJobs.jobs
-                ? ContractorJobsState.contractorJobs.jobs.map((job) => (
-                    <ContractorQuoteCard job={job} />
-                  ))
+              <h1 className="text-uppercase mb-0">Job Detail</h1>
+              {
+                ContractorJobsState.selectedJob._id ? 
+                    <ContractorQuoteCard job={ContractorJobsState.selectedJob} />
                 : null}
             </Col>
           </Row>

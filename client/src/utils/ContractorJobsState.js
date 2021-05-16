@@ -1,8 +1,9 @@
+import { BorderAll } from "@material-ui/icons";
 import React, { createContext, useReducer, useContext } from "react";
-import { CONTRACTOR_JOBS } from "./actions";
+import { CONTRACTOR_JOBS, CONTRACTOR_JOB_SELECTED } from "./actions";
 
 const initialState = {
-  contractorJobs: {
+  contractorJobs: [
       // {
     //     "dateCreated": "2021-05-14T21:11:42.817Z",
     //     "dateUpdated": "2021-05-14T21:11:42.817Z",
@@ -172,8 +173,8 @@ const initialState = {
     //     ],
     //   },
     // 
-  },
-  loading: false
+  ],
+  selectedJob:{}
 }
 
 const ContractorJobsContext = createContext(initialState);
@@ -184,10 +185,17 @@ const reducer = (state, action) => {
     case CONTRACTOR_JOBS:
       console.log("CONTRACTOR_JOBS ", action.contractorJobs);
       return {
-        contractorJobs: action.contractorJobs,
-        loading: false,
+        ...state, 
+        contractorJobs: action.contractorJobs
       };
-
+      
+      case CONTRACTOR_JOB_SELECTED:
+        console.log("CONTRACTOR_JOB_SELECTED ", action.job);
+        return {
+          ...state,
+          selectedJob: action.job
+        };
+  
     default:
       return state;
   }

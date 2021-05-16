@@ -6,8 +6,7 @@ import MapContainer from "../components/MapContainer";
 
 const ContractorSearch = (props) => {
   const [ContractorState, dispatch] = useContractorContext();
-  const [ContractorJobsState, contractorJobsDispatch] =
-    useContractorJobsContext();
+  const [ContractorJobsState, contractorJobsDispatch] = useContractorJobsContext();
 
   return (
     <Container fluid>

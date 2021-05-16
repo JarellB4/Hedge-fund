@@ -6,70 +6,59 @@ import ContractorImageCarousel from "../ContractorImageCarousel";
 import InputGroup from "react-bootstrap/InputGroup";
 import FormControl from "react-bootstrap/FormControl";
 //javier new addition
-import ListGroup from 'react-bootstrap/ListGroup'
-import Card from 'react-bootstrap/Card'
+import ListGroup from "react-bootstrap/ListGroup";
+import Card from "react-bootstrap/Card";
 
 const JobCustomerCard = (props) => {
   const [clientState, dispatch] = useClientContext();
 
   return (
-    <div>
-      <Container>
-      <Card style={{ width: 30 + "rem" }}>
+    <Container>
+        <Card style={{ width: 30 + "rem" }}>
+          <ContractorImageCarousel images />
+            <InputGroup className="mb-3">
+              <FormControl
+                placeholder={props.job.title}
+                aria-label="Username"
+                aria-describedby="basic-addon1"
+              />
+            </InputGroup>
+            <InputGroup>
+              <FormControl
+                as="textarea"
+                aria-label="Job Description"
+                placeholder={props.job.description}
+              />
+            </InputGroup>
 
-              <Card.Title>Company Price</Card.Title>
-              <Card.Text>Company Name</Card.Text>
-      <ListGroup>
-        
-      <React.Fragment key={props.jobs}>
-        <ListGroup.Item></ListGroup.Item>
-      </React.Fragment>
-
-      </ListGroup>
-        {/* PLACEHOLDER FOR IMG CAROSEL */}
-
-      </Card>
-      </Container>
-    </div>
+            <Card.Body>
+              {props.job.quotes.map((quote, index) => (
+                <ListGroup variant="flush" key={quote.contractor._id}>
+                  <ListGroup.Item>Company: {quote.contractor.companyName}</ListGroup.Item>
+                  <ListGroup.Item>Price: ${quote.price}</ListGroup.Item>
+                  <ListGroup.Item>{quote.description}</ListGroup.Item>
+                  <ListGroup.Item>Phone Number: {quote.contractor.phone}</ListGroup.Item>
+                  <ListGroup.Item>Address: {quote.contractor.streetAddress1} {quote.contractor.StreetAddress2} {quote.contractor.city}, {quote.contractor.state}, {quote.contractor.zip}</ListGroup.Item>
+                </ListGroup>
+              ))}
+            </Card.Body>          
+        </Card>
+    </Container>
   );
 };
 
 export default JobCustomerCard;
 
-//<div className="card" style={{ width: 30 + "rem" }}>
-{/* <ContractorImageCarousel images />
-<div className="card-body">
-  <InputGroup className="mb-3">
-    <FormControl
-      placeholder="Job Title"
-      aria-label="Username"
-      aria-describedby="basic-addon1"
-    />
-  </InputGroup>
-  <InputGroup>
-    <FormControl as="textarea" aria-label="Job Description" 
-    placeholder="Job Description"/>
-  </InputGroup>
-  <h5 className="card-title ">company price</h5>
-  <div className="flex-grow-1">
-    <p className="card-text ">company name</p>
-    <p className="card-text ">company phone</p>
-    <p className="card-text ">street adress</p>
-    <p className="card-text ">city</p>
-    <p className="card-text ">company state</p>
-    <p className="card-text ">zip</p>
-  </div>
-</div>
+/*
 <ul className="list-group">
-  {console.log("props.jobs ",props.job)} */}
+            {/* {console.log("props.jobs ",props.job)} */
 
-//   <li className="list-group-item">
-//     <div>
-//       <h3>hjhjh</h3>
-//     </div>
-//     <div className="flex-grow-1">
-//       <p className="card-text "></p>
-//     </div>
-//   </li>
-// </ul>
-// </div>
+//            <li className="list-group-item">
+//              <div>
+//                <h3>hjhjh</h3>
+//              </div>
+//              <div className="flex-grow-1">
+//                <p className="card-text "></p>
+//              </div>
+//            </li>
+//          </ul>

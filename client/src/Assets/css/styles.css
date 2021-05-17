@@ -7748,7 +7748,7 @@ button.bg-dark:focus {
 
 .pt-4,
 .py-4 {
-  padding-top: 1.5rem !important;
+  padding-top: .5rem !important;
 }
 
 .pr-4,
@@ -7758,7 +7758,7 @@ button.bg-dark:focus {
 
 .pb-4,
 .py-4 {
-  padding-bottom: 1.5rem !important;
+  padding-bottom: .5rem !important;
 }
 
 .pl-4,
@@ -10259,8 +10259,8 @@ form .row:first-child .floating-label-form-group {
 }
 
 .footer {
-  padding-top: 5rem;
-  padding-bottom: 5rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
   background-color: #2c3e50;
   color: #fff;
 }

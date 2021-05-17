@@ -3,6 +3,7 @@ import { Col, Row, Container } from "../components/Grid";
 import { useContractorContext } from "../utils/ContractorState";
 import { useContractorJobsContext } from "../utils/ContractorJobsState";
 import MapContainer from "../components/MapContainer";
+import ContractorQuoteCard from "../components/ContractorQuoteCard";
 
 const ContractorSearch = (props) => {
   const [ContractorState, dispatch] = useContractorContext();
@@ -24,7 +25,7 @@ const ContractorSearch = (props) => {
             </div>
           </div>
           <Row>
-            <Col size="md-4" >
+            <Col size="md-6" >
               <h1 className="text-uppercase mb-0 ml-5">Job Search</h1>
               {ContractorState.contractor._id ? (
                 <MapContainer
@@ -32,8 +33,12 @@ const ContractorSearch = (props) => {
                 ></MapContainer>
               ) : null}
             </Col>
-            <Col size="md-8" className="">
+            <Col size="md-6" className="">
               <h1 className="text-uppercase mb-0">Job Detail</h1>
+              {
+                ContractorJobsState.selectedJob._id ? 
+                    <ContractorQuoteCard job={ContractorJobsState.selectedJob} />
+                : null}
             </Col>
           </Row>
         </header>

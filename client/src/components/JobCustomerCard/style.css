@@ -1,4 +1,4 @@
-.card {
+/* .card {
     margin-bottom: 20px;
     display: flex;
     float: left;
@@ -16,7 +16,6 @@
     padding: 0px;
   }
   .card-body {
-    /* height: 300px; */
     display: flex;
     flex-direction: column;
     align-content: stretch;
@@ -31,4 +30,4 @@
   
   .card-a {
     padding: 0px;
-  }
+  } */

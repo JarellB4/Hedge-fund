@@ -196,17 +196,27 @@ const reducer = (state, action) => {
           selectedJob: action.job
         };
   
-      case CONTRACTOR_JOB_QUOTE_UPDATE:
-        console.log("CONTRACTOR_JOB_QUOTE_UPDATE ", action.job);
-        
-        let job = state.contractorJobs.find(job => job._id === action.job._id);
-        job = action.job;
-
-        return {
-          ...state,
-          selectedJob: action.job
-        };
-
+        case CONTRACTOR_JOB_QUOTE_UPDATE:
+          console.log("CONTRACTOR_JOB_QUOTE_UPDATE ", action.job);
+          
+          // Find the job in the contractorJobs array.
+          let jobIndex = state.contractorJobs.findIndex(job => job._id === action.job._id);
+  
+          // Make final new array of objects by combining updated object.
+          const updatedJobs = [
+            ...state.contractorJobs.slice(0, jobIndex),
+            action.job,
+            ...state.contractorJobs.slice(jobIndex + 1),
+          ];
+  
+          // Overwrite the original contractorJobs array.
+          state.contractorJobs = updatedJobs;
+                  
+          return {
+            ...state,
+            selectedJob: action.job
+          };
+  
           default:
       return state;
   }

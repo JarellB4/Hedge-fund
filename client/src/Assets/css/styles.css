@@ -575,7 +575,7 @@ pre code {
 .row {
   display: flex;
   flex-wrap: wrap;
-  margin-right: -1.5rem;
+  margin-right: 0;
   margin-left: -1.5rem;
 }
 
@@ -7631,9 +7631,9 @@ button.bg-dark:focus {
   margin-top: 3rem !important;
 }
 
-.mr-5,
+.mr-0,
 .mx-5 {
-  margin-right: 3rem !important;
+  margin-right: 0rem !important;
 }
 
 .mb-5,

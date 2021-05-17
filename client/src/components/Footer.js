@@ -39,7 +39,7 @@ const Footer = () => {
         <div class="copyright py-4 text-center text-white">
             <div class="container">
                 <small>
-                    Copyright &copy; Your Website
+                    Copyright &copy; Hedge Fund
                   
                     <script>
                         document.write(new Date().getFullYear());

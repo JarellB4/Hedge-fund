@@ -38,6 +38,14 @@ const useStyles = makeStyles((theme) => ({
 export default function ContractorSignUp() {
   const classes = useStyles();
   let history = useHistory();
+
+
+
+  // const showModal = () => {
+  //   setShowModal(true);
+  // };
+
+
   return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />

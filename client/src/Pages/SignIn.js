@@ -61,19 +61,6 @@ const SignIn = (props) => {
     history.push("./ContractorQuotes");
   }
 
-  function Copyright() {
-    return (
-      <Typography variant="body2" color="textSecondary" align="center">
-        {"Copyright © "}
-        <Link color="inherit" href="https://material-ui.com/">
-          Hedge Fund
-        </Link>{" "}
-        {new Date().getFullYear()}
-        {"."}
-      </Typography>
-    );
-  }
-
   const useStyles = makeStyles((theme) => ({
     paper: {
       marginTop: theme.spacing(8),
@@ -185,9 +172,9 @@ const SignIn = (props) => {
             <Grid container justify="flex-end">
               <Grid item>
                 <Link
-                  to="./signup"
+                  to="./ClientSignup"
                   className={
-                    window.location.pathname === "/signup"
+                    window.location.pathname === "/ClientSignup"
                       ? "nav-link active"
                       : "nav-link"
                   }
@@ -305,7 +292,6 @@ const SignIn = (props) => {
         </form>
       </div>
       <Box mt={5}>
-        <Copyright />
       </Box>
     </Container>
   );

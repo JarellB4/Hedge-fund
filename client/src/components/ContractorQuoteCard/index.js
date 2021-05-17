@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPen, faSave } from '@fortawesome/free-solid-svg-icons'
 import Modal from 'react-bootstrap/Modal'
@@ -13,6 +13,15 @@ import "./style.css";
 //contractorDashboard page, shows the jobs the contractor has quotes on
 
 const ContractorQuoteCard = (props) => {
+
+  function usePrevious(value) {
+    const ref = useRef();
+    useEffect(() => {
+      ref.current = value;
+    });
+    return ref.current;
+  }
+
   const [isEditing, setIsEditing] = useState(false);
   const [isModalOpen, setShowModal] = useState(false);
   const [contractorState, contractorDispatch] = useContractorContext();
@@ -22,6 +31,16 @@ const ContractorQuoteCard = (props) => {
     const quoteClone = { ...quote };
     return quoteClone;
   });
+  const [currentJob, setCurrentJob] = useState(props.job);
+  const previousSelectedJob = usePrevious(currentJob);
+
+  // utilizing useEffect to keep track of "pathname" changes 
+  // that, upon change, will update the "currentPage" state
+  useEffect(() => {
+    if(previousSelectedJob && previousSelectedJob._id !== props.job._id) {
+      setIsEditing(false);
+    }
+  }, [props]);
 
   const onEdit = () => {
     setIsEditing(true);
@@ -67,9 +86,9 @@ const ContractorQuoteCard = (props) => {
   };  
 
   return (
-    <div className="mt-2 mr-5">
+    <div className="mt-2">
       <div>
-        <div className="card">
+        <div className="card mr-4">
           <ContractorImageCarousel images={props.job.images} />
           <div className="card-body text-dark">
           <h4 className="card-title">
@@ -128,12 +147,11 @@ const ContractorQuoteCard = (props) => {
                 : null  
                 }
                 <div>
-                  {isEditing ? (
+                {isEditing && contractorState.contractor._id === quote.contractor ? (
                     <input
                       className="form-control"
                       type="text"
                       defaultValue={quote.price}
-                      // onChange={event => quote.price = event.target.value}
                       onChange={event => updateQuotePrice(event.target.value)}
                     />
                   ) : (
@@ -141,13 +159,12 @@ const ContractorQuoteCard = (props) => {
                   )}
                 </div>
                 <div className="flex-grow-1">
-                  {isEditing ? (
+                {isEditing && contractorState.contractor._id === quote.contractor ? (
                     <textarea 
                       className="form-control" 
                       rows="3" 
                       cols="50" 
                       defaultValue={quote.description} 
-                      // onChange={event => quote.description = event.target.value}
                       onChange={event => updateQuoteDescription(event.target.value)}
                     />
                   ) : (

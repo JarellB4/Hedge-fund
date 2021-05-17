@@ -17,7 +17,7 @@ import API from "../utils/API";
 
 const useStyles = makeStyles((theme) => ({
   paper: {
-    marginTop: theme.spacing(8),
+    marginTop: theme.spacing(16),
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
@@ -156,7 +156,7 @@ export default function ClientSignUp() {
           </Grid>
           <Button
             onClick={() => {
-              history.push("./Signup");
+              history.push("./ClientSignup");
             }}
             type="submit"
             fullWidth
@@ -166,29 +166,6 @@ export default function ClientSignUp() {
           >
             Signup
           </Button>
-          <Button
-            onClick={() => {
-              history.push("./ContractorSignup");
-            }}
-            type="submit"
-            fullWidth
-            variant="contained"
-            color="primary"
-            className={classes.submit}
-          >
-            Contractor Sign Up
-          </Button>
-          {/* <Grid container justify="flex-end">
-            <Grid item>
-              <Link href="./Signin" variant="body2">
-               Customer Login
-                </Link>
-              <br />  
-                <Link href="./ContractorSignIn" variant="body2">
-                Contractor Login
-                </Link>
-            </Grid>
-          </Grid> */}
         </form>
       </div>
       <Box mt={5}>

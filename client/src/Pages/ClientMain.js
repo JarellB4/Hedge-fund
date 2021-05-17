@@ -1,7 +1,8 @@
 import React from "react";
 import { Col, Row, Container } from "../components/Grid";
-import CustomerCard from "../components/CustomerCard/CustomerCard";
+import CustomerCard from "../components/CustomerCard";
 import { useClientContext } from "../utils/ClientState";
+import JobCustomerCard from "../components/JobCustomerCard/JobCustomerCard";
 
 const ClientMain = (props) => {
   const [clientState, dispatch] = useClientContext();
@@ -20,6 +21,7 @@ const ClientMain = (props) => {
               </div>
               <div class="divider-custom-line"></div>
             </div>
+
           </div>
           <Row>
               <Col size="md-4" className="">
@@ -40,6 +42,31 @@ const ClientMain = (props) => {
               </Col>
               <Col size="md-8" className="">
                 <h1 className="text-uppercase mb-0">My Jobs2</h1>
+
+            <p class="masthead-subheading font-weight-light mb-0"></p>
+
+            <Row>
+              <Col size="md-4" className="col-project">
+                {clientState.client.jobs.map((job) => (
+                  <Col size="md-6" className="col-project">
+                    <CustomerCard
+                      key={job._id}
+                      image={job.images[0].image}
+                      name={job.title}
+                      description={job.description}
+                      quotes={job.quotes}
+                    />
+                  </Col>
+                ))}
+              </Col>
+              <Col size="md-6" className="col-project">
+                {clientState.client.jobs.map((job) => (
+                  <Col size="md-6" className="col-project">
+                    <JobCustomerCard />
+                    
+                  </Col>
+                ))}
+
               </Col>
             </Row>
         </header>

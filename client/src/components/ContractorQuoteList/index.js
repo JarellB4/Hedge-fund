@@ -18,7 +18,7 @@ const ContractorQuoteList = (props) => {
 }
 
   return (
-    <div className="ml-5 mt-3">
+    <div className="ml-5 mt-3 text-dark">
       <div>
         <div className="list-group">
           {console.log("props.jobs ", props.jobs)}

@@ -9,7 +9,7 @@ const ClientMain = (props) => {
 
   return (
     <Container fluid>
-      <div>
+      {/* <div>
         <header class="masthead bg-primary text-white text-center">
           <div class="container d-flex align-items-center flex-column">
             <h1 class="masthead-heading text-uppercase mb-0">My Jobs</h1>
@@ -70,7 +70,7 @@ const ClientMain = (props) => {
               </Col>
             </Row>
         </header>
-      </div>
+      </div> */}
     </Container>
   );
 };

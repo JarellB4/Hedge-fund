@@ -1,6 +1,6 @@
 import { BorderAll } from "@material-ui/icons";
 import React, { createContext, useReducer, useContext } from "react";
-import { CONTRACTOR_JOBS, CONTRACTOR_JOB_SELECTED } from "./actions";
+import { CONTRACTOR_JOBS, CONTRACTOR_JOB_SELECTED, CONTRACTOR_JOB_QUOTE_UPDATE } from "./actions";
 
 const initialState = {
   contractorJobs: [
@@ -196,7 +196,28 @@ const reducer = (state, action) => {
           selectedJob: action.job
         };
   
-    default:
+        case CONTRACTOR_JOB_QUOTE_UPDATE:
+          console.log("CONTRACTOR_JOB_QUOTE_UPDATE ", action.job);
+          
+          // Find the job in the contractorJobs array.
+          let jobIndex = state.contractorJobs.findIndex(job => job._id === action.job._id);
+  
+          // Make final new array of objects by combining updated object.
+          const updatedJobs = [
+            ...state.contractorJobs.slice(0, jobIndex),
+            action.job,
+            ...state.contractorJobs.slice(jobIndex + 1),
+          ];
+  
+          // Overwrite the original contractorJobs array.
+          state.contractorJobs = updatedJobs;
+                  
+          return {
+            ...state,
+            selectedJob: action.job
+          };
+  
+          default:
       return state;
   }
 };

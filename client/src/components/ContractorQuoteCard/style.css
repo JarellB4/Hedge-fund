@@ -2,10 +2,12 @@
   padding: 0px;
 }
 .card-body {
-  /* height: 300px; */
   /* display: flex; */
-  /* flex-direction: column; */
-  /* align-content: stretch; */
+
+  /* height: 300px; 
+   
+   flex-direction: column;
+   align-content: stretch; */
 }
 
 .card-img-top{

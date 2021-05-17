@@ -4,7 +4,7 @@ import { ContractorJobsProvider } from "./utils/ContractorJobsState";
 import "./App.css";
 import { HashRouter as Router, Route, Switch } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
-import SignUp from "./Pages/Signup";
+import ClientSignUp from "./Pages/ClientSignup";
 import ContractorSignup from "./Pages/ContractorSignup";
 import ContractorSearch from "./Pages/ContractorSearch";
 import ContractorQuotes from "./Pages/ContractorQuotes";
@@ -27,8 +27,8 @@ function App() {
                    <Route exact path={["/"]}>
                      <SignIn />
                    </Route>
-                   <Route exact path={["/SignUp"]}>
-                     <SignUp />
+                   <Route exact path={["/ClientSignUp"]}>
+                     <ClientSignUp />
                    </Route>
                    <Route exact path={["/ContractorSignup"]}>
                      <ContractorSignup />

@@ -15,9 +15,11 @@ module.exports = {
       .catch(err => res.status(422).json(err));
   },
   contractorUpdateJobQuote: function(req, res) {
-    let quote = req.body.jobs[0].quotes.filter(function(q) { return q.contractor === req.params.id; });
+    let quote = req.body;
+    quote.dateUpdated = Date.now();
     db.Job
       .findOneAndUpdate({_id: req.params.jobId, "quotes.contractor": req.params.id }, { $set: { "quotes.$": quote }} , {new: true})
+      .populate('client')
       .then(dbModel => {
         console.log(dbModel);
         res.json(dbModel)})

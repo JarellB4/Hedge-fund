@@ -1,76 +1,48 @@
+import { useContractorJobsContext } from "../utils/ContractorJobsState";
+
 import React from "react";
 import { Col, Row, Container } from "../components/Grid";
-import CustomerCard from "../components/CustomerCard";
 import { useClientContext } from "../utils/ClientState";
-import JobCustomerCard from "../components/JobCustomerCard/JobCustomerCard";
+import CustomerJobCard from "../components/CustomerJobCard";
 
 const ClientMain = (props) => {
   const [clientState, dispatch] = useClientContext();
+  const [ContractorJobsState, contractorJobsDispatch] =
+  useContractorJobsContext();
 
   return (
     <Container fluid>
-      {/* <div>
-        <header class="masthead bg-primary text-white text-center">
-          <div class="container d-flex align-items-center flex-column">
-            <h1 class="masthead-heading text-uppercase mb-0">My Jobs</h1>
+      <div>
+        <header className="masthead bg-primary text-white text-center">
+          <div className="container d-flex align-items-center flex-column">
+            <h1 className="masthead-heading text-uppercase mb-0">My Jobs</h1>
             <br />
-            <div class="divider-custom divider-light">
-              <div class="divider-custom-line"></div>
-              <div class="divider-custom-icon">
-                <i class="fas fa-tools"></i>
+            <div className="divider-custom divider-light">
+              <div className="divider-custom-line"></div>
+              <div className="divider-custom-icon">
+                <i className="fas fa-tools"></i>
               </div>
-              <div class="divider-custom-line"></div>
+              <div className="divider-custom-line"></div>
             </div>
-
           </div>
           <Row>
-              <Col size="md-4" className="">
-                <h1 className="text-uppercase mb-0">My Jobs1</h1>
+            <Col size="md-6" >
+              <h1 className="text-uppercase mb-0">My Jobs</h1>
               {
-                clientState.client.jobs ?              
-                  clientState.client.jobs.map((job) => (
-                      <CustomerCard
-                        key={job._id}
-                        image={job.images[0].image}
-                        name={job.title}
-                        description={job.description}
-                        quotes={job.quotes}
-                      />
-                  ))
-                : null
-              }
-              </Col>
-              <Col size="md-8" className="">
-                <h1 className="text-uppercase mb-0">My Jobs2</h1>
-
-            <p class="masthead-subheading font-weight-light mb-0"></p>
-
-            <Row>
-              <Col size="md-4" className="col-project">
-                {clientState.client.jobs.map((job) => (
-                  <Col size="md-6" className="col-project">
-                    <CustomerCard
-                      key={job._id}
-                      image={job.images[0].image}
-                      name={job.title}
-                      description={job.description}
-                      quotes={job.quotes}
-                    />
-                  </Col>
-                ))}
-              </Col>
-              <Col size="md-6" className="col-project">
-                {clientState.client.jobs.map((job) => (
-                  <Col size="md-6" className="col-project">
-                    <JobCustomerCard />
-                    
-                  </Col>
-                ))}
-
-              </Col>
-            </Row>
+                ContractorJobsState.contractorJobs.length > 0 ? 
+                  <ContractorQuoteList jobs={ContractorJobsState.contractorJobs} />
+                : null}
+            </Col>
+            <Col size="md-6" className="mr-5">
+              <h1 className="text-uppercase mb-0 mr-5" >Job Details</h1>
+              {
+                ContractorJobsState.selectedJob._id ? 
+                    <CustomerJobCard job={ContractorJobsState.selectedJob} />
+                : null}
+            </Col>
+          </Row>
         </header>
-      </div> */}
+      </div>
     </Container>
   );
 };

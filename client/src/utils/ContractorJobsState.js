@@ -1,6 +1,6 @@
 import { BorderAll } from "@material-ui/icons";
 import React, { createContext, useReducer, useContext } from "react";
-import { CONTRACTOR_JOBS, CONTRACTOR_JOB_SELECTED } from "./actions";
+import { CONTRACTOR_JOBS, CONTRACTOR_JOB_SELECTED, CONTRACTOR_JOB_QUOTE_UPDATE } from "./actions";
 
 const initialState = {
   contractorJobs: [
@@ -196,7 +196,18 @@ const reducer = (state, action) => {
           selectedJob: action.job
         };
   
-    default:
+      case CONTRACTOR_JOB_QUOTE_UPDATE:
+        console.log("CONTRACTOR_JOB_QUOTE_UPDATE ", action.job);
+        
+        let job = state.contractorJobs.find(job => job._id === action.job._id);
+        job = action.job;
+
+        return {
+          ...state,
+          selectedJob: action.job
+        };
+
+          default:
       return state;
   }
 };

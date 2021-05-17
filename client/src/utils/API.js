@@ -53,4 +53,7 @@ export default {
     getContractorJobs: function(id) {
         return axios.get("/api/jobs/Contractor/" + id);
     },
+    updateContractorJobQuote: function(id, jobId, quote) {
+        return axios.put(`/api/jobs/contractor/${id}/${jobId}`, quote);
+    },
 }

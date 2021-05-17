@@ -21,6 +21,28 @@ const ClientMain = (props) => {
               </div>
               <div class="divider-custom-line"></div>
             </div>
+
+          </div>
+          <Row>
+              <Col size="md-4" className="">
+                <h1 className="text-uppercase mb-0">My Jobs1</h1>
+              {
+                clientState.client.jobs ?              
+                  clientState.client.jobs.map((job) => (
+                      <CustomerCard
+                        key={job._id}
+                        image={job.images[0].image}
+                        name={job.title}
+                        description={job.description}
+                        quotes={job.quotes}
+                      />
+                  ))
+                : null
+              }
+              </Col>
+              <Col size="md-8" className="">
+                <h1 className="text-uppercase mb-0">My Jobs2</h1>
+
             <p class="masthead-subheading font-weight-light mb-0"></p>
 
             <Row>
@@ -44,11 +66,11 @@ const ClientMain = (props) => {
                     
                   </Col>
                 ))}
+
               </Col>
             </Row>
-          </div>
         </header>
-      </div>{" "}
+      </div>
     </Container>
   );
 };

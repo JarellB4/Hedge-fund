@@ -245,10 +245,10 @@ function jobSeed(clients, contractors) {
       title: "lawn Mowing",
       description: "I have a 1/3 acre lot that needs mowing for the season",
       images:[
-        {image: "https://hedgefundphotos.s3.us-east-2.amazonaws.com/free-stock-photo-sites-2-620x414.jpg"},
-        {image: "https://hedgefundphotos.s3.us-east-2.amazonaws.com/funny-weird-wtf-stock-photos-19-5a3926af95d9d__700.jpg"},
-        {image: "https://hedgefundphotos.s3.us-east-2.amazonaws.com/stockimage2.png"},
-        {image: "https://hedgefundphotos.s3.us-east-2.amazonaws.com/LnRrYf6e.jpg"}
+        {image: "https://hedgefundphotos.s3.us-east-2.amazonaws.com/rockwell-lawn.jpg"},
+        {image: "https://hedgefundphotos.s3.us-east-2.amazonaws.com/lawn-care-643557_1920-600x397.jpg"},
+        {image: "https://hedgefundphotos.s3.us-east-2.amazonaws.com/lawn-care-643557_1920-600x397.jpg"},
+        {image: "https://hedgefundphotos.s3.us-east-2.amazonaws.com/lawns_David-McAllister_file.jpg"}
       ],
       quotes: [
         {
@@ -275,8 +275,8 @@ function jobSeed(clients, contractors) {
       title: "Bathroom remodel",
       description: "I have a small 3 piece bathroom that needs remodeling ",
       images:[
-        {image: "https://via.placeholder.com/300"},
-        {image: "https://via.placeholder.com/300"},
+        {image: "https://hedgefundphotos.s3.us-east-2.amazonaws.com/52265e70b87ae7b11b0817eec885655e.jpg"},
+        {image: "https://hedgefundphotos.s3.us-east-2.amazonaws.com/3-piece-bathroom-set.jpg"},
       ],
       quotes: [
         { 
@@ -305,11 +305,11 @@ function jobSeed(clients, contractors) {
       title: "Lawn Mowing",
       description: "Looking for a company to mow my lawn for the season",
       images:[
-        {image: "https://via.placeholder.com/300"},
-        {image: "https://via.placeholder.com/300"},
-        {image: "https://via.placeholder.com/300"},
-        {image: "https://via.placeholder.com/300"},
-        {image: "https://via.placeholder.com/300"}
+        {image: "https://hedgefundphotos.s3.us-east-2.amazonaws.com/lawn_needs_mowing.png"},
+        {image: "https://hedgefundphotos.s3.us-east-2.amazonaws.com/lawn-care-643557_1920-600x397.jpg"},
+        {image: "https://hedgefundphotos.s3.us-east-2.amazonaws.com/lawns_David-McAllister_file.jpg"},
+        {image: "https://hedgefundphotos.s3.us-east-2.amazonaws.com/JB-Lawn.jpg"},
+        {image: "https://hedgefundphotos.s3.us-east-2.amazonaws.com/rockwell-lawn.jpg"}
       ],
       quotes: [
         {
@@ -325,8 +325,8 @@ function jobSeed(clients, contractors) {
       title: "I New A Roof",
       description: "I have a 2200 sqft ranch with a hip roof. Looking for quotes.",
       images:[
-        {image: "https://via.placeholder.com/300"},
-        {image: "https://via.placeholder.com/300"},
+        {image: "https://hedgefundphotos.s3.us-east-2.amazonaws.com/hero-roof-repairs.jpg"},
+        {image: "https://hedgefundphotos.s3.us-east-2.amazonaws.com/replace_roof_-_moss_and_mold.jpg"},
       ],
       quotes: [
         {
@@ -342,9 +342,9 @@ function jobSeed(clients, contractors) {
       title: "New Roof",
       description: "I have a 2700 sqft colonial wihth a gable roof.",
       images:[
-        {image: "https://via.placeholder.com/300"},
-        {image: "https://via.placeholder.com/300"},
-        {image: "https://via.placeholder.com/300"}
+        {image: "https://hedgefundphotos.s3.us-east-2.amazonaws.com/roof+needs+repair.jpg"},
+        {image: "https://hedgefundphotos.s3.us-east-2.amazonaws.com/replace_roof_-_moss_and_mold.jpg"},
+        {image: "https://hedgefundphotos.s3.us-east-2.amazonaws.com/hero-roof-repairs.jpg"}
       ],
       quotes: [
         {
@@ -360,7 +360,7 @@ function jobSeed(clients, contractors) {
       title: "New Roof",
       description: "I have a 10,000 sqft homestead I am in need of a roof.",
       images:[
-        {image: "https://via.placeholder.com/300"},
+        {image: "https://hedgefundphotos.s3.us-east-2.amazonaws.com/replace_roof_-_moss_and_mold.jpg"},
       ],
       quotes: [
         {
@@ -382,12 +382,12 @@ function jobSeed(clients, contractors) {
       title: "I need a quote to remove 6 trees",
       description: "I have 6 30' trees in my yard that need removing, please see the pictures for more detail.",
       images:[
-        {image: "https://via.placeholder.com/300"},
-        {image: "https://via.placeholder.com/300"},
-        {image: "https://via.placeholder.com/300"},
-        {image: "https://via.placeholder.com/300"},
-        {image: "https://via.placeholder.com/300"},
-        {image: "https://via.placeholder.com/300"}
+        {image: "https://hedgefundphotos.s3.us-east-2.amazonaws.com/tree-trimming.jpg"},
+        {image: "https://hedgefundphotos.s3.us-east-2.amazonaws.com/tree-trimming+2.jpg"},
+        {image: "https://hedgefundphotos.s3.us-east-2.amazonaws.com/tree-trimming.jpg"},
+        {image: "https://hedgefundphotos.s3.us-east-2.amazonaws.com/tree-trimming+2.jpg"},
+        {image: "https://hedgefundphotos.s3.us-east-2.amazonaws.com/tree-trimming.jpg"},
+        {image: "https://hedgefundphotos.s3.us-east-2.amazonaws.com/tree-trimming+2.jpg"}
       ],
       quotes: [
       ],
@@ -398,12 +398,12 @@ function jobSeed(clients, contractors) {
       title: ".5 acre lawn mowing once per week",
       description: "I need my lawn cut once a week until August.  I have 1/2 an acre.",
       images:[
-        {image: "https://via.placeholder.com/300"},
-        {image: "https://via.placeholder.com/300"},
-        {image: "https://via.placeholder.com/300"},
-        {image: "https://via.placeholder.com/300"},
-        {image: "https://via.placeholder.com/300"},
-        {image: "https://via.placeholder.com/300"}
+        {image: "https://hedgefundphotos.s3.us-east-2.amazonaws.com/lawn_needs_mowing.png"},
+        {image: "https://hedgefundphotos.s3.us-east-2.amazonaws.com/lawn-care-643557_1920-600x397.jpg"},
+        {image: "https://hedgefundphotos.s3.us-east-2.amazonaws.com/lawns_David-McAllister_file.jpg"},
+        {image: "https://hedgefundphotos.s3.us-east-2.amazonaws.com/rockwell-lawn.jpg"},
+        {image: "https://hedgefundphotos.s3.us-east-2.amazonaws.com/JB-Lawn.jpg"},
+        {image: "https://hedgefundphotos.s3.us-east-2.amazonaws.com/no-mow-options.jpg"}
       ],
       quotes: [
         {
@@ -419,8 +419,8 @@ function jobSeed(clients, contractors) {
       title: "New Roof",
       description: "I have a 3200 sqft walkout colonial and I am in need of a roof.",
       images:[
-        {image: "https://via.placeholder.com/300"},
-        {image: "https://via.placeholder.com/300"},
+        {image: "https://hedgefundphotos.s3.us-east-2.amazonaws.com/hero-roof-repairs.jpg"},
+        {image: "https://hedgefundphotos.s3.us-east-2.amazonaws.com/replace_roof_-_moss_and_mold.jpg"},
       ],
       quotes: [
         {
@@ -436,8 +436,8 @@ function jobSeed(clients, contractors) {
       title: "Kitchen Remodel",
       description: "300 sqft kitchen remodel.  Please see the pictures for what it looks like now and what I am looking for.",
       images:[
-        {image: "https://via.placeholder.com/300"},
-        {image: "https://via.placeholder.com/300"},
+        {image: "https://hedgefundphotos.s3.us-east-2.amazonaws.com/kitchen+remodel.jpg"},
+        {image: "https://hedgefundphotos.s3.us-east-2.amazonaws.com/kitchen+remodel+2.jpg"},
       ],
       quotes: [
         {

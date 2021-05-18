@@ -6,7 +6,7 @@ import MapContainer from "../components/MapContainer";
 import ContractorQuoteCard from "../components/ContractorQuoteCard";
 
 const ContractorSearch = (props) => {
-  const [ContractorState, dispatch] = useContractorContext();
+  const [ContractorState, constractorDispatch] = useContractorContext();
   const [ContractorJobsState, contractorJobsDispatch] = useContractorJobsContext();
 
   return (

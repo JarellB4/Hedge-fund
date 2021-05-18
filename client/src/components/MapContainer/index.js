@@ -1,23 +1,34 @@
 import React, { useState, useEffect } from "react";
 import { GoogleMap, LoadScript, Marker } from "@react-google-maps/api";
 import API from "../../utils/API";
+import { useContractorJobsContext } from "../../utils/ContractorJobsState";
+import { CONTRACTOR_CLIENT_SELECTED } from "../../utils/actions";
 
 const MapContainer = (props) => {
+  const [currentRadius, setRadius] = useState(20);
   const [selected, setSelected] = useState({});
   const [mapStateData, setMapStateData] = useState([]);
+  const [contractorJobsState, contractorJobsDispatch] = useContractorJobsContext([]);
 
   const longitude = props.contractor.location.coordinates[0];
   const latitude = props.contractor.location.coordinates[1];
-  let radius = 20;
 
   const onSelect = (client) => {
     setSelected(client);
     console.log("Selected Client: ", client);
+    contractorJobsDispatch({
+      type: CONTRACTOR_CLIENT_SELECTED,
+      client: client
+    })
+  };
+
+  const onSetRadius = (radiusInMiles) => {
+    setRadius(radiusInMiles);
   };
 
   useEffect(() => {
     async function getClientJobsInRadius() {
-      API.getJobsInRadius(longitude, latitude, radius)
+      API.getJobsInRadius(longitude, latitude, currentRadius)
         .then((res) => {
           const data = {
             mapStyles: {
@@ -37,7 +48,7 @@ const MapContainer = (props) => {
     }
 
     getClientJobsInRadius();
-  }, [longitude, latitude, radius]);
+  }, [longitude, latitude, currentRadius]);
 
   function renderMarkers() {
     console.log("Clients Map Data:", mapStateData.clients);
@@ -67,6 +78,8 @@ const MapContainer = (props) => {
           placeholder="Enter search radius in miles"
           aria-label=""
           aria-describedby="basic-addon1"
+          defaultValue={currentRadius}
+          onChange = {event => onSetRadius(event.target.value)}
         />
       </div>
       <LoadScript googleMapsApiKey="AIzaSyDH6tFUYbWJcIgzAcqC6qW_Spr3IIfR7mY">

@@ -1,13 +1,10 @@
 import React, { useState, useEffect, useRef } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPen, faSave } from "@fortawesome/free-solid-svg-icons";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import { useClientContext } from "../../utils/ClientState";
-import { useContractorContext } from "../../utils/ContractorState";
-import { useContractorJobsContext } from "../../utils/ContractorJobsState";
 import ContractorImageCarousel from "../ContractorImageCarousel";
-import { CONTRACTOR_JOB_QUOTE_UPDATE } from "../../utils/actions";
+import { CLIENT_JOB_UPDATED } from "../../utils/actions";
 import API from "../../utils/API";
 import "./style.css";
 
@@ -21,12 +18,14 @@ const ClientJobCard = (props) => {
     });
     return ref.current;
   }
-
   const [isEditing, setIsEditing] = useState(false);
   const [isModalOpen, setShowModal] = useState(false);
-  const [contractorState, contractorDispatch] = useContractorContext();
-  const [contractorJobsState, contractorJobsDispatch] =
-    useContractorJobsContext();
+  const [SelectedJobState, clientJobDispatch] = useClientContext();
+
+  const [currentJob, setCurrentJob] = useState(props.job);
+  const previousSelectedJob = usePrevious(currentJob);
+  const [ClientState, clientDispatch] = useClientContext();
+
   const [quoteData, setQuoteData] = useState(() => {
     // const quote = props.job.quotes.find(
     //   (quote) => quote.contractor === contractorState.contractor._id
@@ -34,226 +33,161 @@ const ClientJobCard = (props) => {
     // const quoteClone = { ...quote };
     // return quoteClone;
   });
-  const [currentJob, setCurrentJob] = useState(props.job);
-  const previousSelectedJob = usePrevious(currentJob);
-  const [ClientState, clientdispatch] = useClientContext();
+
+  const onEdit = () => {
+    setIsEditing(true);
+  };
+
+  const onSave = () => {
+    setIsEditing(false);
+
+    if (ClientState.selectedJob.title !== "" && ClientState.selectedJob.description !== "") {
+      API.updateClientJob(
+        ClientState.client._id,
+        ClientState.selectedJob
+      )
+        .then((res) => {
+          clientDispatch({
+            type: CLIENT_JOB_UPDATED,
+            job: res.data,
+          });
+        })
+        .catch((err) => console.log(err));
+    } else {
+      // const quote = props.job.quotes.find(
+      //   (quote) => quote.contractor === contractorState.contractor_id
+      // );
+      // const quoteClone = { ...quote };
+      // setQuoteData(quoteClone);
+      showModal();
+    }
+  };
+
+  const showModal = () => {
+    setShowModal(true);
+  };
+
+  const hideModal = () => {
+    setShowModal(false);
+  };
+
+  const updateClientJobTitle = (title) => {
+    ClientState.selectedJob.title = title;
+  };
+
+  const updateClientJobDescription = (description) => {
+    ClientState.selectedJob.description = description;
+  };
 
   return (
     <div className="mt-2">
       <div>
-        <div className="card mr-4">
-          <ContractorImageCarousel images={ClientState.client.jobs[0].images} />
-          <div className="card-body text-dark">
-            <h4 className="card-title">
-              {ClientState.client.firstName + " " + ClientState.client.lastName}
-            </h4>
-            <h5>
-              {ClientState.client.streetAddress1 +
-                ", " +
-                ClientState.client.city +
-                ", " +
-                ClientState.client.state +
-                " " +
-                ClientState.client.zip}
-            </h5>
-            <h5 className="card-title ">
-              {"Email: " + ClientState.client.email}
-            </h5>
-            <h5>
-              Last Updated:{" "}
-              {new Date(ClientState.client.jobs[0].dateUpdated).toLocaleDateString()}
-            </h5>
-            <h4 className="card-title ">{ClientState.client.jobs[0].title}</h4>
-            <div className="flex-grow-1">
-              <p className="card-text ">{ClientState.client.jobs[0].description}</p>
+        {ClientState.selectedJob._id ? (
+          <div className="card mr-4">
+            <ContractorImageCarousel images={ClientState.selectedJob.images} />
+            <div className="card-body text-dark">
+              <div>
+                {isEditing ? (
+                  <button
+                    type="button"
+                    className="btn btn-small btn-danger float-right mb-2"
+                    aria-label="save"
+                    onClick={() => onSave()}
+                  >
+                    <FontAwesomeIcon icon={["fas", "save"]} />
+                  </button>
+                ) : (
+                  <button
+                    type="button"
+                    className="btn btn-small btn-danger float-right mb-2"
+                    aria-label="edit"
+                    onClick={() => onEdit()}
+                  >
+                    <FontAwesomeIcon icon={["fas", "pen"]} />
+                  </button>
+                )}
+              </div>
+              <h5>
+                Last Updated:{" "}
+                {new Date(
+                  ClientState.selectedJob.dateUpdated
+                ).toLocaleDateString()}
+              </h5>{" "}
+              <div>
+                {isEditing ? (
+                  <div>
+                    <input
+                      className="form-control"
+                      type="text"
+                      defaultValue={ClientState.selectedJob.title}
+                      onChange={(event) =>
+                        updateClientJobTitle(event.target.value)
+                      }
+                    />
+                    <input
+                      className="form-control"
+                      type="text"
+                      defaultValue={ClientState.selectedJob.description}
+                      onChange={(event) =>
+                        updateClientJobDescription(event.target.value)
+                      }
+                    />
+                  </div>
+                ) : (
+                  <div>
+                    <h4 className="card-title ">
+                      {ClientState.selectedJob.title}
+                    </h4>
+                    <div className="flex-grow-1">
+                      <p className="card-text ">
+                        {ClientState.selectedJob.description}
+                      </p>
+                    </div>
+                  </div>
+                )}
+              </div>
             </div>
-          </div>
-          <ul className="list-group">
-          {/* {console.log("ClientState.client.jobs.quotes ", ClientState.client.jobs[0].quotes)}
-            {ClientState.client.jobs.quotes.map((quote, index) => (
-              <li className="list-group-item" key={quote.contractor}>{quote.contractor}</li> */}
-              {console.log("ClientState.client.jobs.quotes ", ClientState.client.jobs[0].quotes)}
-              
-                <li className="list-group-item" key={ClientState.client.jobs[0].contractor}>
-                <h4>Price: $ {ClientState.client.jobs[0].price}</h4>
-                <p>{ClientState.client.jobs[0].description}</p>
+            <ul className="list-group">
+              {console.log(
+                "ClientState.client.jobs.quotes ",
+                ClientState.selectedJob.quotes
+              )}
 
+              {
+               ClientState.selectedJob.quotes ?
+              ClientState.selectedJob.quotes.map((quote, index) => (
+                <li className="list-group-item" key={quote.contractor}>
+                  <h4>Price: $ {quote.price}</h4>
+                  <p>{quote.description}</p>
                 </li>
-              
-            ;
-          </ul>
-        </div>
+              ))
+              : null
+              }
+            </ul>
+          </div>
+        ) : null}
       </div>
+      <Modal
+        show={isModalOpen}
+        dialogClassName="modal-90w"
+        aria-labelledby="contained-modal-title-vcenter"
+        centered
+      >
+        <Modal.Header closeButton>
+          <Modal.Title id="contained-modal-title-vcenter">
+            Job Fields Required
+          </Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <h4>Validation Error</h4>
+          <p>Title and Description are required fields.</p>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button onClick={hideModal}>Close</Button>
+        </Modal.Footer>
+      </Modal>
     </div>
   );
-
-  // utilizing useEffect to keep track of "pathname" changes
-  // that, upon change, will update the "currentPage" state
-  // useEffect(() => {
-  //   if(previousSelectedJob && previousSelectedJob._id !== props.job._id) {
-  //     setIsEditing(false);
-  //   }
-  // }, [props]);
-
-  // const onEdit = () => {
-  //   setIsEditing(true);
-  // };
-
-  // const onSave = () => {
-  //   setIsEditing(false);
-
-  //   if(quoteData.price !== '' && quoteData.description !== '') {
-  //     API.updateContractorJobQuote(contractorState.contractor._id, props.job._id, quoteData)
-  //       .then((res) => {
-  //         contractorJobsDispatch({
-  //           type: CONTRACTOR_JOB_QUOTE_UPDATE,
-  //           job: res.data,
-  //         });
-  //       })
-  //       .catch((err) => console.log(err));
-  //   }
-  //   else {
-  //     const quote = props.job.quotes.find(quote => quote.contractor === contractorState.contractor_id);
-  //     const quoteClone = { ...quote };
-  //     setQuoteData(quoteClone);
-  //     showModal();
-  //   }
-  // };
-
-  // const updateQuotePrice = (price) => {
-  //   quoteData.price = price;
-  //   setQuoteData(quoteData);
-  // };
-
-  // const updateQuoteDescription = (description) => {
-  //   quoteData.description = description;
-  //   setQuoteData(quoteData);
-  // };
-
-  // const showModal = () => {
-  //   setShowModal(true);
-  // };
-
-  // const hideModal = () => {
-  //   setShowModal(false);
-  // };
-
-  // return (
-  //   <div className="mt-2">
-  //     <div>
-  //       <div className="card mr-4">
-  //         <ContractorImageCarousel images={props.job.images} />
-  //         <div className="card-body text-dark">
-  //         <h4 className="card-title">
-  //             {props.job.client.firstName + " " + props.job.client.lastName}
-  //           </h4>
-  //           <h5>
-  //             {props.job.client.streetAddress1 +
-  //               ", " +
-  //               props.job.client.city +
-  //               ", " +
-  //               props.job.client.state +
-  //               " " +
-  //               props.job.client.zip}
-  //           </h5>
-  //           <h5 className="card-title ">
-  //             {"Email: " + props.job.client.email}
-  //           </h5>
-  //           <h5>
-  //             Last Updated:{" "}
-  //             {new Date(props.job.dateUpdated).toLocaleDateString()}
-  //           </h5>
-  //           <h4 className="card-title ">{props.job.title}</h4>
-  //           <div className="flex-grow-1">
-  //             <p className="card-text ">{props.job.description}</p>
-  //           </div>
-  //         </div>
-  //         <ul className="list-group">
-  //           {console.log("props.jobs ", props.job)}
-  //           {props.job.quotes.map((quote, index) => (
-  //             <li className="list-group-item" key={quote.contractor}>
-  //               {
-  //                 contractorState.contractor._id === quote.contractor ?
-  //                   <div>
-  //                     {isEditing ? (
-  //                       <button
-  //                         type="button"
-  //                         className="btn btn-small btn-danger float-right mb-2"
-  //                         aria-label="save"
-  //                         onClick={() => onSave()}
-  //                       >
-  //                         {/* <i class="fas fa-save text-white"></i> */}
-  //                         <FontAwesomeIcon icon={["fas", "save"]} />
-  //                       </button>
-  //                     ) : (
-  //                       <button
-  //                         type="button"
-  //                         className="btn btn-small btn-danger float-right mb-2"
-  //                         aria-label="edit"
-  //                         onClick={() => onEdit()}
-  //                       >
-  //                         {/* <i class="fas fa-pen text-white"></i> */}
-  //                         <FontAwesomeIcon icon={["fas", "pen"]} />
-  //                       </button>
-  //                     )}
-  //                   </div>
-  //               : null
-  //               }
-  //               <div>
-  //               {isEditing && contractorState.contractor._id === quote.contractor ? (
-  //                   <input
-  //                     className="form-control"
-  //                     type="text"
-  //                     defaultValue={quote.price}
-  //                     onChange={event => updateQuotePrice(event.target.value)}
-  //                   />
-  //                 ) : (
-  //                   <h3>Price: ${parseFloat(quote.price).toFixed(2)}</h3>
-  //                 )}
-  //               </div>
-  //               <div className="flex-grow-1">
-  //               {isEditing && contractorState.contractor._id === quote.contractor ? (
-  //                   <textarea
-  //                     className="form-control"
-  //                     rows="3"
-  //                     cols="50"
-  //                     defaultValue={quote.description}
-  //                     onChange={event => updateQuoteDescription(event.target.value)}
-  //                   />
-  //                 ) : (
-  //                   <p className="card-text ">{quote.description}</p>
-  //                 )}
-  //               </div>
-  //             </li>
-  //           ))}
-  //         </ul>
-  //       </div>
-  //     </div>
-
-  //     <Modal
-  //       show={isModalOpen}
-  //       dialogClassName="modal-90w"
-  //       aria-labelledby="contained-modal-title-vcenter"
-  //       centered
-  //     >
-  //       <Modal.Header closeButton>
-  //         <Modal.Title id="contained-modal-title-vcenter">
-  //           Quote Fields Required
-  //         </Modal.Title>
-  //       </Modal.Header>
-  //       <Modal.Body>
-  //         <h4>Validation Error</h4>
-  //         <p>
-  //           Price and Description are required fields.
-  //         </p>
-  //       </Modal.Body>
-  //       <Modal.Footer>
-  //         <Button onClick={hideModal}>Close</Button>
-  //       </Modal.Footer>
-  //     </Modal>
-
-  //   </div>
-  // );
 };
 
 export default ClientJobCard;

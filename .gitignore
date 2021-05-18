@@ -1,4 +1,5 @@
 # Build and Release Folders
+.vscode/
 node_modules/
 bin-debug/
 bin-release/

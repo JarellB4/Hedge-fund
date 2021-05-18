@@ -32,7 +32,8 @@
 //To Be deleted later:
 
 import React, { Component } from "react";
-import FileUploadService from "../services/file-upload.service";
+import "./style.css"
+import FileUploadService from "../../../../utils/fileupload";
 
 export default class UploadImages extends Component {
   constructor(props) {

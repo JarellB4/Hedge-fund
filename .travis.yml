@@ -1,13 +1,16 @@
 language: node_js
 node_js:
-  - "stable"
-cache:
-  directories:
-  - node_modules
-script:
-  - npm run start
-
+  - "10"
+sudo: true
+ 
+branches:
+  only:
+  - master
+ 
 deploy:
-   provider: heroku
-  api_key:
-    secure: "35cc395d-8550-4de7-97aa-cf7a762d6bd3"
+  # deploy app as front end website
+  - provider: heroku
+    skip_cleanup: true
+    api-key:
+      secure: 35cc395d-8550-4de7-97aa-cf7a762d6bd3
+    app: hedge-fund

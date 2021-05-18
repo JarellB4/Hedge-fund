@@ -32,6 +32,7 @@ const ClientMain = (props) => {
                   <ClientJobList jobs={ContractorJobsState.contractorJobs} />
                 : null} */}
                   {/* <ClientJobList jobs={ClientState.client.jobs} /> */}
+                  <ClientJobList />
             </Col>
             <Col size="md-6" className="mr-5">
               <h1 className="text-uppercase mb-0 mr-5" >Job Details</h1>

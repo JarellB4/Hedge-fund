@@ -50,7 +50,7 @@ module.exports = {
     job.delete(job.quotes);
     job.dateUpdated = Date.now();
     db.Job
-      .findOneAndUpdate({ client: req.params.id }, job, {new: true})
+      .findOneAndUpdate({ _id: job._id }, job, {new: true})
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },

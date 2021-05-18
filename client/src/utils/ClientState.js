@@ -1,5 +1,5 @@
 import React, { createContext, useReducer, useContext } from "react";
-import { CURRENT_CLIENT } from "./actions";
+import { CURRENT_CLIENT, CLIENT_JOB_SELECTED } from "./actions";
 
 const initialState = {
   client: {
@@ -205,7 +205,7 @@ const initialState = {
     "state": "MI",
     "zip": "48165"
 },
-  loading: false
+  selectedJob: {}
 }
 
 const ClientContext = createContext(initialState);
@@ -213,13 +213,19 @@ const { Provider } = ClientContext;
 
 const reducer = (state, action) => {
   switch (action.type) {
-  case CURRENT_CLIENT:
-    console.log("action.client", action.client)
-    return {
-      client: action.client,
-      loading: false
-    };
-    default:
+    case CURRENT_CLIENT:
+      console.log("action.client", action.client)
+      return {
+        client: action.client,
+      };
+
+      case CLIENT_JOB_SELECTED:
+        console.log("action.client", action.job)
+        return {
+          ...state,
+          selectedJob: action.job
+        };
+          default:
     return state;
   }
 };

@@ -322,7 +322,7 @@ function jobSeed(clients, contractors) {
     {
       client: mongoose.Types.ObjectId(clients[4]),
       category: "Roofing",
-      title: "I New A Roof",
+      title: "I Need A New Roof",
       description: "I have a 2200 sqft ranch with a hip roof. Looking for quotes.",
       images:[
         {image: "https://hedgefundphotos.s3.us-east-2.amazonaws.com/hero-roof-repairs.jpg"},

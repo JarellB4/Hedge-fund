@@ -25,39 +25,75 @@ const SignIn = (props) => {
   const [contractorJobsState, contractorJobsDispatch] =
     useContractorJobsContext([]);
 
-  const emailRef = useRef();
-  let history = useHistory();
+    const emailRef = useRef();
+    const passwordRef = useRef();
+    let history = useHistory();
 
   function handleBtnClick() {
-    API.getClientByEmail(emailRef.current.value)
-      .then((res) => {
-        clientDispatch({
-          type: CURRENT_CLIENT,
-          client: res.data,
-        });
-      })
-      .catch((err) => console.log(err));
+    // API.getClientByEmail(emailRef.current.value)
+    //   .then((res) => {
+    //     clientDispatch({
+    //       type: CURRENT_CLIENT,
+    //       client: res.data,
+    //     });
+    //   })
+    //   .catch((err) => console.log(err));
 
-    //-----add validation of the forms
-    history.push("./ClientMain");
-  }
+    API.clientLogin(emailRef.current.value, passwordRef.current.value)
+    .then((res) => {
+      clientDispatch({
+        type: CURRENT_CLIENT,
+        client: res.data,
+      });
+      // API.getContractorJobs(res.data._id).then((result) => {
+      //   contractorJobsDispatch({
+      //     type: CONTRACTOR_JOBS,
+      //     contractorJobs: result.data,
+      //   });
+      // });
+      // contractorDispatch({
+      //   type: CURRENT_CONTRACTOR,
+      //   contractor: res.data,
+      // });
+    })
+    .catch((err) => console.log(err));
+
+
+  //-----add validation of the forms
+  history.push("./ClientMain");
+}
   function handleContractorBtnClick() {
-    API.getContractorByEmail(emailRef.current.value)
-      .then((res) => {
-        API.getContractorJobs(res.data._id).then((result) => {
-          contractorJobsDispatch({
-            type: CONTRACTOR_JOBS,
-            contractorJobs: result.data,
-          });
-        });
-        contractorDispatch({
-          type: CURRENT_CONTRACTOR,
-          contractor: res.data,
-        });
-      })
-      .catch((err) => console.log(err));
+    // API.getContractorByEmail(emailRef.current.value)
+    //   .then((res) => {
+    //     API.getContractorJobs(res.data._id).then((result) => {
+    //       contractorJobsDispatch({
+    //         type: CONTRACTOR_JOBS,
+    //         contractorJobs: result.data,
+    //       });
+    //     });
+    //     contractorDispatch({
+    //       type: CURRENT_CONTRACTOR,
+    //       contractor: res.data,
+    //     });
+    //   })
+    //   .catch((err) => console.log(err));
 
-    //-----add validation of the form
+    API.contractorLogin(emailRef.current.value, passwordRef.current.value)
+    .then((res) => {
+      API.getContractorJobs(res.data._id).then((result) => {
+        contractorJobsDispatch({
+          type: CONTRACTOR_JOBS,
+          contractorJobs: result.data,
+        });
+      });
+      contractorDispatch({
+        type: CURRENT_CONTRACTOR,
+        contractor: res.data,
+      });
+    })
+    .catch((err) => console.log(err));
+    
+      //-----add validation of the form
     history.push("./ContractorQuotes");
   }
 
@@ -100,29 +136,6 @@ const SignIn = (props) => {
         </Typography>
         <form className={classes.form} noValidate>
           <Grid container spacing={2}>
-            {/* <Grid item xs={12} sm={6}>
-              <TextField
-                autoComplete="fname"
-                name="firstName"
-                variant="outlined"
-                required
-                fullWidth
-                id="firstName"
-                label="First Name"
-                autoFocus
-              />
-            </Grid>
-            <Grid item xs={12} sm={6}>
-              <TextField
-                variant="outlined"
-                required
-                fullWidth
-                id="lastName"
-                label="Last Name"
-                name="lastName"
-                autoComplete="lname"
-              />
-            </Grid> */}
             <Grid item xs={12}>
               <TextField
                 variant="outlined"
@@ -140,6 +153,7 @@ const SignIn = (props) => {
                 variant="outlined"
                 required
                 fullWidth
+                inputRef={passwordRef}
                 name="password"
                 label="Password"
                 type="password"
@@ -198,97 +212,7 @@ const SignIn = (props) => {
               </Grid>
             </Grid>
 
-            {/* <Grid item xs={12}>
-              <TextField
-                variant="outlined"
-                required
-                fullWidth
-                id="street address "
-                label="Street address "
-                name="Street address  "
-                autoComplete="street address"
-              />
-            </Grid>
-
-            <Grid item xs={12}>
-              <TextField
-                variant="outlined"
-                required
-                fullWidth
-                id="street address 2"
-                label="Street address 2"
-                name="Street address 2 "
-                autoComplete="street address"
-              />
-            </Grid>
-            <Grid item xs={3}>
-              <TextField
-                variant="outlined"
-                required
-                fullWidth
-                id="city"
-                label="City"
-                name="City "
-                autoComplete="City"
-               />
-            </Grid>
-            <Grid item xs={3}>
-              <TextField
-                variant="outlined"
-                required
-                fullWidth
-                id="state"
-                label="State"
-                name="State"
-                autoComplete="State"
-               />
-            </Grid> 
-            <Grid item xs={3}>
-              <TextField
-                variant="outlined"
-                required
-                fullWidth
-                id="zip"
-                label="Zip"
-                name="Zip"
-                autoComplete="Zip"
-               />
-            </Grid>
-             */}
           </Grid>
-          {/* <Button
-           onClick={() => {history.push('./Dashboard')}}
-            type="submit"
-            fullWidth
-            variant="contained"
-            color="primary"
-            className={classes.submit}
-          > 
-            Login  
-           
-          </Button>  */}
-          {/* <Button
-           onClick={() => {history.push('./ContractorSignup')}}
-            type="submit"
-            fullWidth
-            variant="contained"
-            color="primary"
-            className={classes.submit}
-          > 
-            Contractor Sign Up    
-           
-          </Button>
-          <Grid container justify="flex-end">
-            <Grid item>
-              <Link href="." variant="body2">
-               Customer Sign in
-                </Link>
-              <br />  
-                <Link href="./ContractorDashboard" variant="body2">
-                Contractor Sign in
-                </Link>
-            </Grid>
-          </Grid> */}
         </form>
       </div>
       <Box mt={5}>

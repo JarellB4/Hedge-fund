@@ -1,13 +1,43 @@
 const db = require("../models");
+const passport = require("../config/passport");
 
 module.exports = {
 
-    contractorName: function () {
-        db.Contractor.post("/api/login", passport.authenticate("local"), (req, res) => {
-        res.json({ contractorName: req.user.CompanyName });
-        })
-      },
+  login: function(req, res) {
+    if(!req.body.email){
+      res.json({success: false, message: "Email was not provided"})
+    } else {
+      if(!req.body.password){
+        res.json({success: false, message: "Password was not provided"})
+      } else {
+        passport.authenticate('contractor-local', function (err, contractor, info) { 
+           if(err){
+             res.json({success: false, message: err})
+           } else {
+            if (!contractor) {
+              res.json({success: false, message: 'Email or Password is incorrect'})
+            } else {
+              req.login(contractor, function(err){
+                if(err){
+                  res.json({success: false, message: err})
+                } else {
+                  res.json(contractor);
+                }
+              })
+            }
+           }
+        })(req, res);
+      }
+    }
+  },
 
+  logout: function(req, res) {
+
+  },
+
+  signup: function(req, res) {
+  
+  },
 
   findAll: function(req, res) {
     db.Contractor

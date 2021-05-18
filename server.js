@@ -1,23 +1,32 @@
 const express = require("express");
+const session  = require("express-session");
 const aws = require("aws-sdk");
 const uuid = require('uuid');
+const passport = require("./config/passport");
+const mongoose = require("mongoose");
+const routes = require("./routes");
+
 const aws_access_key_id = process.env.aws_access_key_id;
 const aws_secret_access_key = process.env.aws_secret_access_key;
-
 const S3_BUCKET = "hedgefundphotos"
+const PORT = process.env.PORT || 3001;
 
 aws.config.region = "us-east-2"
 
-
-
-const mongoose = require("mongoose");
-const routes = require("./routes");
 const app = express();
-const PORT = process.env.PORT || 3001;
+
+// We need to use sessions to keep track of our user's login status
+app.use(
+  session({ secret: "keyboard cat", resave: true, saveUninitialized: false, cookie: { _expires: (300 * 60 * 1000) } })
+);
 
 // Define middleware here
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+app.use(passport.initialize());
+app.use(passport.session());
+
+
 // Serve up static assets (usually on heroku)
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));

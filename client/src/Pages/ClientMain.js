@@ -4,7 +4,7 @@ import React from "react";
 import { Col, Row, Container } from "../components/Grid";
 import { useClientContext } from "../utils/ClientState";
 import ClientJobCard from "../components/ClientJobCard";
-import ClientJobList from "../components/ClientJobList";
+import ClientJobList from "../components/ClientJobList copy";
 
 const ClientMain = (props) => {
   const [ClientState, clientdispatch] = useClientContext();
@@ -32,7 +32,9 @@ const ClientMain = (props) => {
                   <ClientJobList jobs={ContractorJobsState.contractorJobs} />
                 : null} */}
                   {/* <ClientJobList jobs={ClientState.client.jobs} /> */}
-                  <ClientJobList />
+                  {console.log("ClientState.client", ClientState.client)}
+                    <ClientJobList />
+  
             </Col>
             <Col size="md-6" className="mr-5">
               <h1 className="text-uppercase mb-0 mr-5" >Job Details</h1>

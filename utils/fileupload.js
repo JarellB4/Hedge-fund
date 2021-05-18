@@ -1,7 +1,7 @@
 const express = require("express");
 const fileUpload = require("express-fileupload");
 const app = express();
-var AWS = require("aws-sdk");
+const AWS = require("aws-sdk");
 
 // default options
 app.use(fileUpload());

@@ -25,16 +25,16 @@ const ContractorQuotes = (props) => {
               <div className="divider-custom-line"></div>
             </div>
           </div>
-          <Row >
+          <Row>
             <Col size="md-6" >
-              <h1 className="text-uppercase mb-0 ml-5">My Jobs</h1>
+              <h1 className="text-uppercase mb-0">My Jobs</h1>
               {
                 ContractorJobsState.contractorJobs.length > 0 ? 
                   <ContractorQuoteList jobs={ContractorJobsState.contractorJobs} />
                 : null}
             </Col>
-            <Col size="md-6" className="">
-              <h1 className="text-uppercase mb-0 mr-5" >Job Detail</h1>
+            <Col size="md-6" className="mr-5">
+              <h1 className="text-uppercase mb-0 mr-5" >Job Details</h1>
               {
                 ContractorJobsState.selectedJob._id ? 
                     <ContractorQuoteCard job={ContractorJobsState.selectedJob} />

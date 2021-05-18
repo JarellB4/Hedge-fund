@@ -12,7 +12,7 @@ import "./style.css";
 
 //contractorDashboard page, shows the jobs the contractor has quotes on
 
-const ContractorQuoteCard = (props) => {
+const ClientQuoteCard = (props) => {
 
   function usePrevious(value) {
     const ref = useRef();
@@ -203,4 +203,4 @@ const ContractorQuoteCard = (props) => {
   );
 };
 
-export default ContractorQuoteCard;
+export default ClientQuoteCard;

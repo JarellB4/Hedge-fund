@@ -4,7 +4,7 @@ import { CONTRACTOR_JOB_SELECTED } from "../../utils/actions";
 import { useContractorJobsContext } from "../../utils/ContractorJobsState";
 //contractorDashboard page, shows the jobs the contractor has quotes on
 
-const ContractorQuoteList = (props) => {
+const ClientJobList = (props) => {
   const [ selected, setSelected ] = useState({});
   const [contractorJobsState, contractorJobsDispatch] = useContractorJobsContext([]);
 
@@ -45,4 +45,4 @@ const ContractorQuoteList = (props) => {
   );
 };
 
-export default ContractorQuoteList;
+export default ClientJobList;

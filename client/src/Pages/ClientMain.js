@@ -3,12 +3,11 @@ import { useContractorJobsContext } from "../utils/ContractorJobsState";
 import React from "react";
 import { Col, Row, Container } from "../components/Grid";
 import { useClientContext } from "../utils/ClientState";
-import CustomerJobCard from "../components/CustomerJobCard";
+import ClientJobCard from "../components/ClientJobCard";
+import ClientJobList from "../components/ClientJobList";
 
 const ClientMain = (props) => {
-  const [clientState, dispatch] = useClientContext();
-  const [ContractorJobsState, contractorJobsDispatch] =
-  useContractorJobsContext();
+  const [ClientState, clientdispatch] = useClientContext();
 
   return (
     <Container fluid>
@@ -28,17 +27,21 @@ const ClientMain = (props) => {
           <Row>
             <Col size="md-6" >
               <h1 className="text-uppercase mb-0">My Jobs</h1>
-              {
+              {/* {
                 ContractorJobsState.contractorJobs.length > 0 ? 
-                  <ContractorQuoteList jobs={ContractorJobsState.contractorJobs} />
-                : null}
+                  <ClientJobList jobs={ContractorJobsState.contractorJobs} />
+                : null} */}
+                  {/* <ClientJobList jobs={ClientState.client.jobs} /> */}
             </Col>
             <Col size="md-6" className="mr-5">
               <h1 className="text-uppercase mb-0 mr-5" >Job Details</h1>
-              {
+              {/* {
                 ContractorJobsState.selectedJob._id ? 
-                    <CustomerJobCard job={ContractorJobsState.selectedJob} />
-                : null}
+                    <ClientJobCard job={ContractorJobsState.selectedJob} />
+                : null} */}
+                    {console.log("ClientMain ", ClientState)}
+                    <ClientJobCard />
+
             </Col>
           </Row>
         </header>

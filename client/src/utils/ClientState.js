@@ -2,6 +2,7 @@ import React, { createContext, useReducer, useContext } from "react";
 import {
   CURRENT_CLIENT,
   CLIENT_JOB_SELECTED,
+  CLIENT_JOB_CREATED,
   CLIENT_JOB_UPDATED,
 } from "./actions";
 
@@ -231,11 +232,21 @@ const reducer = (state, action) => {
         selectedJob: action.job,
       };
 
+    case CLIENT_JOB_CREATED:
+      console.log("action.client", action.job);
+      state.client.jobs.push(action.job);
+      return {
+        ...state,
+        selectedJob: action.job,
+      };
+
     case CLIENT_JOB_UPDATED:
       console.log("CLIENT_JOB_UPDATED ", action.job);
-          
+
       // Find the job in the contractorJobs array.
-      let jobIndex = state.client.jobs.findIndex(job => job._id === action.job._id);
+      let jobIndex = state.client.jobs.findIndex(
+        (job) => job._id === action.job._id
+      );
 
       // Make final new array of objects by combining updated object.
       const updatedJobs = [
@@ -246,13 +257,13 @@ const reducer = (state, action) => {
 
       // Overwrite the original contractorJobs array.
       state.client.jobs = updatedJobs;
-              
+
       return {
         ...state,
-        selectedJob: action.job
+        selectedJob: action.job,
       };
 
-default:
+    default:
       return state;
   }
 };

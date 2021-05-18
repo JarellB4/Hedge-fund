@@ -4,7 +4,7 @@ import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import { useClientContext } from "../../utils/ClientState";
 import ContractorImageCarousel from "../ContractorImageCarousel";
-import { CLIENT_JOB_SELECTED, CLIENT_JOB_UPDATED } from "../../utils/actions";
+import { CLIENT_JOB_UPDATED } from "../../utils/actions";
 import API from "../../utils/API";
 import "./style.css";
 
@@ -148,19 +148,21 @@ const ClientJobCard = (props) => {
               </div>
             </div>
             <ul className="list-group">
-              {/* {console.log("ClientState.client.jobs.quotes ", ClientState.client.jobs[0].quotes)}
-              {ClientState.client.jobs.quotes.map((quote, index) => (
-                <li className="list-group-item" key={quote.contractor}>{quote.contractor}</li> */}
               {console.log(
                 "ClientState.client.jobs.quotes ",
                 ClientState.selectedJob.quotes
               )}
-              {ClientState.selectedJob.quotes.map((quote, index) => (
+
+              {
+               ClientState.selectedJob.quotes ?
+              ClientState.selectedJob.quotes.map((quote, index) => (
                 <li className="list-group-item" key={quote.contractor}>
                   <h4>Price: $ {quote.price}</h4>
                   <p>{quote.description}</p>
                 </li>
-              ))}
+              ))
+              : null
+              }
             </ul>
           </div>
         ) : null}

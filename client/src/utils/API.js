@@ -37,6 +37,10 @@ export default {
         return axios.put(`/api/jobs/client/${clientId}`, job);
     },
 
+    createClientJob: function(clientId ,job) {
+        return axios.post(`/api/jobs/client/${clientId}`, job);
+    },
+
     getJobs: function(id) {
         return axios.get("/api/job/" + id);
     },

@@ -38,7 +38,7 @@ const ClientJobList = (props) => {
                     </h4>
                   </div>
                   <div>
-                    <h4>Number of quotes: {job.quotes.length}</h4>
+                    <h4>Number of quotes: {job.quotes ? job.quotes.length : 0}</h4>
                   </div>
                 </button>
               ))

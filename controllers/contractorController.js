@@ -21,13 +21,6 @@ module.exports = {
                 if(err){
                   res.json({success: false, message: err})
                 } else {
-                  // const token =  jwt.sign({
-                  //   userId : user._id, 
-                  //   username:user.username}, 
-                  //   secretkey, 
-                  //   {expiresIn: '24h'}
-                  // );
-                  // res.json({success:true, message:"Authentication was successful", token: token });
                   res.json(contractor);
                 }
               })

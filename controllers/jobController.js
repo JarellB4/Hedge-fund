@@ -65,8 +65,12 @@ module.exports = {
     const job = req.body;
     job.client = mongoose.Types.ObjectId(req.params.id);
     db.Job
-      .create(req.body)
-      .then(dbModel => res.json(dbModel))
+      .create(job)
+      .then(dbJobModel => {
+        db.Client.findOneAndUpdate({ _id: req.params.id }, { $push: { "jobs": mongoose.Types.ObjectId(dbJobModel._id) }} , {new: true} )
+        .then(dbModel => res.json(dbJobModel))
+        .catch(err => res.status(422).json(err));
+        })
       .catch(err => res.status(422).json(err));
   }
 };

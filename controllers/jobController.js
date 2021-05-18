@@ -47,10 +47,10 @@ module.exports = {
   },
   clientUpdateJob: function(req, res) { //
     const job = req.body;
-    job.delete(job.quotes);
+    delete job.quotes;
     job.dateUpdated = Date.now();
     db.Job
-      .findOneAndUpdate({ _id: job._id }, job, {new: true})
+      .findOneAndUpdate({ _id: job._id }, { $set: job }, {new: true})
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },

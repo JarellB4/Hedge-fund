@@ -5,14 +5,48 @@ const passport = require("../config/passport");
 module.exports = {
 
 
-    // when user logs on we send you back the client name
-  clientName: function () {
-    db.Client.post("/api/login", passport.authenticate("local"), (req, res) => {
-    res.json({ clientName: req.user.firstName });
-    })
+  login: function(req, res) {
+    if(!req.body.email){
+      res.json({success: false, message: "Email was not provided"})
+    } else {
+      if(!req.body.password){
+        res.json({success: false, message: "Password was not provided"})
+      } else {
+        passport.authenticate('client-local', function (err, client, info) { 
+           if(err){
+             res.json({success: false, message: err})
+           } else {
+            if (!client) {
+              res.json({success: false, message: 'Email or Password is incorrect'})
+            } else {
+              req.login(client, function(err){
+                if(err){
+                  res.json({success: false, message: err})
+                } else {
+                  // const token =  jwt.sign({
+                  //   userId : user._id, 
+                  //   username:user.username}, 
+                  //   secretkey, 
+                  //   {expiresIn: '24h'}
+                  // );
+                  // res.json({success:true, message:"Authentication was successful", token: token });
+                  res.json(client);
+                }
+              })
+            }
+           }
+        })(req, res);
+      }
+    }
   },
-    
 
+  logout: function(req, res) {
+
+  },
+
+  signup: function(req, res) {
+  
+  },
   findWithinRadius: function(req,res){
     let radius = parseInt(req.params.radius);
     let lon = parseFloat(req.params.lon);

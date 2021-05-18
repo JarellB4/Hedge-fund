@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faPen, faSave } from '@fortawesome/free-solid-svg-icons'
 import Modal from 'react-bootstrap/Modal'
 import Button from 'react-bootstrap/Button'
 import { useContractorContext } from "../../utils/ContractorState";
@@ -158,6 +157,7 @@ const ContractorQuoteCard = (props) => {
                     <h3>Price: ${parseFloat(quote.price).toFixed(2)}</h3>
                   )}
                 </div>
+                
                 <div className="flex-grow-1">
                 {isEditing && contractorState.contractor._id === quote.contractor ? (
                     <textarea 

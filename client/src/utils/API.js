@@ -10,6 +10,14 @@ export default {
     getClient: function(id) {
         return axios.get("/api/clients/" + id);
     },
+    //get user with specific email
+     clientLogin: function(email, password) {
+        return axios.post("/api/clients/login", { email: email, password: password });
+    },
+    //get user with specific email
+    contractorLogin: function(email, password) {
+        return axios.post("/api/contractors/login", { email: email, password: password });
+    },
      //get user with specific email
      getClientByEmail: function(email) {
         return axios.get("/api/clients/signin/" + email);
@@ -25,8 +33,8 @@ export default {
         return axios.get("/api/job");
     },
 
-    saveJob: function(jobData) {
-        return axios.get("/api/job/", jobData);
+    updateClientJob: function(clientId ,job) {
+        return axios.put(`/api/jobs/client/${clientId}`, job);
     },
 
     getJobs: function(id) {

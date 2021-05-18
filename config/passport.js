@@ -1,39 +1,62 @@
 const passport = require("passport");
 const LocalStrategy = require("passport-local").Strategy;
-
+const bcrypt = require("bcryptjs");
 const db = require("../models");
 
 // Telling passport we want to use a Local Strategy. In other words, we want login with a username/email and password
-passport.use(
-  new LocalStrategy(
-    // Our user will sign in using an email, rather than a "username"
-    {
-      usernameField: "email"
-    },
+passport.use('client-local',
+  new LocalStrategy({ usernameField: 'email', passwordField: 'password' },
     (email, password, done) => {
-      // When a user tries to sign in this code runs
-      db.User.findOne({
-        where: {
+      // Match user
+      db.Client.findOne({
           email: email
-        }
-      }).then(dbUser => {
-        // If there's no user with the given email
-        if (!dbUser) {
-          return done(null, false, {
-            message: "Incorrect email."
+      })
+      .populate({ 
+        path: "jobs",
+        populate: {path: "quotes.contractor"}
+      })
+      .then(client => {
+          if (!client) {
+              return done(null, false, { message: 'The email not registered' });
+          }
+
+          // Match password
+          bcrypt.compare(password, client.password, (err, isMatch) => {
+              if (err) throw err;
+              if (isMatch) {
+                  return done(null, client);
+              } else {
+                  return done(null, false, { message: 'Password incorrect' });
+              }
           });
-        }
-        // If there is a user with the given email, but the password the user gives us is incorrect
-        else if (!dbUser.validPassword(password)) {
-          return done(null, false, {
-            message: "Incorrect password."
+      })
+      .catch(err => console.log(err));
+  })
+);
+
+passport.use('contractor-local',
+  new LocalStrategy({ usernameField: 'email', passwordField: 'password' },
+    (email, password, done) => {
+      // Match user
+      db.Contractor.findOne({
+        email: email
+      }).then(contractor => {
+          if (!contractor) {
+              return done(null, false, { message: 'The email not registered' });
+          }
+
+          // Match password
+          bcrypt.compare(password, contractor.password, (err, isMatch) => {
+              if (err) throw err;
+              if (isMatch) {
+                  return done(null, contractor);
+              } else {
+                  return done(null, false, { message: 'Password incorrect' });
+              }
           });
-        }
-        // If none of the above, return the user
-        return done(null, dbUser);
-      });
-    }
-  )
+      })
+      .catch(err => console.log(err));
+  })
 );
 
 // In order to help keep authentication state across HTTP requests,

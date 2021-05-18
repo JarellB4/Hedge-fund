@@ -4,7 +4,7 @@ import React from "react";
 import { Col, Row, Container } from "../components/Grid";
 import { useClientContext } from "../utils/ClientState";
 import ClientJobCard from "../components/ClientJobCard";
-import ClientJobList from "../components/ClientJobList copy";
+import ClientJobList from "../components/ClientJobList";
 
 const ClientMain = (props) => {
   const [ClientState, clientdispatch] = useClientContext();

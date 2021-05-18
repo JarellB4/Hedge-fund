@@ -3,7 +3,8 @@ import { useContractorJobsContext } from "../utils/ContractorJobsState";
 import React from "react";
 import { Col, Row, Container } from "../components/Grid";
 import { useClientContext } from "../utils/ClientState";
-import CustomerJobCard from "../components/CustomerJobCard";
+import ClientJobCard from "../components/ClientJobCard";
+import ContractorQuoteList from "../components/ContractorQuoteList";
 
 const ClientMain = (props) => {
   const [clientState, dispatch] = useClientContext();
@@ -37,7 +38,7 @@ const ClientMain = (props) => {
               <h1 className="text-uppercase mb-0 mr-5" >Job Details</h1>
               {
                 ContractorJobsState.selectedJob._id ? 
-                    <CustomerJobCard job={ContractorJobsState.selectedJob} />
+                    <ClientJobCard job={ContractorJobsState.selectedJob} />
                 : null}
             </Col>
           </Row>

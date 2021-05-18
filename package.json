@@ -3,6 +3,11 @@
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
+  "engines": {
+    "node":"15.6.0",
+    "npm":"7.11.2",
+    "yarn":"1.22.10"
+  },
   "scripts": {
     "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
     "start:prod": "node server.js",

@@ -1,5 +1,7 @@
 const express = require("express");
 const session  = require("express-session");
+//fix memory leak
+const MemoryStore = require('memorystore')(session);
 const aws = require("aws-sdk");
 const uuid = require('uuid');
 const passport = require("./config/passport");
@@ -17,7 +19,13 @@ const app = express();
 
 // We need to use sessions to keep track of our user's login status
 app.use(
-  session({ secret: "keyboard cat", resave: true, saveUninitialized: false, cookie: { _expires: (300 * 60 * 1000) } })
+  session({ 
+    cookie: { maxAge: 86400000 },
+    store: new MemoryStore ({ checkPeriod: 86400000 }),
+    resave: true, 
+    saveUninitialized: false,
+    secret: "keyboard cat"
+  })
 );
 
 // Define middleware here

@@ -1,7 +1,7 @@
 {
   "name": "hedgefund",
   "version": "1.0.0",
-  "homepage": "https://hedge-fund-01.herokuapp.com",
+  "homepage": "https://hedge-fund-01.herokuapp.com/",
   "description": "",
   "main": "server.js",
   "engines": {
@@ -16,7 +16,7 @@
     "seed": "node scripts/seed.js",
     "install": "cd client && npm install",
     "buildClient": "cd client/ && npm install && npm run build",
-    "heroku-postbuild": "cd client && yarn && yarn run build",
+    "heroku-postbuild": "cd client && npm && npm run build",
     "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev"
   },
   "author": "",

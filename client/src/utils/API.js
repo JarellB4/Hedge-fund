@@ -68,4 +68,7 @@ export default {
     updateContractorJobQuote: function(id, jobId, quote) {
         return axios.put(`/api/jobs/contractor/${id}/${jobId}`, quote);
     },
+    createContractorJobQuote: function(id, jobId, quote) {
+        return axios.post(`/api/jobs/contractor/${id}/${jobId}`, quote);
+    }
 }

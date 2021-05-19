@@ -4,7 +4,7 @@ import { useClientContext } from "../utils/ClientState";
 import ClientJobCard from "../components/ClientJobCard";
 import ClientJobList from "../components/ClientJobList";
 import { CLIENT_JOB_CREATED } from "../utils/actions";
-
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import API from "../utils/API";
@@ -51,14 +51,24 @@ const ClientMain = (props) => {
           </div>
           <Row>
             <Col size="md-6">
-              <h1 className="text-uppercase mb-0">My Jobs</h1>
+              <h1 className="text-uppercase mb-0 pl-5">My Jobs
               <button
+                    type="button"
+                    title="Post a new job"
+                    className="btn btn-small btn-light float-right mb-2"
+                    aria-label="Post a new job"
+                    onClick={() => showModal()}
+                  >
+                    <FontAwesomeIcon icon={["fas", "plus"]}  size="2x"/>
+                  </button>
+                  </h1>
+              {/* <button
                 type="button"
                 class="btn btn-light mt-2"
                 onClick={() => showModal()}
               >
                 Post a new job
-              </button>
+              </button> */}
               {console.log("ClientState.client", ClientState.client)}
               <ClientJobList />
             </Col>

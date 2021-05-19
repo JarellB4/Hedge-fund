@@ -1,10 +1,17 @@
 import { BorderAll } from "@material-ui/icons";
 import React, { createContext, useReducer, useContext } from "react";
-import { CONTRACTOR_JOBS, CONTRACTOR_JOB_SELECTED, CONTRACTOR_JOB_QUOTE_UPDATE, CONTRACTOR_MAP_CLIENT_SELECTED } from "./actions";
+import {
+  CONTRACTOR_JOBS,
+  CONTRACTOR_JOB_SELECTED,
+  CONTRACTOR_JOB_QUOTE_UPDATE,
+  CONTRACTOR_MAP_CLIENT_SELECTED,
+  CONTRACTOR_MAP_JOB_QUOTE_UPDATE,
+  CONTRACTOR_MAP_JOB_SELECTED,
+} from "./actions";
 
 const initialState = {
   contractorJobs: [
-      // {
+    // {
     //     "dateCreated": "2021-05-14T21:11:42.817Z",
     //     "dateUpdated": "2021-05-14T21:11:42.817Z",
     //     "_id": "609ee78e4faeba46749cad57",
@@ -172,62 +179,125 @@ const initialState = {
     //       },
     //     ],
     //   },
-    // 
+    //
   ],
-  selectedJob:{},
-  mapSelectedClient:{}
-}
+  selectedJob: {},
+  mapSelectedClient: {},
+  mapSelectedJob: {},
+};
 
 const ContractorJobsContext = createContext(initialState);
 const { Provider } = ContractorJobsContext;
 
 const reducer = (state, action) => {
   switch (action.type) {
-      case CONTRACTOR_JOBS:
+    case CONTRACTOR_JOBS:
       console.log("CONTRACTOR_JOBS ", action.contractorJobs);
       return {
         ...state,
         contractorJobs: action.contractorJobs,
         // selectedJob: action.contractorJobs && action.contractorJobs.length > 0 ? action.contractorJobs[0] : {},
       };
-      
-      case CONTRACTOR_MAP_CLIENT_SELECTED:
-        console.log("CONTRACTOR_CLIENT_SELECTED ", action.client);
-        return {
-          ...state,
-          mapSelectedClient: action.client
-        };
 
-      case CONTRACTOR_JOB_SELECTED:
+    case CONTRACTOR_MAP_CLIENT_SELECTED:
+      console.log("CONTRACTOR_CLIENT_SELECTED ", action.client);
+      return {
+        ...state,
+        mapSelectedClient: action.client,
+      };
 
-        console.log("CONTRACTOR_JOB_SELECTED ", action.job);
-        return {
-          ...state,
-          selectedJob: action.job
-        };
-  
-        case CONTRACTOR_JOB_QUOTE_UPDATE:
-          console.log("CONTRACTOR_JOB_QUOTE_UPDATE ", action.job);
-          
-          // Find the job in the contractorJobs array.
-          let jobIndex = state.contractorJobs.findIndex(job => job._id === action.job._id);
-  
-          // Make final new array of objects by combining updated object.
-          const updatedJobs = [
-            ...state.contractorJobs.slice(0, jobIndex),
-            action.job,
-            ...state.contractorJobs.slice(jobIndex + 1),
-          ];
-  
-          // Overwrite the original contractorJobs array.
-          state.contractorJobs = updatedJobs;
-                  
-          return {
-            ...state,
-            selectedJob: action.job
-          };
-  
-          default:
+    case CONTRACTOR_JOB_SELECTED:
+      console.log("CONTRACTOR_JOB_SELECTED ", action.job);
+      return {
+        ...state,
+        selectedJob: action.job,
+      };
+
+    case CONTRACTOR_MAP_JOB_SELECTED:
+      console.log("CONTRACTOR_MAP_JOB_SELECTED ", action.job);
+      return {
+        ...state,
+        mapSelectedJob: action.job,
+      };
+
+    case CONTRACTOR_JOB_QUOTE_UPDATE:
+      console.log("CONTRACTOR_JOB_QUOTE_UPDATE ", action.job);
+
+      // Find the job in the contractorJobs array.
+      let jobIndex = state.contractorJobs.findIndex(
+        (job) => job._id === action.job._id
+      );
+
+      // Make final new array of objects by combining updated object.
+      const updatedJobs = [
+        ...state.contractorJobs.slice(0, jobIndex),
+        action.job,
+        ...state.contractorJobs.slice(jobIndex + 1),
+      ];
+
+      // Overwrite the original contractorJobs array.
+      state.contractorJobs = updatedJobs;
+
+      // Find the job in the map selected client jobs array.
+      let clientJobIndex = state.mapSelectedClient.jobs.findIndex(
+        (job) => job._id === action.job._id
+      );
+
+      // Make final new array of objects by combining updated object.
+      const clientUpdatedJobs = [
+        ...state.mapSelectedClient.jobs.slice(0, clientJobIndex),
+        action.job,
+        ...state.mapSelectedClient.jobs.slice(clientJobIndex + 1),
+      ];
+
+      // Overwrite the original map selected client jobs array.
+      state.mapSelectedClient.jobs = clientUpdatedJobs;
+
+      return {
+        ...state,
+        selectedJob: action.job,
+      };
+
+    case CONTRACTOR_MAP_JOB_QUOTE_UPDATE:
+      console.log("CONTRACTOR_MAP_JOB_QUOTE_UPDATE ", action.job);
+
+      // Find the job in the contractorJobs array.
+      let mapJobIndex = state.contractorJobs.findIndex(
+        (job) => job._id === action.job._id
+      );
+
+      // Make final new array of objects by combining updated object.
+      const mapUpdatedJobs = [
+        ...state.contractorJobs.slice(0, mapJobIndex),
+        action.job,
+        ...state.contractorJobs.slice(mapJobIndex + 1),
+      ];
+
+      // Overwrite the original map selected client jobs array.
+      state.contractorJobs = mapUpdatedJobs;
+
+
+      // Find the job in the map selected client jobs array.
+      let mapClientJobIndex = state.mapSelectedClient.jobs.findIndex(
+        (job) => job._id === action.job._id
+      );
+
+      // Make final new array of objects by combining updated object.
+      const mapClientUpdatedJobs = [
+        ...state.mapSelectedClient.jobs.slice(0, mapClientJobIndex),
+        action.job,
+        ...state.mapSelectedClient.jobs.slice(mapClientJobIndex + 1),
+      ];
+
+      // Overwrite the original map selected client jobs array.
+      state.mapSelectedClient.jobs = mapClientUpdatedJobs;
+
+      return {
+        ...state,
+        mapSelectedJob: action.job,
+      };
+
+    default:
       return state;
   }
 };

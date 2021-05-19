@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { GoogleMap, LoadScript, Marker } from "@react-google-maps/api";
 import API from "../../utils/API";
 import { useContractorJobsContext } from "../../utils/ContractorJobsState";
-import { CONTRACTOR_MAP_CLIENT_SELECTED } from "../../utils/actions";
+import { CONTRACTOR_MAP_CLIENT_SELECTED, CONTRACTOR_MAP_JOB_SELECTED } from "../../utils/actions";
 
 const MapContainer = (props) => {
   const [currentRadius, setRadius] = useState(20);
@@ -19,7 +19,11 @@ const MapContainer = (props) => {
     contractorJobsDispatch({
       type: CONTRACTOR_MAP_CLIENT_SELECTED,
       client: client
-    })
+    });
+    contractorJobsDispatch({
+      type: CONTRACTOR_MAP_JOB_SELECTED,
+      job: {}
+    });
   };
 
   const onSetRadius = (radiusInMiles) => {

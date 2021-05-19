@@ -2,19 +2,18 @@ import React, { useState } from "react";
 import "./style.css";
 import { useContractorJobsContext } from "../../utils/ContractorJobsState";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import ContractorMapQuoteCard from "../../components/ContractorMapQuoteCard";
+import { CONTRACTOR_MAP_JOB_SELECTED } from "../../utils/actions";
 
 const ContractorJobSearchList = (props) => {
-  const [selectedJob, setSelectedJob] = useState({});
-  const [contractorJobsState, contractorJobsDispatch] =
-    useContractorJobsContext([]);
+
+  const [contractorJobsState, contractorJobsDispatch] = useContractorJobsContext([]);
 
   const onSelectJob = (job) => {
-    setSelectedJob(job);
-    // console.log("Selected job: ", job);
-    // clientdispatch({
-    //   type: CLIENT_JOB_SELECTED,
-    //   job: job,
-    // });
+    contractorJobsDispatch({
+      type: CONTRACTOR_MAP_JOB_SELECTED,
+      job: job,
+    });
   };
 
   return (
@@ -22,8 +21,8 @@ const ContractorJobSearchList = (props) => {
       <div>
         <div className="card pb-0 pr-4 pt-4">
           <div className="list-group">
-            {props.client._id ? (
-              selectedJob._id ? (
+            {contractorJobsState.mapSelectedClient._id ? (
+              contractorJobsState.mapSelectedJob._id ? (
                 <div>
                   <button
                     type="button"
@@ -34,19 +33,21 @@ const ContractorJobSearchList = (props) => {
                   >
                     <FontAwesomeIcon icon={["fas", "chevron-left"]} size="2x" />
                   </button>
+                    <ContractorMapQuoteCard/>
                 </div>
               ) : (
                 <div>
                   <h3 className="pb-3">
-                    {props.client.firstName +
+                    {contractorJobsState.mapSelectedClient.firstName +
                       " " +
-                      props.client.lastName +
+                      contractorJobsState.mapSelectedClient.lastName +
                       ", " +
-                      props.client.city}
+                      contractorJobsState.mapSelectedClient.city}
                   </h3>
+                    <p>Number of Jobs: {contractorJobsState.mapSelectedClient.jobs.length}</p>
                   <ul>
-                    {props.client.jobs
-                      ? props.client.jobs.map((job, index) => (
+                    {contractorJobsState.mapSelectedClient.jobs
+                      ? contractorJobsState.mapSelectedClient.jobs.map((job, index) => (
                           <li className="list-group-item" key={job.id}>
                             <h4 className="pt-1 pb-1">
                               Job:{" "}

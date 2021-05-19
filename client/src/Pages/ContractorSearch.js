@@ -37,7 +37,8 @@ const ContractorSearch = (props) => {
               <h1 className="text-uppercase mb-0">Availabe Jobs</h1>
               {
                 ContractorJobsState.mapSelectedClient._id ? 
-                    <ContractorJobSearchList client={ContractorJobsState.mapSelectedClient} />
+                    // <ContractorJobSearchList client={ContractorJobsState.mapSelectedClient} />
+                    <ContractorJobSearchList />
                 : null}
             </Col>
           </Row>

@@ -70,11 +70,13 @@ const ClientJobCard = (props) => {
 
   const onPhotoSave = () => {
     setIsUpdating(false);
+    initUpload();
+  };
 
-    if (
-      ClientState.selectedJob.title !== "" &&
-      ClientState.selectedJob.description !== ""
-    ) {
+  const onPhotoUpdateJob = (url) => {
+
+    if (url !== "") {
+      ClientState.selectedJob.images.push({image: url});
       API.updateClientJob(ClientState.client._id, ClientState.selectedJob)
         .then((res) => {
           clientDispatch({
@@ -84,11 +86,6 @@ const ClientJobCard = (props) => {
         })
         .catch((err) => console.log(err));
     } else {
-      // const quote = props.job.quotes.find(
-      //   (quote) => quote.contractor === contractorState.contractor_id
-      // );
-      // const quoteClone = { ...quote };
-      // setQuoteData(quoteClone);
       showModal();
     }
   };
@@ -108,6 +105,67 @@ const ClientJobCard = (props) => {
   const updateClientJobDescription = (description) => {
     ClientState.selectedJob.description = description;
   };
+
+  /*
+      Function to carry out the actual PUT request to S3 using the signed request from the app.
+    */
+  const uploadFile = (file, signedRequest, url) => {
+    const xhr = new XMLHttpRequest();
+    xhr.open("PUT", signedRequest);
+    xhr.onreadystatechange = () => {
+      if (xhr.readyState === 4) {
+        if (xhr.status === 200) {
+          document.getElementById("preview").src = url;
+          document.getElementById("avatar-url").value = url;
+
+          // This is where we update the job with the url.
+          onPhotoUpdateJob(url);
+        } else {
+          alert("Could not upload file.");
+        }
+      }
+    };
+    xhr.send(file);
+  }
+
+  /*
+        Function to get the temporary signed request from the app.
+        If request successful, continue to upload the file using this signed
+        request.
+      */
+  const getSignedRequest = (file) => {
+    // const xhr = new XMLHttpRequest();
+    // xhr.open("GET", `/api/jobs/fileSignedRequest/sign-s3?file-name=${file.name}&file-type=${file.type}`);
+    // xhr.onreadystatechange = () => {
+    //   if (xhr.readyState === 4) {
+    //     if (xhr.status === 200) {
+    //       const response = JSON.parse(xhr.responseText);
+    //       uploadFile(file, response.signedRequest, response.url);
+    //     } else {
+    //       alert("Could not get signed URL.");
+    //     }
+    //   }
+    // };
+    // xhr.send();
+    API.getFileUploadSignedRequest(file)
+    .then(res => {
+      uploadFile(file, res.data.signedRequest, res.data.url);
+    })
+    .catch((err) => console.log(err));
+  }
+
+  /*
+       Function called when file input updated. If there is a file selected, then
+       start upload procedure by asking for a signed request from the app.
+      */
+  const initUpload = () => {
+    const files = document.getElementById("file-input").files;
+    const file = files[0];
+    if (file == null) {
+      return alert("No file selected.");
+    }
+    getSignedRequest(file);
+  }
 
   //ADDING SECTION TO UPLOAD TO AMAZON S3
 
@@ -205,14 +263,9 @@ const ClientJobCard = (props) => {
                       type="file"
                       id="file-input"
                     />
-                    <img 
-                      id="preview" 
-                      src="/images/default.png" 
-                      alt="Default" 
-                    />
+                    <img id="preview" src="/images/default.png" alt="Default" />
                   </div>
-                ) : null
-                }
+                ) : null}
               </div>
             </div>
             <ul className="list-group">

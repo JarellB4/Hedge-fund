@@ -70,5 +70,22 @@ export default {
     },
     createContractorJobQuote: function(id, jobId, quote) {
         return axios.post(`/api/jobs/contractor/${id}/${jobId}`, quote);
+    },
+    getFileUploadSignedRequest: function(file) {
+        // const xhr = new XMLHttpRequest();
+        // xhr.open("GET", `/api/jobs/fileSignedRequest/sign-s3?file-name=${file.name}&file-type=${file.type}`);
+        // xhr.onreadystatechange = () => {
+        //   if (xhr.readyState === 4) {
+        //     if (xhr.status === 200) {
+        //       const response = JSON.parse(xhr.responseText);
+        //       uploadFile(file, response.signedRequest, response.url);
+        //     } else {
+        //       alert("Could not get signed URL.");
+        //     }
+        //   }
+        // };
+        // xhr.send();
+
+        return axios.get(`/api/jobs/fileSignedRequest/?fileName=${file.name}&fileType=${file.type}`);
     }
 }

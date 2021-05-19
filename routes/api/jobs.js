@@ -2,8 +2,8 @@ const router = require("express").Router();
 const jobsController = require("../../controllers/jobController");
 
 // Matches with "/api/jobs"
-// router.route("/")
-//   .get(jobsController.findAll)
+router.route("/fileSignedRequest")
+  .get(jobsController.fileSignedRequest)
 
 // Matches with "/api/jobs/client/:id" 
  //pass in client id

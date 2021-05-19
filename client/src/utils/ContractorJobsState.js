@@ -7,6 +7,7 @@ import {
   CONTRACTOR_MAP_CLIENT_SELECTED,
   CONTRACTOR_MAP_JOB_QUOTE_UPDATE,
   CONTRACTOR_MAP_JOB_SELECTED,
+  CONTRACTOR_MAP_JOB_QUOTE_CREATED,
 } from "./actions";
 
 const initialState = {
@@ -276,7 +277,6 @@ const reducer = (state, action) => {
       // Overwrite the original map selected client jobs array.
       state.contractorJobs = mapUpdatedJobs;
 
-
       // Find the job in the map selected client jobs array.
       let mapClientJobIndex = state.mapSelectedClient.jobs.findIndex(
         (job) => job._id === action.job._id
@@ -291,6 +291,48 @@ const reducer = (state, action) => {
 
       // Overwrite the original map selected client jobs array.
       state.mapSelectedClient.jobs = mapClientUpdatedJobs;
+
+      return {
+        ...state,
+        mapSelectedJob: action.job,
+      };
+
+    case CONTRACTOR_MAP_JOB_QUOTE_CREATED:
+      console.log("CONTRACTOR_MAP_JOB_QUOTE_CREATED ", action.job);
+
+      // Find the job in the contractorJobs array.
+      let mapJobQuoteIndex = state.contractorJobs.findIndex(
+        (job) => job._id === action.job._id
+      );
+
+      if (mapJobQuoteIndex >= 0) {
+        // Make final new array of objects by combining updated object.
+        const mapUpdatedQuoteJobs = [
+          ...state.contractorJobs.slice(0, mapJobQuoteIndex),
+          action.job,
+          ...state.contractorJobs.slice(mapJobQuoteIndex + 1),
+        ];
+
+        // Overwrite the original map selected client jobs array.
+        state.contractorJobs = mapUpdatedQuoteJobs;
+      }else{
+        state.contractorJobs.push(action.job);
+      }
+
+      // Find the job in the map selected client jobs array.
+      let mapClientJobQuoteIndex = state.mapSelectedClient.jobs.findIndex(
+        (job) => job._id === action.job._id
+      );
+
+      // Make final new array of objects by combining updated object.
+      const mapClientUpdatedQuoteJobs = [
+        ...state.mapSelectedClient.jobs.slice(0, mapClientJobQuoteIndex),
+        action.job,
+        ...state.mapSelectedClient.jobs.slice(mapClientJobQuoteIndex + 1),
+      ];
+
+      // Overwrite the original map selected client jobs array.
+      state.mapSelectedClient.jobs = mapClientUpdatedQuoteJobs;
 
       return {
         ...state,

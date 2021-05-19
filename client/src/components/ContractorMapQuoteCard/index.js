@@ -5,7 +5,7 @@ import Button from 'react-bootstrap/Button'
 import { useContractorContext } from "../../utils/ContractorState";
 import { useContractorJobsContext } from "../../utils/ContractorJobsState";
 import ContractorImageCarousel from "../ContractorImageCarousel";
-import { CONTRACTOR_MAP_JOB_QUOTE_UPDATE } from "../../utils/actions";
+import { CONTRACTOR_MAP_JOB_QUOTE_UPDATE, CONTRACTOR_MAP_JOB_QUOTE_CREATED } from "../../utils/actions";
 import API from "../../utils/API"
 import "./style.css";
 
@@ -84,6 +84,30 @@ const ContractorMapQuoteCard = (props) => {
     setShowModal(false);
   };  
 
+  const hasJobQuote = () => {
+    let quoteIndex = contractorJobsState.mapSelectedJob.quotes.findIndex(
+      (quote) => quote.contractor === contractorState.contractor._id
+    );
+    return quoteIndex >= 0;
+  };
+
+  const createQuote = () => {
+    const price = document.getElementById('newPrice').value;
+    const description = document.getElementById('newDescription').value;
+
+    API.createContractorJobQuote(contractorState.contractor._id, contractorJobsState.mapSelectedJob._id, {price: price, description: description})
+    .then((res) => {
+      contractorJobsDispatch({
+        type: CONTRACTOR_MAP_JOB_QUOTE_CREATED,
+        job: res.data,
+      });
+    })
+    .catch((err) => console.log(err));
+
+
+    setShowModal(false);
+  };
+
   return (
     <div className="mt-2">
       <div>
@@ -114,6 +138,21 @@ const ContractorMapQuoteCard = (props) => {
               <p className="card-text ">{contractorJobsState.mapSelectedJob.description}</p>
             </div>
           </div>
+                {console.log("hasJobQuote", hasJobQuote())}
+              {
+                hasJobQuote() === false ? 
+                <button
+                  type="button"
+                  title="Post a new job"
+                  className="btn btn-small btn-white mb-2"
+                  aria-label="Post a new job"
+                  onClick={() => showModal()}
+                  >
+                  <FontAwesomeIcon icon={["fas", "plus"]}  size="2x"/>
+                </button>
+              : null
+              }
+
           <ul className="list-group">
             {console.log("props.jobs ", contractorJobsState.mapSelectedJob)}
             {contractorJobsState.mapSelectedJob.quotes.map((quote, index) => (
@@ -185,17 +224,29 @@ const ContractorMapQuoteCard = (props) => {
       >
         <Modal.Header closeButton>
           <Modal.Title id="contained-modal-title-vcenter">
-            Quote Fields Required
+            Post a quote for this job
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <h4>Validation Error</h4>
-          <p>
-            Price and Description are required fields.
-          </p>
+          <form>
+            <div class="form-group">
+              <input
+                className="form-control"
+                type="text"
+                id="newPrice"
+                defaultValue="Enter a quote price"
+              />
+              <textarea 
+                className="form-control"
+                type="text"
+                id="newDescription"
+                defaultValue="Enter a quote description"
+              />
+            </div>
+          </form>
         </Modal.Body>
         <Modal.Footer>
-          <Button onClick={hideModal}>Close</Button>
+          <Button onClick={createQuote}>Post Quote</Button>
         </Modal.Footer>
       </Modal>
 

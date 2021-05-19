@@ -1,5 +1,11 @@
 const db = require("../models");
 const mongoose = require("mongoose");
+const aws = require("aws-sdk");
+const uuid = require('uuid');
+const aws_access_key_id = process.env.aws_access_key_id;
+const aws_secret_access_key = process.env.aws_secret_access_key;
+const S3_BUCKET = "hedgefundphotos"
+aws.config.region = "us-east-2"
 
 module.exports = {
   contractorFindAllJobQuotes: function(req, res) {
@@ -75,5 +81,30 @@ module.exports = {
         .catch(err => res.status(422).json(err));
         })
       .catch(err => res.status(422).json(err));
+  },
+  fileSignedRequest: function(req, res) {
+    const fileName = req.query.fileName;
+    const fileType = req.query.fileType;
+    const s3 = new aws.S3();
+    const s3Params = {
+      Bucket: S3_BUCKET,
+      Key: fileName,
+      Expires: 60,
+      ContentType: fileType,
+      ACL: 'public-read'
+    };
+  
+    s3.getSignedUrl('putObject', s3Params, (err, data) => {
+      if(err){
+        console.log(err);
+        return res.end();
+      }
+      const returnData = {
+        signedRequest: data,
+        url: `https://${S3_BUCKET}.s3.amazonaws.com/${fileName}`
+      };
+      res.write(JSON.stringify(returnData));
+      res.end();
+    });
   }
 };

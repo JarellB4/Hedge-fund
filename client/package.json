@@ -2,7 +2,7 @@
   "name": "hedge-fund",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://hedge-fund-01.herokuapp.com/#/",
+  "homepage": "https://hedge-fund-01.herokuapp.com",
   "proxy": "http://localhost:3001",
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.35",

@@ -16,7 +16,7 @@
     "seed": "node scripts/seed.js",
     "install": "cd client && npm install",
     "buildClient": "cd client/ && npm install && npm run build",
-    "heroku-postbuild": "cd client && yarm && yarn run build",
+    "heroku-postbuild": "cd client && yarn && yarn run build",
     "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev"
   },
   "author": "",

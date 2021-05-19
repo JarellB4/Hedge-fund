@@ -18,6 +18,11 @@
     "react-scripts": "4.0.3",
     "web-vitals": "^1.1.1"
   },
+  "engines": {
+    "node": "15.6.0",
+    "npm": "7.11.2",
+    "yarn": "1.22.10"
+  },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",

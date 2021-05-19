@@ -43,7 +43,6 @@ const ClientJobList = (props) => {
                 </button>
               ))
             : null}
-          ;
         </div>
       </div>
     </div>

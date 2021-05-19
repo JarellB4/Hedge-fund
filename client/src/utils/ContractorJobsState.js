@@ -1,6 +1,6 @@
 import { BorderAll } from "@material-ui/icons";
 import React, { createContext, useReducer, useContext } from "react";
-import { CONTRACTOR_JOBS, CONTRACTOR_JOB_SELECTED, CONTRACTOR_JOB_QUOTE_UPDATE, CONTRACTOR_CLIENT_SELECTED } from "./actions";
+import { CONTRACTOR_JOBS, CONTRACTOR_JOB_SELECTED, CONTRACTOR_JOB_QUOTE_UPDATE, CONTRACTOR_MAP_CLIENT_SELECTED } from "./actions";
 
 const initialState = {
   contractorJobs: [
@@ -174,7 +174,8 @@ const initialState = {
     //   },
     // 
   ],
-  selectedJob:{}
+  selectedJob:{},
+  mapSelectedClient:{}
 }
 
 const ContractorJobsContext = createContext(initialState);
@@ -190,10 +191,11 @@ const reducer = (state, action) => {
         // selectedJob: action.contractorJobs && action.contractorJobs.length > 0 ? action.contractorJobs[0] : {},
       };
       
-      case CONTRACTOR_CLIENT_SELECTED:
+      case CONTRACTOR_MAP_CLIENT_SELECTED:
         console.log("CONTRACTOR_CLIENT_SELECTED ", action.client);
         return {
           ...state,
+          mapSelectedClient: action.client
         };
 
       case CONTRACTOR_JOB_SELECTED:

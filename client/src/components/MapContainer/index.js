@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { GoogleMap, LoadScript, Marker } from "@react-google-maps/api";
 import API from "../../utils/API";
 import { useContractorJobsContext } from "../../utils/ContractorJobsState";
-import { CONTRACTOR_CLIENT_SELECTED } from "../../utils/actions";
+import { CONTRACTOR_MAP_CLIENT_SELECTED } from "../../utils/actions";
 
 const MapContainer = (props) => {
   const [currentRadius, setRadius] = useState(20);
@@ -17,7 +17,7 @@ const MapContainer = (props) => {
     setSelected(client);
     console.log("Selected Client: ", client);
     contractorJobsDispatch({
-      type: CONTRACTOR_CLIENT_SELECTED,
+      type: CONTRACTOR_MAP_CLIENT_SELECTED,
       client: client
     })
   };
@@ -85,7 +85,7 @@ const MapContainer = (props) => {
       <LoadScript googleMapsApiKey="AIzaSyDH6tFUYbWJcIgzAcqC6qW_Spr3IIfR7mY">
         <GoogleMap
           mapContainerStyle={mapStateData.mapStyles}
-          zoom={13}
+          zoom={10}
           center={mapStateData.defaultCenter}
         >
           {mapStateData.clients

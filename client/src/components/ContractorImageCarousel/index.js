@@ -13,7 +13,7 @@ const ContractorImageCarousel = (props) => {
       {props.images && props.images.length > 0 ? (
         <Carousel activeIndex={index} onSelect={handleSelect}>
           {props.images.map((image, index) => (
-            <Carousel.Item style={{ height: "300px" }} interval={1000000}>
+            <Carousel.Item style={{ height: "300px" }} interval={1000000} key={index}>
               <img
                 // className="d-block w-300"
                 className="d-inline w-100"

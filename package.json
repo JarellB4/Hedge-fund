@@ -15,8 +15,8 @@
     "client": "cd client && npm run start",
     "seed": "node scripts/seed.js",
     "install": "cd client && npm install",
-    "build": "cd client && npm run build",
-    "heroku-postbuild": "npm run build",
+    "buildClient": "cd client/ && npm install && npm run build",
+    "heroku-postbuild": "cd client/ && npm install && npm run build",
     "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev"
   },
   "author": "",
@@ -33,6 +33,7 @@
     "bcryptjs": "^2.4.3",
     "bootstrap": "^5.0.0",
     "express": "^4.17.1",
+    "express-session": "^1.17.1",
     "mongoose": "^5.12.8",
     "passport": "^0.4.1",
     "passport-local": "^1.0.0",

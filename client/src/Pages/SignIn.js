@@ -30,14 +30,14 @@ const SignIn = (props) => {
     let history = useHistory();
 
   function handleBtnClick() {
-    // API.getClientByEmail(emailRef.current.value)
-    //   .then((res) => {
-    //     clientDispatch({
-    //       type: CURRENT_CLIENT,
-    //       client: res.data,
-    //     });
-    //   })
-    //   .catch((err) => console.log(err));
+    API.getClientByEmail(emailRef.current.value)
+      .then((res) => {
+        clientDispatch({
+          type: CURRENT_CLIENT,
+          client: res.data,
+        });
+      })
+      .catch((err) => console.log(err));
 
     API.clientLogin(emailRef.current.value, passwordRef.current.value)
     .then((res) => {
@@ -45,16 +45,16 @@ const SignIn = (props) => {
         type: CURRENT_CLIENT,
         client: res.data,
       });
-      // API.getContractorJobs(res.data._id).then((result) => {
-      //   contractorJobsDispatch({
-      //     type: CONTRACTOR_JOBS,
-      //     contractorJobs: result.data,
-      //   });
-      // });
-      // contractorDispatch({
-      //   type: CURRENT_CONTRACTOR,
-      //   contractor: res.data,
-      // });
+      API.getContractorJobs(res.data._id).then((result) => {
+        contractorJobsDispatch({
+          type: CONTRACTOR_JOBS,
+          contractorJobs: result.data,
+        });
+      });
+      contractorDispatch({
+        type: CURRENT_CONTRACTOR,
+        contractor: res.data,
+      });
     })
     .catch((err) => console.log(err));
 
@@ -63,20 +63,20 @@ const SignIn = (props) => {
   history.push("./ClientMain");
 }
   function handleContractorBtnClick() {
-    // API.getContractorByEmail(emailRef.current.value)
-    //   .then((res) => {
-    //     API.getContractorJobs(res.data._id).then((result) => {
-    //       contractorJobsDispatch({
-    //         type: CONTRACTOR_JOBS,
-    //         contractorJobs: result.data,
-    //       });
-    //     });
-    //     contractorDispatch({
-    //       type: CURRENT_CONTRACTOR,
-    //       contractor: res.data,
-    //     });
-    //   })
-    //   .catch((err) => console.log(err));
+    API.getContractorByEmail(emailRef.current.value)
+      .then((res) => {
+        API.getContractorJobs(res.data._id).then((result) => {
+          contractorJobsDispatch({
+            type: CONTRACTOR_JOBS,
+            contractorJobs: result.data,
+          });
+        });
+        contractorDispatch({
+          type: CURRENT_CONTRACTOR,
+          contractor: res.data,
+        });
+      })
+      .catch((err) => console.log(err));
 
     API.contractorLogin(emailRef.current.value, passwordRef.current.value)
     .then((res) => {

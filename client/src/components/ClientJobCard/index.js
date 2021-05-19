@@ -79,6 +79,8 @@ const ClientJobCard = (props) => {
     ClientState.selectedJob.description = description;
   };
 
+  //ADDING SECTION TO UPLOAD TO AMAZON S3
+
   return (
     <div className="mt-2">
       <div>
@@ -131,6 +133,11 @@ const ClientJobCard = (props) => {
                       onChange={(event) =>
                         updateClientJobDescription(event.target.value)
                       }
+                    />
+                    <input
+                      className="form-control"
+                      type="file"
+                      id="file-input"
                     />
                   </div>
                 ) : (

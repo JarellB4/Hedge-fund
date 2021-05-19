@@ -18,6 +18,7 @@ const ClientJobCard = (props) => {
     });
     return ref.current;
   }
+  const [isUpdating, setIsUpdating] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
   const [isModalOpen, setShowModal] = useState(false);
   const [SelectedJobState, clientJobDispatch] = useClientContext();
@@ -41,11 +42,40 @@ const ClientJobCard = (props) => {
   const onSave = () => {
     setIsEditing(false);
 
-    if (ClientState.selectedJob.title !== "" && ClientState.selectedJob.description !== "") {
-      API.updateClientJob(
-        ClientState.client._id,
-        ClientState.selectedJob
-      )
+    if (
+      ClientState.selectedJob.title !== "" &&
+      ClientState.selectedJob.description !== ""
+    ) {
+      API.updateClientJob(ClientState.client._id, ClientState.selectedJob)
+        .then((res) => {
+          clientDispatch({
+            type: CLIENT_JOB_UPDATED,
+            job: res.data,
+          });
+        })
+        .catch((err) => console.log(err));
+    } else {
+      // const quote = props.job.quotes.find(
+      //   (quote) => quote.contractor === contractorState.contractor_id
+      // );
+      // const quoteClone = { ...quote };
+      // setQuoteData(quoteClone);
+      showModal();
+    }
+  };
+
+  const onPhotoEdit = () => {
+    setIsUpdating(true);
+  };
+
+  const onPhotoSave = () => {
+    setIsUpdating(false);
+
+    if (
+      ClientState.selectedJob.title !== "" &&
+      ClientState.selectedJob.description !== ""
+    ) {
+      API.updateClientJob(ClientState.client._id, ClientState.selectedJob)
         .then((res) => {
           clientDispatch({
             type: CLIENT_JOB_UPDATED,
@@ -79,6 +109,8 @@ const ClientJobCard = (props) => {
     ClientState.selectedJob.description = description;
   };
 
+  //ADDING SECTION TO UPLOAD TO AMAZON S3
+
   return (
     <div className="mt-2">
       <div>
@@ -104,6 +136,25 @@ const ClientJobCard = (props) => {
                     onClick={() => onEdit()}
                   >
                     <FontAwesomeIcon icon={["fas", "pen"]} />
+                  </button>
+                )}
+                {isUpdating ? (
+                  <button
+                    type="button"
+                    className="btn btn-small btn-danger float-right mb-2"
+                    aria-label="save"
+                    onClick={() => onPhotoSave()}
+                  >
+                    <FontAwesomeIcon icon={["fas", "save"]} />
+                  </button>
+                ) : (
+                  <button
+                    type="button"
+                    className="btn btn-small btn-danger float-right mb-2"
+                    aria-label="edit"
+                    onClick={() => onPhotoEdit()}
+                  >
+                    <FontAwesomeIcon icon={["fas", "camera"]} />
                   </button>
                 )}
               </div>
@@ -146,6 +197,23 @@ const ClientJobCard = (props) => {
                   </div>
                 )}
               </div>
+              <div>
+                {isUpdating ? (
+                  <div>
+                    <input
+                      className="form-control"
+                      type="file"
+                      id="file-input"
+                    />
+                    <img 
+                      id="preview" 
+                      src="/images/default.png" 
+                      alt="Default" 
+                    />
+                  </div>
+                ) : null
+                }
+              </div>
             </div>
             <ul className="list-group">
               {console.log(
@@ -153,16 +221,14 @@ const ClientJobCard = (props) => {
                 ClientState.selectedJob.quotes
               )}
 
-              {
-               ClientState.selectedJob.quotes ?
-              ClientState.selectedJob.quotes.map((quote, index) => (
-                <li className="list-group-item" key={index}>
-                  <h4>Price: $ {quote.price}</h4>
-                  <p>{quote.description}</p>
-                </li>
-              ))
-              : null
-              }
+              {ClientState.selectedJob.quotes
+                ? ClientState.selectedJob.quotes.map((quote, index) => (
+                    <li className="list-group-item" key={index}>
+                      <h4>Price: $ {quote.price}</h4>
+                      <p>{quote.description}</p>
+                    </li>
+                  ))
+                : null}
             </ul>
           </div>
         ) : null}

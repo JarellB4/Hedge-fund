@@ -1,7 +1,7 @@
 {
   "name": "hedgefund",
   "version": "1.0.0",
-  "homepage": ".",
+  "homepage": "https://hedge-fund-01.herokuapp.com/",
   "description": "",
   "main": "server.js",
   "engines": {

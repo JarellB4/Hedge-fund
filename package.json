@@ -1,17 +1,24 @@
 {
   "name": "hedgefund",
   "version": "1.0.0",
+  "homepage": "https://hedge-fund-01.herokuapp.com/",
   "description": "",
   "main": "server.js",
+  "engines": {
+    "node": "15.6.0",
+    "npm": "7.11.2",
+    "yarn": "1.22.10"
+  },
   "scripts": {
-    "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
+    "dev": "serve -s build",
     "start:prod": "node server.js",
-    "start:dev": "concurrently \"nodemon --inspect --ignore 'client/*'\" \"npm run client\"",
+    "start:dev": "concurrently \"nodemon --ignore 'client/*'\" \"npm run client\"",
     "client": "cd client && npm run start",
     "seed": "node scripts/seed.js",
     "install": "cd client && npm install",
-    "build": "cd client && npm run build",
-    "heroku-postbuild": "npm run build"
+    "buildClient": "cd client/ && npm install && npm run build",
+    "heroku-postbuild": "cd client/ && npm install",
+    "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev"
   },
   "author": "",
   "license": "ISC",
@@ -29,11 +36,14 @@
     "express": "^4.17.1",
     "express-session": "^1.17.1",
     "mongodb": "^3.6.7",
+    "if-env": "^1.0.4",
+    "memorystore": "^1.6.6",
     "mongoose": "^5.12.8",
     "passport": "^0.4.1",
     "passport-local": "^1.0.0",
     "react-bootstrap": "^1.6.0",
     "react-router-dom": "^5.2.0",
+    "serve": "^11.3.2",
     "uuid": "^8.3.2"
   }
 }

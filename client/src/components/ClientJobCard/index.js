@@ -156,7 +156,7 @@ const ClientJobCard = (props) => {
               {
                ClientState.selectedJob.quotes ?
               ClientState.selectedJob.quotes.map((quote, index) => (
-                <li className="list-group-item" key={quote.contractor}>
+                <li className="list-group-item" key={index}>
                   <h4>Price: $ {quote.price}</h4>
                   <p>{quote.description}</p>
                 </li>

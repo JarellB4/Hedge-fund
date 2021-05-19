@@ -7,8 +7,7 @@ import ContractorQuoteList from "../components/ContractorQuoteList";
 
 const ContractorQuotes = (props) => {
   const [ContractorState, dispatch] = useContractorContext();
-  const [ContractorJobsState, contractorJobsDispatch] =
-    useContractorJobsContext();
+  const [ContractorJobsState, contractorJobsDispatch] = useContractorJobsContext();
 
   return (
     <Container fluid>

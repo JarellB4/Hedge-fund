@@ -33,9 +33,12 @@ module.exports = {
   },
   contractorCreateJobQuote: function(req, res) {
     const quote = req.body;
+    quote.dateUpdated = Date.now();
+    quote.dateCreated = Date.now();
     quote.contractor = mongoose.Types.ObjectId(req.params.id);
     db.Job
     .findOneAndUpdate({ _id: req.params.jobId }, { $push: { "quotes": quote }} , {new: true})
+    .populate('client')
     .then(dbModel => res.json(dbModel))
     .catch(err => res.status(422).json(err));
   },

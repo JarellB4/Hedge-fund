@@ -4,9 +4,9 @@
   "description": "",
   "main": "server.js",
   "engines": {
-    "node":"15.6.0",
-    "npm":"7.11.2",
-    "yarn":"1.22.10"
+    "node": "15.6.0",
+    "npm": "7.11.2",
+    "yarn": "1.22.10"
   },
   "scripts": {
     "start": "serve -s build",
@@ -38,6 +38,7 @@
     "passport-local": "^1.0.0",
     "react-bootstrap": "^1.6.0",
     "react-router-dom": "^5.2.0",
+    "serve": "^11.3.2",
     "uuid": "^8.3.2"
   }
 }

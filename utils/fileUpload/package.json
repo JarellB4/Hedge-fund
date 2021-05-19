@@ -1,0 +1,13 @@
+{
+  "name": "NodeDirectUploader",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "aws-sdk": "^2.909.0",
+    "ejs": "2.x",
+    "express": "^4.17.1"
+  }
+}

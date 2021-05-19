@@ -3,15 +3,22 @@
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
+  "engines": {
+    "node":"15.6.0",
+    "npm":"7.11.2",
+    "yarn":"1.22.10"
+  },
+  // to start file as before run npm run dev
   "scripts": {
-    "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
+    "start": "serve -s build",
     "start:prod": "node server.js",
-    "start:dev": "concurrently \"nodemon --inspect --ignore 'client/*'\" \"npm run client\"",
+    "start:dev": "concurrently \"nodemon --ignore 'client/*'\" \"npm run client\"",
     "client": "cd client && npm run start",
     "seed": "node scripts/seed.js",
     "install": "cd client && npm install",
     "build": "cd client && npm run build",
-    "heroku-postbuild": "npm run build"
+    "heroku-postbuild": "npm run build",
+    "dev": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev"
   },
   "author": "",
   "license": "ISC",
@@ -27,7 +34,6 @@
     "bcryptjs": "^2.4.3",
     "bootstrap": "^5.0.0",
     "express": "^4.17.1",
-    "express-session": "^1.17.1",
     "mongoose": "^5.12.8",
     "passport": "^0.4.1",
     "passport-local": "^1.0.0",

@@ -3,10 +3,10 @@ import { Col, Row, Container } from "../components/Grid";
 import { useContractorContext } from "../utils/ContractorState";
 import { useContractorJobsContext } from "../utils/ContractorJobsState";
 import MapContainer from "../components/MapContainer";
-import ContractorQuoteCard from "../components/ContractorQuoteCard";
+import ContractorJobSearchList from "../components/ContractorJobSearchList";
 
 const ContractorSearch = (props) => {
-  const [ContractorState, dispatch] = useContractorContext();
+  const [ContractorState, constractorDispatch] = useContractorContext();
   const [ContractorJobsState, contractorJobsDispatch] = useContractorJobsContext();
 
   return (
@@ -34,10 +34,11 @@ const ContractorSearch = (props) => {
               ) : null}
             </Col>
             <Col size="md-6" className="">
-              <h1 className="text-uppercase mb-0">Job Detail</h1>
+              <h1 className="text-uppercase mb-0">Availabe Jobs</h1>
               {
-                ContractorJobsState.selectedJob._id ? 
-                    <ContractorQuoteCard job={ContractorJobsState.selectedJob} />
+                ContractorJobsState.mapSelectedClient._id ? 
+                    // <ContractorJobSearchList client={ContractorJobsState.mapSelectedClient} />
+                    <ContractorJobSearchList />
                 : null}
             </Col>
           </Row>

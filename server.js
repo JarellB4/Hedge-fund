@@ -72,8 +72,6 @@ app.get('/sign-s3', (req, res) => {
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost:27017/hedgefund",
     {
        useNewUrlParser: true,
-       useUnifiedTopology: true,
-       useCreateIndex: true,
        useFindAndModify: false
      });
 

@@ -1,10 +1,11 @@
 let mongoose = require("mongoose");
 let db = require("../models");
 
-mongoose.connect("mongodb://localhost:27017/hedgefund", {
-  useNewUrlParser: true,
-  useFindAndModify: false,
-});
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost:27017/hedgefund",
+    {
+       useNewUrlParser: true,
+       useFindAndModify: false
+     });
 
 let clientSeed = [
   {

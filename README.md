@@ -37,4 +37,3 @@ Thank you for taking the time to look at our work. If you'd like to see any of o
 [Javier Cardenas](https://github.com/Glatorian13)
 [Dave Jeffers](https://github.com/zdjeffers)
 [Jarrell Boone](https://github.com/JarellB4)
-

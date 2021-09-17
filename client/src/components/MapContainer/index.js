@@ -86,7 +86,7 @@ const MapContainer = (props) => {
           onChange = {event => onSetRadius(event.target.value)}
         />
       </div>
-      <LoadScript googleMapsApiKey="AIzaSyDH6tFUYbWJcIgzAcqC6qW_Spr3IIfR7mY">
+      <LoadScript googleMapsApiKey="AIzaSyBJhkCA5PlFnCVv8YH3E8N0G5c8vp83TDk">
         <GoogleMap
           mapContainerStyle={mapStateData.mapStyles}
           zoom={10}
